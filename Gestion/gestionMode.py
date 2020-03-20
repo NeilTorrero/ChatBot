@@ -1,0 +1,2 @@
+def gestionMode():
+    print("Marc")

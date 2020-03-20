@@ -1,0 +1,2 @@
+def createChar():
+    print("Alex")

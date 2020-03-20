@@ -1,0 +1,2 @@
+def companionMode():
+    print("Neil")
