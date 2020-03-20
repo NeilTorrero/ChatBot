@@ -1,2 +1,3 @@
 def createChar():
-    print("Alex")
+    print("Welcome, please choose your Race!");
+
