@@ -103,6 +103,34 @@ class SavingThrow:
 
 
 @dataclass
+class Spell:
+    name: str
+    damage: str
+    range: int
+    casting_time: int
+    level: int
+
+    @staticmethod
+    def from_dict(obj: Any) -> 'Spell':
+        assert isinstance(obj, dict)
+        name = from_str(obj.get("name"))
+        damage = from_str(obj.get("damage"))
+        range = int(from_str(obj.get("range")))
+        casting_time = int(from_str(obj.get("casting-time")))
+        level = int(from_str(obj.get("level")))
+        return Spell(name, damage, range, casting_time, level)
+
+    def to_dict(self) -> dict:
+        result: dict = {}
+        result["name"] = from_str(self.name)
+        result["damage"] = from_str(self.damage)
+        result["range"] = from_str(str(self.range))
+        result["casting-time"] = from_str(str(self.casting_time))
+        result["level"] = from_str(str(self.level))
+        return result
+
+
+@dataclass
 class Character:
     name: str
     level: int
@@ -117,7 +145,7 @@ class Character:
     inventory: List[str]
     equipment: List[Equipment]
     description: str
-    spells: List[Any]
+    spells: List[Spell]
 
     @staticmethod
     def from_dict(obj: Any) -> 'Character':
@@ -135,7 +163,7 @@ class Character:
         inventory = from_list(from_str, obj.get("Inventory"))
         equipment = from_list(Equipment.from_dict, obj.get("Equipment"))
         description = from_str(obj.get("Description"))
-        spells = from_list(lambda x: x, obj.get("Spells"))
+        spells = from_list(Spell.from_dict, obj.get("Spells"))
         return Character(name, level, character_class, race, stats, saving_throws, skills, proficiency_bonus, profeciencies, background, inventory, equipment, description, spells)
 
     def to_dict(self) -> dict:
@@ -153,7 +181,7 @@ class Character:
         result["Inventory"] = from_list(from_str, self.inventory)
         result["Equipment"] = from_list(lambda x: to_class(Equipment, x), self.equipment)
         result["Description"] = from_str(self.description)
-        result["Spells"] = from_list(lambda x: x, self.spells)
+        result["Spells"] = from_list(lambda x: to_class(Spell, x), self.spells)
         return result
 
 

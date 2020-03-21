@@ -1,57 +1,60 @@
-    {
-        "name": "guy",
-        "level": 3,
-        "class": "paladin",
-        "race": "Human",
-        "stats": [
-            {"strength": 10},
-          {"dexterity": 10},
-          {"constitution": 10},
-            {"intelligence": 10},
-            {"wisdom": 10},
-            {"charisma": 10}
-        ],
-        "saving_throws": [
-            {"strength": 10},
-            {"dexterity": 10},
-            {"constitution": 10},
-            {"intelligence": 10},
-            {"wisdom": 10},
-            {"charisma": 10}
-        ],
-        "skills": [
-          {"Acrobatics": 10},
-          {"Animal Handling": 10},
-          {"Arcana": 10},
-          {"Athletics": 10},
-          {"Deception": 10},
-          {"History": 10},
-          {"Insight": 10},
-          {"Intimidation": 10},
-          {"Medicine": 10},
-          {"Nature": 10},
-          {"Medicine": 10},
-          {"Nature": 10},
-          {"Perception": 10},
-          {"Performance": 10},
-          {"Persuasion": 10},
-          {"Religion": 10},
-          {"Sleight of Hand": 10},
-          {"Stealth": 10},
-          {"Survival": 10}
-        ],
-        "Proficiency Bonus": 2,
-        "Profeciencies": [
-          "Acrobatics", "Athletics"
-        ],
-        "Background": "Scholar",
-        "Inventory": [
-          "Scholar's pack"
-        ],
-        "Equipment": [
-          {"name": "Longsword",
-           "Damage":  "1d8"}
-        ],
-        "Description": "Here",
-        "Spells": []
-    }
+{
+    "name": "guy",
+    "level": 3,
+    "class": "paladin",
+    "race": "Human",
+    "stats": [
+        {"strength": 10},
+        {"dexterity": 10},
+        {"constitution": 10},
+        {"intelligence": 10},
+        {"wisdom": 10},
+        {"charisma": 10}
+    ],
+    "saving_throws": [
+        {"strength": 10},
+        {"dexterity": 10},
+        {"constitution": 10},
+        {"intelligence": 10},
+        {"wisdom": 10},
+        {"charisma": 10}
+    ],
+    "skills": [
+        {"Acrobatics": 10},
+        {"Animal Handling": 10},
+        {"Arcana": 10},
+        {"Athletics": 10},
+        {"Deception": 10},
+        {"History": 10},
+        {"Insight": 10},
+        {"Intimidation": 10},
+        {"Medicine": 10},
+        {"Nature": 10},
+        {"Medicine": 10},
+        {"Nature": 10},
+        {"Perception": 10},
+        {"Performance": 10},
+        {"Persuasion": 10},
+        {"Religion": 10},
+        {"Sleight of Hand": 10},
+        {"Stealth": 10},
+        {"Survival": 10}
+    ],
+    "Proficiency Bonus": 2,
+    "Profeciencies": [
+        "Acrobatics", "Athletics"
+    ],
+    "Background": "Scholar",
+    "Inventory": [
+        "Scholar's pack"
+    ],
+    "Equipment": [
+        {"name": "Longsword", "Damage":  "1d8"}
+    ],
+    "Description": "Here",
+    "Spells": [
+        {"name": "Fireball", "damage":  "8d6", "range":  "150",
+          "casting-time": "1", "level": "3"
+        }
+    ]
+}
