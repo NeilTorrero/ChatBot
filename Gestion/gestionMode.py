@@ -1,2 +1,2 @@
-def gestionMode():
+def gestion_mode():
     print("Marc")

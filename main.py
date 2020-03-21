@@ -1,6 +1,6 @@
-from Companion.companionMode import companionMode
-from Creation.creationMode import createChar
-from Gestion.gestionMode import gestionMode
+from Companion.companionMode import companion_mode
+from Creation.creationMode import create_char
+from Gestion.gestionMode import gestion_mode
 
 
 class Switcher(object):
@@ -10,13 +10,13 @@ class Switcher(object):
         return method()
 
     def mode_create(self):
-        createChar()
+        create_char()
 
     def mode_gestion(self):
-        gestionMode()
+        gestion_mode()
 
     def mode_companion(self):
-        companionMode()
+        companion_mode()
 
 
 s = Switcher()

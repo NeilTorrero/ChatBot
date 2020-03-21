@@ -1,4 +1,4 @@
-def createChar():
+def create_char():
     print("Welcome, please choose your Race!");
     Race = input();
     #TODO: Comprobar que Race sigui vàlida
