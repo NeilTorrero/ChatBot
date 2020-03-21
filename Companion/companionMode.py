@@ -1,8 +1,7 @@
 def character_selection():
     # Selection of characters from saved if none go to creationMode
     print("Characters:")
-    #return character
-
+    # return character
 
 
 class Need(object):
@@ -26,10 +25,12 @@ class Need(object):
 def use_spell_feat():
     print("Spell")
 
+
 def dice_roll():
     print("Dice")
 
-def companionMode():
+
+def companion_mode():
     print("Please select your character:")
 
     # JSON get characters
