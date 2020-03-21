@@ -1,7 +1,5 @@
 import json
-
-from random import random
-
+import random
 from Json import *
 
 
@@ -33,7 +31,7 @@ def create_char():
                                        random.randrange(3,18),
                                        random.randrange(3,18),
                                        random.randrange(3,18))
-            
+
             chara.saving_throws = Stats(int((chara.stats.strength-10)/2),
                                         int((chara.stats.dexterity - 10) / 2),
                                         int((chara.stats.constitution - 10) / 2),
