@@ -39,7 +39,7 @@
         "Survival": 0
     },
     "Proficiency Bonus": 0,
-    "Proficiencies": [],
+    "Proficiencies": [""],
     "Background": "",
     "Inventory": [
         ""
@@ -49,8 +49,8 @@
     ],
     "Description": "",
     "Spells": [
-        {"name": "", "damage":  "", "spell-range":  "",
-          "casting-time": "", "level": "", "components": "",
+        {"name": "", "damage":  "", "spell-range":  0,
+          "casting-time": 0, "level": 0, "components": "",
             "Duration": ""
         }
     ]

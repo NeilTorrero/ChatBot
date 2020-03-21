@@ -175,8 +175,8 @@
     ],
     "Description": "Here",
     "Spells": [
-        {"name": "Fireball", "damage":  "8d6", "spell-range":  "150",
-          "casting-time": "1", "level": "3", "components": "V S M (A tiny ball of bat guano and sulfur)",
+        {"name": "Fireball", "damage":  "8d6", "spell-range":  150,
+          "casting-time": 1, "level": 3, "components": "V S M (A tiny ball of bat guano and sulfur)",
             "Duration": "Instantaneous"
         }
     ]

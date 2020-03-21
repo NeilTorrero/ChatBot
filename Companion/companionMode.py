@@ -54,7 +54,6 @@ def companion_mode():
         data = myfile.read()
     characters = characters_from_dict(json.loads(data))
     # JSON get characters
-    found_character = Json.Character
     [theres_character, found_character] = character_selection(characters)
     print(found_character.name)
     if theres_character:
