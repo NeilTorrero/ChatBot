@@ -1,4 +1,5 @@
 import json
+import re
 
 import Json
 from Creation.creationMode import create_char
@@ -22,24 +23,6 @@ def character_selection(characters):
     return [found, found_character]
 
 
-class Need(object):
-    def switch(self, option):
-        method_name = 'mode_' + option
-        method = getattr(self, method_name, lambda: 'Invalid')
-        return method(exit)
-
-    def mode_feat(self):
-        use_spell_feat()
-        return False
-
-    def mode_dice(self):
-        dice_roll()
-        return False
-
-    def mode_back(self):
-        return True
-
-
 def use_spell_feat():
     print("Spell")
 
@@ -57,9 +40,19 @@ def companion_mode():
     [theres_character, found_character] = character_selection(characters)
     print(found_character.name)
     if theres_character:
-        back = False
+        back = True
         while back:
-            n = Need()
-            back = n.switch("create")
+            need = input()
+            result = re.match(need, "dice", re.IGNORECASE)
+            if result:
+                dice_roll()
+
+            result = re.match(need, "feature|spell", re.IGNORECASE)
+            if result:
+                use_spell_feat()
+
+            result = re.match(need, "back|return|exit", re.IGNORECASE)
+            if result:
+                back = False
     else:
         create_char()
