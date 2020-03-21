@@ -58,7 +58,7 @@ class Equipment:
 
 
 @dataclass
-class SavingThrows:
+class Stats:
     strength: int
     dexterity: int
     constitution: int
@@ -67,7 +67,7 @@ class SavingThrows:
     charisma: int
 
     @staticmethod
-    def from_dict(obj: Any) -> "SavingThrows":
+    def from_dict(obj: Any) -> "Stats":
         assert isinstance(obj, dict)
         strength = from_int(obj.get("strength"))
         dexterity = from_int(obj.get("dexterity"))
@@ -75,7 +75,7 @@ class SavingThrows:
         intelligence = from_int(obj.get("intelligence"))
         wisdom = from_int(obj.get("wisdom"))
         charisma = from_int(obj.get("charisma"))
-        return SavingThrows(strength, dexterity, constitution, intelligence, wisdom, charisma)
+        return Stats(strength, dexterity, constitution, intelligence, wisdom, charisma)
 
     def to_dict(self) -> dict:
         result: dict = {
@@ -130,8 +130,8 @@ class Character:
     level: int
     character_class: str
     race: str
-    stats: SavingThrows
-    saving_throws: SavingThrows
+    stats: Stats
+    saving_throws: Stats
     skills: Dict[str, int]
     proficiency_bonus: int
     proficiencies: List[str]
@@ -148,8 +148,8 @@ class Character:
         level = from_int(obj.get("level"))
         character_class = from_str(obj.get("class"))
         race = from_str(obj.get("race"))
-        stats = SavingThrows.from_dict(obj.get("stats"))
-        saving_throws = SavingThrows.from_dict(obj.get("saving_throws"))
+        stats = Stats.from_dict(obj.get("stats"))
+        saving_throws = Stats.from_dict(obj.get("saving_throws"))
         skills = from_dict(from_int, obj.get("skills"))
         proficiency_bonus = from_int(obj.get("Proficiency Bonus"))
         proficiencies = from_list(from_str, obj.get("Proficiencies"))
@@ -167,8 +167,8 @@ class Character:
             "level": from_int(self.level),
             "class": from_str(self.character_class),
             "race": from_str(self.race),
-            "stats": to_class(SavingThrows, self.stats),
-            "saving_throws": to_class(SavingThrows, self.saving_throws),
+            "stats": to_class(Stats, self.stats),
+            "saving_throws": to_class(Stats, self.saving_throws),
             "skills": from_dict(from_int, self.skills),
             "Proficiency Bonus": from_int(self.proficiency_bonus),
             "Proficiencies": from_list(from_str, self.proficiencies),
