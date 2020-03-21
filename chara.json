@@ -3,105 +3,41 @@
     "level": 3,
     "class": "paladin",
     "race": "Human",
-    "stats": [
-        {
-            "strength": 10
-        },
-        {
-            "dexterity": 10
-        },
-        {
-            "constitution": 10
-        },
-        {
-            "intelligence": 10
-        },
-        {
-            "wisdom": 10
-        },
-        {
-            "charisma": 10
-        }
-    ],
-    "saving_throws": [
-        {
-            "strength": 10
-        },
-        {
-            "dexterity": 10
-        },
-        {
-            "constitution": 10
-        },
-        {
-            "intelligence": 10
-        },
-        {
-            "wisdom": 10
-        },
-        {
-            "charisma": 10
-        }
-    ],
-    "skills": [
-        {
-            "Acrobatics": 10
-        },
-        {
-            "Animal Handling": 10
-        },
-        {
-            "Arcana": 10
-        },
-        {
-            "Athletics": 10
-        },
-        {
-            "Deception": 10
-        },
-        {
-            "History": 10
-        },
-        {
-            "Insight": 10
-        },
-        {
-            "Intimidation": 10
-        },
-        {
-            "Medicine": 10
-        },
-        {
-            "Nature": 10
-        },
-        {
-            "Medicine": 10
-        },
-        {
-            "Nature": 10
-        },
-        {
-            "Perception": 10
-        },
-        {
-            "Performance": 10
-        },
-        {
-            "Persuasion": 10
-        },
-        {
-            "Religion": 10
-        },
-        {
-            "Sleight of Hand": 10
-        },
-        {
-            "Stealth": 10
-        },
-        {
-            "Survival": 10
-        }
-    ],
+    "stats": {
+        "strength": 10,
+        "dexterity": 10,
+        "constitution": 10,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 10
+    },
+    "saving_throws": {
+        "strength": 10,
+        "dexterity": 10,
+        "constitution": 10,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 10
+    },
+    "skills": {
+        "Acrobatics": 0,
+        "Animal Handling": 0,
+        "Arcana": 0,
+        "Athletics": 0,
+        "Deception": 0,
+        "History": 0,
+        "Insight": 0,
+        "Intimidation": 0,
+        "Medicine": 0,
+        "Nature": 0,
+        "Perception": 0,
+        "Performance": 0,
+        "Persuasion": 0,
+        "Religion": 0,
+        "Sleight of Hand": 0,
+        "Stealth": 0,
+        "Survival": 0
+    },
     "Proficiency Bonus": 2,
     "Proficiencies": [
         "Acrobatics",
@@ -125,43 +61,41 @@
     "level": 3,
     "class": "wizard",
     "race": "Human",
-    "stats": [
-        {"strength": 10},
-        {"dexterity": 10},
-        {"constitution": 10},
-        {"intelligence": 10},
-        {"wisdom": 10},
-        {"charisma": 10}
-    ],
-    "saving_throws": [
-        {"strength": 10},
-        {"dexterity": 10},
-        {"constitution": 10},
-        {"intelligence": 10},
-        {"wisdom": 10},
-        {"charisma": 10}
-    ],
-    "skills": [
-        {"Acrobatics": 10},
-        {"Animal Handling": 10},
-        {"Arcana": 10},
-        {"Athletics": 10},
-        {"Deception": 10},
-        {"History": 10},
-        {"Insight": 10},
-        {"Intimidation": 10},
-        {"Medicine": 10},
-        {"Nature": 10},
-        {"Medicine": 10},
-        {"Nature": 10},
-        {"Perception": 10},
-        {"Performance": 10},
-        {"Persuasion": 10},
-        {"Religion": 10},
-        {"Sleight of Hand": 10},
-        {"Stealth": 10},
-        {"Survival": 10}
-    ],
+        "stats": {
+        "strength": 10,
+        "dexterity": 10,
+        "constitution": 10,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 10
+    },
+    "saving_throws": {
+        "strength": 10,
+        "dexterity": 10,
+        "constitution": 10,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 10
+    },
+    "skills": {
+        "Acrobatics": 0,
+        "Animal Handling": 0,
+        "Arcana": 0,
+        "Athletics": 0,
+        "Deception": 0,
+        "History": 0,
+        "Insight": 0,
+        "Intimidation": 0,
+        "Medicine": 0,
+        "Nature": 0,
+        "Perception": 0,
+        "Performance": 0,
+        "Persuasion": 0,
+        "Religion": 0,
+        "Sleight of Hand": 0,
+        "Stealth": 0,
+        "Survival": 0
+    },
     "Proficiency Bonus": 2,
     "Proficiencies": [
         "Acrobatics", "Athletics"
