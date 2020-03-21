@@ -48,5 +48,10 @@
         {"name": "", "Damage":  ""}
     ],
     "Description": "",
-    "Spells": []
+    "Spells": [
+        {"name": "", "damage":  "", "spell-range":  "",
+          "casting-time": "", "level": "", "components": "",
+            "Duration": ""
+        }
+    ]
 }]
