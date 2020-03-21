@@ -33,77 +33,81 @@ def gestion_mode():
             result = re.match(need, "2", re.IGNORECASE)
             if result:
                 x = input("Select posible next level: ")
-                if found_character.character_class == 'Barbarian':
-                    dice = random.randrange(1, 12)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                if found_character.level == int(x)-1:
+                    found_character.level += 1
+                    if found_character.character_class == 'Barbarian':
+                        dice = random.randrange(1, 12)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Bard':
-                    dice = random.randrange(1, 8)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Bard':
+                        dice = random.randrange(1, 8)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Cleric':
-                    dice = random.randrange(1, 8)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Cleric':
+                        dice = random.randrange(1, 8)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Druid':
-                    dice = random.randrange(1, 8)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Druid':
+                        dice = random.randrange(1, 8)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Fighter':
-                    dice = random.randrange(1, 10)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Fighter':
+                        dice = random.randrange(1, 10)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Monk':
-                    dice = random.randrange(1, 8)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Monk':
+                        dice = random.randrange(1, 8)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Paladin':
-                    dice = random.randrange(1, 10)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Paladin':
+                        dice = random.randrange(1, 10)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Ranger':
-                    dice = random.randrange(1, 10)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Ranger':
+                        dice = random.randrange(1, 10)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Rogue':
-                    dice = random.randrange(1, 8)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Rogue':
+                        dice = random.randrange(1, 8)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Sorcerer':
-                    dice = random.randrange(1, 6)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Sorcerer':
+                        dice = random.randrange(1, 6)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Warlock':
-                    dice = random.randrange(1, 8)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Warlock':
+                        dice = random.randrange(1, 8)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
 
-                if found_character.character_class == 'Wizard':
-                    dice = random.randrange(1, 6)
-                    print('Rolling dice...')
-                    time.sleep(1)
-                    print(dice)
+                    if found_character.character_class == 'Wizard':
+                        dice = random.randrange(1, 6)
+                        print('Rolling dice...')
+                        time.sleep(1)
+                        print(dice)
+                else:
+                    print("Incorrect next level")
     else:
         create_char()
 
