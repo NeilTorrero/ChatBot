@@ -19,5 +19,11 @@ class Switcher(object):
         companion_mode()
 
 
+print("Hello, I'm MattBot.")
+print("What do you need for today's game?")
+print(" - Character creation")
+print(" - Character gestion")
+print(" - Companion mode")
+mode = input()
 s = Switcher()
-s.switch("create")
+s.switch(mode)

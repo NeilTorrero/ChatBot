@@ -1,7 +1,20 @@
-def character_selection():
+import json
+
+import Json
+from Json import characters_from_dict
+
+
+def character_selection(characters: Json):
     # Selection of characters from saved if none go to creationMode
     print("Characters:")
     # return character
+    for character in characters:
+        print(character.name)
+    print("Which character do you want?")
+    name = input()
+    for character in characters:
+        if name == character.name:
+            return character
 
 
 class Need(object):
@@ -32,9 +45,11 @@ def dice_roll():
 
 def companion_mode():
     print("Please select your character:")
-
+    with open('chara.json', 'r') as myfile:
+        data = myfile.read()
+    characters = characters_from_dict(json.loads(data))
     # JSON get characters
-    character = character_selection()
+    character = character_selection(characters)
 
     back = False
     while back:

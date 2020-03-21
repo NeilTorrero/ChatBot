@@ -4,7 +4,7 @@
 #
 # and then, to convert JSON from a string, do
 #
-#     result = character_from_dict(json.loads(json_string))
+#     result = characters_from_dict(json.loads(json_string))
 
 from dataclasses import dataclass
 from typing import Any, Optional, List, Dict, TypeVar, Callable, Type, cast
@@ -66,8 +66,7 @@ class Equipment:
     def to_dict(self) -> dict:
         result: dict = {
             "name": from_str(self.name),
-            "Damage": from_str(self.damage)
-        }
+            "Damage": from_str(self.damage)}
         return result
 
 
@@ -98,8 +97,7 @@ class SavingThrow:
             "constitution": from_union([from_int, from_none], self.constitution),
             "intelligence": from_union([from_int, from_none], self.intelligence),
             "wisdom": from_union([from_int, from_none], self.wisdom),
-            "charisma": from_union([from_int, from_none], self.charisma)
-        }
+            "charisma": from_union([from_int, from_none], self.charisma)}
         return result
 
 
@@ -112,7 +110,7 @@ class Spell:
     level: int
 
     @staticmethod
-    def from_dict(obj: Any) -> "Spell":
+    def from_dict(obj: Any) -> 'Spell':
         assert isinstance(obj, dict)
         name = from_str(obj.get("name"))
         damage = from_str(obj.get("damage"))
@@ -123,10 +121,11 @@ class Spell:
 
     def to_dict(self) -> dict:
         result: dict = {
-            "name": from_str(self.name), "damage": from_str(self.damage),
-            "range": from_str(str(self.range)), "casting-time": from_str(str(self.casting_time)),
-            "level": from_str(str(self.level))
-        }
+            "name": from_str(self.name),
+            "damage": from_str(self.damage),
+            "range": from_str(str(self.range)),
+            "casting-time": from_str(str(self.casting_time)),
+            "level": from_str(str(self.level))}
         return result
 
 
@@ -140,7 +139,7 @@ class Character:
     saving_throws: List[SavingThrow]
     skills: List[Dict[str, int]]
     proficiency_bonus: int
-    profeciencies: List[str]
+    proficiencies: List[str]
     background: str
     inventory: List[str]
     equipment: List[Equipment]
@@ -169,24 +168,26 @@ class Character:
 
     def to_dict(self) -> dict:
         result: dict = {
-            "name": from_str(self.name), "level": from_int(self.level),
-            "class": from_str(self.character_class), "race": from_str(self.race),
+            "name": from_str(self.name),
+            "level": from_int(self.level),
+            "class": from_str(self.character_class),
+            "race": from_str(self.race),
             "stats": from_list(lambda x: to_class(SavingThrow, x), self.stats),
             "saving_throws": from_list(lambda x: to_class(SavingThrow, x), self.saving_throws),
             "skills": from_list(lambda x: from_dict(from_int, x), self.skills),
             "Proficiency Bonus": from_int(self.proficiency_bonus),
-            "Proficiencies": from_list(from_str, self.profeciencies),
-            "Background": from_str(self.background), "Inventory": from_list(from_str, self.inventory),
+            "Proficiencies": from_list(from_str, self.proficiencies),
+            "Background": from_str(self.background),
+            "Inventory": from_list(from_str, self.inventory),
             "Equipment": from_list(lambda x: to_class(Equipment, x), self.equipment),
             "Description": from_str(self.description),
-            "Spells": from_list(lambda x: to_class(Spell, x), self.spells)
-        }
+            "Spells": from_list(lambda x: to_class(Spell, x), self.spells)}
         return result
 
 
-def character_from_dict(s: Any) -> Character:
-    return Character.from_dict(s)
+def characters_from_dict(s: Any) -> List[Character]:
+    return from_list(Character.from_dict, s)
 
 
-def character_to_dict(x: Character) -> Any:
-    return to_class(Character, x)
+def characters_to_dict(x: List[Character]) -> Any:
+    return from_list(lambda x: to_class(Character, x), x)
