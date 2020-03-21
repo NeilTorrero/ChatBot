@@ -1,20 +1,25 @@
 import json
 
 import Json
+from Creation.creationMode import create_char
 from Json import characters_from_dict
 
 
-def character_selection(characters: Json):
+def character_selection(characters):
     # Selection of characters from saved if none go to creationMode
+    found_character = Json.Character
     print("Characters:")
     # return character
     for character in characters:
         print(character.name)
     print("Which character do you want?")
     name = input()
+    found = False
     for character in characters:
         if name == character.name:
-            return character
+            found = True
+            found_character = character
+    return [found, found_character]
 
 
 class Need(object):
@@ -49,9 +54,13 @@ def companion_mode():
         data = myfile.read()
     characters = characters_from_dict(json.loads(data))
     # JSON get characters
-    character = character_selection(characters)
-
-    back = False
-    while back:
-        n = Need()
-        back = n.switch("create")
+    found_character = Json.Character
+    [theres_character, found_character] = character_selection(characters)
+    print(found_character.name)
+    if theres_character:
+        back = False
+        while back:
+            n = Need()
+            back = n.switch("create")
+    else:
+        create_char()
