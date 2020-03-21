@@ -1,7 +1,7 @@
 [{
     "name": "guy",
     "level": 3,
-    "class": "paladin",
+    "class": "Barbarian",
     "race": "Human",
     "stats": {
         "strength": 10,
