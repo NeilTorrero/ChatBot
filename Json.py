@@ -57,7 +57,7 @@ class Equipment:
     damage: str
 
     @staticmethod
-    def from_dict(obj: Any) -> "Equipment":
+    def from_dict(obj: Any) -> 'Equipment':
         assert isinstance(obj, dict)
         name = from_str(obj.get("name"))
         damage = from_str(obj.get("Damage"))
@@ -66,7 +66,8 @@ class Equipment:
     def to_dict(self) -> dict:
         result: dict = {
             "name": from_str(self.name),
-            "Damage": from_str(self.damage)}
+            "Damage": from_str(self.damage)
+        }
         return result
 
 
@@ -97,7 +98,8 @@ class SavingThrow:
             "constitution": from_union([from_int, from_none], self.constitution),
             "intelligence": from_union([from_int, from_none], self.intelligence),
             "wisdom": from_union([from_int, from_none], self.wisdom),
-            "charisma": from_union([from_int, from_none], self.charisma)}
+            "charisma": from_union([from_int, from_none], self.charisma)
+        }
         return result
 
 
@@ -105,27 +107,34 @@ class SavingThrow:
 class Spell:
     name: str
     damage: str
-    range: int
+    spell_range: int
     casting_time: int
     level: int
+    components: str
+    duration: str
 
     @staticmethod
-    def from_dict(obj: Any) -> 'Spell':
+    def from_dict(obj: Any) -> "Spell":
         assert isinstance(obj, dict)
         name = from_str(obj.get("name"))
         damage = from_str(obj.get("damage"))
-        range = int(from_str(obj.get("range")))
+        spell_range = int(from_str(obj.get("spell-range")))
         casting_time = int(from_str(obj.get("casting-time")))
         level = int(from_str(obj.get("level")))
-        return Spell(name, damage, range, casting_time, level)
+        components = from_str(obj.get("components"))
+        duration = from_str(obj.get("Duration"))
+        return Spell(name, damage, spell_range, casting_time, level, components, duration)
 
     def to_dict(self) -> dict:
         result: dict = {
             "name": from_str(self.name),
             "damage": from_str(self.damage),
-            "range": from_str(str(self.range)),
+            "spell-range": from_str(str(self.spell_range)),
             "casting-time": from_str(str(self.casting_time)),
-            "level": from_str(str(self.level))}
+            "level": from_str(str(self.level)),
+            "components": from_str(self.components),
+            "Duration": from_str(self.duration)
+        }
         return result
 
 
@@ -181,7 +190,8 @@ class Character:
             "Inventory": from_list(from_str, self.inventory),
             "Equipment": from_list(lambda x: to_class(Equipment, x), self.equipment),
             "Description": from_str(self.description),
-            "Spells": from_list(lambda x: to_class(Spell, x), self.spells)}
+            "Spells": from_list(lambda x: to_class(Spell, x), self.spells)
+        }
         return result
 
 
