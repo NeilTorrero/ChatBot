@@ -1,5 +1,8 @@
 import json
 import random
+
+import flask as flask
+
 from Json import *
 
 
@@ -111,9 +114,20 @@ def create_char():
             print("Not a valid answer, friend!\n")
 
     #TODO: Escribir el nuevo PJ en el JSON
-    with open('chara.json', 'r') as myfile:
-        data = myfile.read()
-    characters = characters_from_dict(json.loads(data))
-    characters.append(chara)
-    #characters_to_dict(characters)
-    json.dump(characters)
+    if False:
+        with open('chara.json', 'r') as myfile:
+            data = myfile.read()
+        characters = characters_from_dict(json.loads(data))
+        characters.append(chara)
+        characters_to_dict(characters)
+
+        with open('chara.json', 'w+') as myfile:
+            myfile.write("[")
+            for i in range(0, len(characters)):
+                myfile.write(json.dumps(characters[i].__dict__))
+                # myfile.write(flask.jsonify(characters[i].__dict__))
+                if (i != len(characters) - 1):
+                    myfile.write(",")
+            myfile.write("]")
+
+    return 0
