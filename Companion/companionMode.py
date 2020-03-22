@@ -30,12 +30,15 @@ def use_spell_feat():
 def dice_roll():
     print("What kind of roll you want to do?")
     kind = input()
-    result = re.match(kind, "attack|skill|dc",  re.IGNORECASE)
+    string = re.compile("(attack|skill|dc)", re.IGNORECASE)
+    result = string.match(kind)
     if result:
-        result = re.match(kind, "attack", re.IGNORECASE)
+        string = re.compile("(attack)", re.IGNORECASE)
+        result = string.match(kind)
         if result:
             print("roll attack")
-        result = re.match(kind, "skill|dc", re.IGNORECASE)
+        string = re.compile("(skill|dc)", re.IGNORECASE)
+        result = string.match(kind)
         if result:
             print("roll skill")
     else:
@@ -50,25 +53,29 @@ def companion_mode():
     # JSON get characters
     [theres_character, found_character] = character_selection(characters)
     print(found_character.name)
-    print("What do you need?")
-    print("Use a spell or feature?")
-    print("Do dice rolls?")
-    print("Or maybe do some of the other functionalities?")
     if theres_character:
+        print("What do you need?")
+        print("- Use a spell or feature?")
+        print("- Do dice rolls?")
+        print("- Or go back to some of the other functionalities?")
         back = True
         while back:
             need = input()
-            result = re.match(need, "dice|feature|spell|back|return|exit", re.IGNORECASE)
+            string = re.compile("(dice|feature|spell|other|functionalities|back|return|exit)", re.IGNORECASE)
+            result = string.match(need)
             if result:
-                result = re.match(need, "dice", re.IGNORECASE)
+                string = re.compile("(dice)", re.IGNORECASE)
+                result = string.match(need)
                 if result:
                     dice_roll()
 
-                result = re.match(need, "feature|spell", re.IGNORECASE)
+                string = re.compile("(feature|spell)", re.IGNORECASE)
+                result = string.match(need)
                 if result:
                     use_spell_feat()
 
-                result = re.match(need, "back|return|exit", re.IGNORECASE)
+                string = re.compile("(other|functionalities|back|return|exit)", re.IGNORECASE)
+                result = string.match(need)
                 if result:
                     back = False
             else:
