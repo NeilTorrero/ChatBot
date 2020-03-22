@@ -29,8 +29,9 @@ def use_spell_feat(character):
     spell_list = character.spells
     if len(spell_list) != 0:
         print("What spell is going to be cast?")
+        print("Character spells:")
         for spell in spell_list:
-            print(spell.name)
+            print("-" + spell.name)
         found = False
         while not found:
             name = input()
@@ -56,8 +57,9 @@ def roll_attack(character):
     attack_list = character.equipment
     if len(attack_list) != 0:
         print("What attack are you going to do?")
+        print("Character equipment:")
         for attack in attack_list:
-            print(attack.name)
+            print("-" + attack.name)
         found = False
         while not found:
             name = input()
@@ -83,8 +85,9 @@ def roll_skill(character):
     skill_list = character.skills
     if len(skill_list) != 0:
         print("What skill are you going to use?")
+        print("Character skills:")
         for skill in skill_list:
-            print(skill.name)
+            print("-" +skill.name)
         found = False
         while not found:
             name = input()
@@ -134,12 +137,12 @@ def companion_mode():
     [theres_character, found_character] = character_selection(characters)
     print(found_character.name)
     if theres_character:
-        print("What do you need?")
-        print("- Use a spell or feature?")
-        print("- Do dice rolls?")
-        print("- Or go back to some of the other functionalities?")
         back = True
         while back:
+            print("What do you need?")
+            print("- Use a spell or feature?")
+            print("- Do dice rolls?")
+            print("- Or go back to some of the other functionalities?")
             need = input()
             string = re.compile("(dice|feature|spell|other|functionalities|back|return|exit)", re.IGNORECASE)
             result = string.match(need)
