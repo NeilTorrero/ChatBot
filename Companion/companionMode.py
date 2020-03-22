@@ -19,7 +19,7 @@ def character_selection(characters):
     name = input()
     found = False
     for character in characters:
-        if name == character.name:
+        if name.lower() == character.name.lower():
             found = True
             found_character = character
     return [found, found_character]
@@ -37,7 +37,7 @@ def use_spell_feat(character):
             name = input()
             spell_selected = Json.Spell
             for spell in spell_list:
-                if name == spell.name:
+                if name.lower() == spell.name.lower():
                     found = True
                     spell_selected = spell
             if found:
@@ -65,7 +65,7 @@ def roll_attack(character):
             name = input()
             attack_selected = Json.Equipment
             for attack in attack_list:
-                if name == attack.name:
+                if name.lower() == attack.name.lower():
                     found = True
                     attack_selected = attack
             if found:
@@ -87,13 +87,13 @@ def roll_skill(character):
         print("What skill are you going to use?")
         print("Character skills:")
         for skill in skill_list:
-            print("-" +skill.name)
+            print("-" + skill.name)
         found = False
         while not found:
             name = input()
             skill_selected = Dict[str, int]
             for skill in skill_list:
-                if name == skill.name:
+                if name.lower() == skill.name.lower():
                     found = True
                     skill_selected = skill
             if found:
