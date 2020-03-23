@@ -136,7 +136,8 @@ def create_char():
             isRight=0
             print("Not a valid answer, friend!\n")
 
-    #TODO: Escribir el nuevo PJ en el JSON
+    #Escribir el nuevo PJ en el JSON
+    #Esta funcionalidad ha quedado como línea de futuro ya que no hemos conseguido resolver el problema que teníamos a la hora de escribir el JSON
     if False:
         with open('chara.json', 'r') as myfile:
             data = myfile.read()
