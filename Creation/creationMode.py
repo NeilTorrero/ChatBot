@@ -1,6 +1,6 @@
 import json
 import random
-
+import re
 #import flask as flask
 
 from Json import *
@@ -15,12 +15,35 @@ def create_char():
     chara = characters[0]
 
     print("Welcome, please choose your Race!\n")
-    Race = input()
+    Race = ""
+    while isRight==0:
+        Race = input()
+
+        string = re.compile("(human|dwarf|elf|dragonborn|halfling|gnome)", re.IGNORECASE)
+        match = string.match(Race)
+        if(match == None):
+            print("That's not a valid Race! Please, type it again \n")
+        else:
+            isRight=1
     chara.race = Race
-    #Comprobar que Race sigui vàlida
+
+
     print("Interesting! What about your class?\n")
-    Class = input()
+    Class = ""
+
+    isRight = 0
+    while isRight==0:
+        Class = input()
+
+        string = re.compile("(fighter|barbarian|bard|wizard|sorcerer|warlock|druid|cleric|paladin|ranger)", re.IGNORECASE)
+        match = string.match(Class)
+        if(match == None):
+            print("That's not a valid Class! Please, type it again \n")
+        else:
+            isRight=1
     chara.character_class = Class
+
+    isRight = 0
     while isRight==0:
         print("So, what about your stats?\n"
               "a)Roll them now!\n"
@@ -29,11 +52,11 @@ def create_char():
         if choice == "a":
             isRight = 1
             chara.stats = Stats( random.randrange(3,18),
-                                       random.randrange(3,18),
-                                       random.randrange(3,18),
-                                       random.randrange(3,18),
-                                       random.randrange(3,18),
-                                       random.randrange(3,18))
+                                 random.randrange(3,18),
+                                 random.randrange(3,18),
+                                 random.randrange(3,18),
+                                 random.randrange(3,18),
+                                 random.randrange(3,18))
 
             chara.saving_throws = Stats(int((chara.stats.strength-10)/2),
                                         int((chara.stats.dexterity - 10) / 2),
@@ -64,10 +87,10 @@ def create_char():
                                         int((chara.stats.wisdom - 10) / 2),
                                         int((chara.stats.charisma - 10) / 2))
 
-            isright = 1
+            isRight = 1
             pass
         else:
-            isright = 0
+            isRight = 0
             print("That's not a valid choice, my friend!\n")
 
     isRight = 0
@@ -86,10 +109,10 @@ def create_char():
         print("Well then, it's time to choose your background now!\n"
               "a)Scholar!\n"
               "b)Slave\n"
-              "C)Soldier")
+              "c)Soldier")
         background = input()
         chara.background = background
-        if background >= "a" or background <= "b":
+        if background == "a" or background == "b" or background == "c":
             isRight = 1
         else:
             isRight = 0
