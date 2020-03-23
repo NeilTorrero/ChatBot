@@ -87,13 +87,13 @@ def roll_skill(character):
         print("What skill are you going to use?")
         print("Character skills:")
         for skill in skill_list:
-            print("-" + skill.name)
+            print("-" + skill)
         found = False
         while not found:
             name = input()
-            skill_selected = Dict[str, int]
+            skill_selected = 0
             for skill in skill_list:
-                if name.lower() == skill.name.lower():
+                if name.lower() == skill.lower():
                     found = True
                     skill_selected = skill
             if found:
@@ -101,7 +101,7 @@ def roll_skill(character):
                 dice = random.randrange(1, 20)
                 time.sleep(1)
                 print("The dice choose: " + str(dice))
-                fvalue = dice + skill_selected[1]
+                fvalue = dice + skill_list[skill_selected]
                 print("The final value is the dice + skill = " + str(fvalue))
             else:
                 print("Your character doesn't have that skill.")
@@ -135,7 +135,6 @@ def companion_mode():
     characters = characters_from_dict(json.loads(data))
     # JSON get characters
     [theres_character, found_character] = character_selection(characters)
-    print(found_character.name)
     if theres_character:
         back = True
         while back:
@@ -147,7 +146,7 @@ def companion_mode():
             string = re.compile("(dice|feature|spell|other|functionalities|back|return|exit)", re.IGNORECASE)
             result = string.match(need)
             if result:
-                string = re.compile("(dice)", re.IGNORECASE)
+                string = re.compile("(dice|roll|rolls)", re.IGNORECASE)
                 result = string.match(need)
                 if result:
                     dice_roll(found_character)
