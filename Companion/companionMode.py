@@ -134,34 +134,44 @@ def companion_mode():
         data = myfile.read()
     characters = characters_from_dict(json.loads(data))
     # JSON get characters
-    [theres_character, found_character] = character_selection(characters)
-    if theres_character:
-        back = True
-        while back:
-            print("What do you need?")
-            print("- Use a spell or feature?")
-            print("- Do dice rolls?")
-            print("- Or go back to some of the other functionalities?")
+    theres_character = False
+    while not theres_character:
+        [theres_character, found_character] = character_selection(characters)
+        if theres_character:
+            back = True
+            while back:
+                print("What do you need?")
+                print("- Use a spell or feature?")
+                print("- Do dice rolls?")
+                print("- Or go back to some of the other functionalities?")
+                need = input()
+                string = re.compile("(dice|roll|rolls|feature|spell|other|functionalities|back|return|exit)", re.IGNORECASE)
+                result = string.match(need)
+                if result:
+                    string = re.compile("(dice|roll|rolls)", re.IGNORECASE)
+                    result = string.match(need)
+                    if result:
+                        dice_roll(found_character)
+
+                    string = re.compile("(feature|spell)", re.IGNORECASE)
+                    result = string.match(need)
+                    if result:
+                        use_spell_feat(found_character)
+
+                    string = re.compile("(other|functionalities|back|return|exit)", re.IGNORECASE)
+                    result = string.match(need)
+                    if result:
+                        back = False
+                else:
+                    print("Sorry but I don't have that option.")
+                    print("Please choose one of the options I have offered to you.")
+        else:
+            print("That character doesnt exist.")
+            print("Do want to create one?")
             need = input()
-            string = re.compile("(dice|feature|spell|other|functionalities|back|return|exit)", re.IGNORECASE)
+            string = re.compile("(yes|ok|create)", re.IGNORECASE)
             result = string.match(need)
             if result:
-                string = re.compile("(dice|roll|rolls)", re.IGNORECASE)
-                result = string.match(need)
-                if result:
-                    dice_roll(found_character)
-
-                string = re.compile("(feature|spell)", re.IGNORECASE)
-                result = string.match(need)
-                if result:
-                    use_spell_feat(found_character)
-
-                string = re.compile("(other|functionalities|back|return|exit)", re.IGNORECASE)
-                result = string.match(need)
-                if result:
-                    back = False
+                create_char()
             else:
-                print("Sorry but I don't have that option.")
-                print("Please choose one of the options I have offered to you.")
-    else:
-        create_char()
+                print("Then choose one that already exists.")
