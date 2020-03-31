@@ -47,11 +47,6 @@
              rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasProficiency
-:hasProficiency rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty .
-
-
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasSkill
 :hasSkill rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty .
@@ -77,11 +72,6 @@
              rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#inSkill
-:inSkill rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf owl:topObjectProperty .
-
-
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromClass
 :isFromClass rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty .
@@ -95,6 +85,18 @@
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#speaksLang
 :speaksLang rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#HasProficiency
+:HasProficiency rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSkill ;
+                              owl:someValuesFrom :Skills
+                            ] .
 
 
 #################################################################
@@ -123,11 +125,6 @@
                                                              owl:onProperty :hasLevelsIn ;
                                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                              owl:onClass :Class
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasProficiency ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Proficiency
                                                            ] ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :hasSkill ;
@@ -166,64 +163,339 @@
                                                         ] .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Barbarian
-:Barbarian rdf:type owl:Class ;
-           rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Abjuration
+:Abjuration rdf:type owl:Class ;
+            rdfs:subClassOf :Spells .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Bard
-:Bard rdf:type owl:Class ;
-      rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Abyssal
+:Abyssal rdf:type owl:Class ;
+         rdfs:subClassOf :Languages .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Cleric
-:Cleric rdf:type owl:Class ;
-        rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Acrobatics
+:Acrobatics rdf:type owl:Class ;
+            rdfs:subClassOf :Skills .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Druid
-:Druid rdf:type owl:Class ;
-       rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Animal_handling
+:Animal_handling rdf:type owl:Class ;
+                 rdfs:subClassOf :Skills .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Explorer
-:Explorer rdf:type owl:Class ;
-          rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Aquan
+:Aquan rdf:type owl:Class ;
+       rdfs:subClassOf :Languages .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Monk
-:Monk rdf:type owl:Class ;
-      rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Arcana
+:Arcana rdf:type owl:Class ;
+        rdfs:subClassOf :Skills .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Paladin
-:Paladin rdf:type owl:Class ;
-         rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Armor
+:Armor rdf:type owl:Class ;
+       rdfs:subClassOf :Equipment .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Rogue
-:Rogue rdf:type owl:Class ;
-       rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Athletics
+:Athletics rdf:type owl:Class ;
+           rdfs:subClassOf :Skills .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Sorcerer
-:Sorcerer rdf:type owl:Class ;
-          rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Auran
+:Auran rdf:type owl:Class ;
+       rdfs:subClassOf :Languages .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Warlock
-:Warlock rdf:type owl:Class ;
-         rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Celestial
+:Celestial rdf:type owl:Class ;
+           rdfs:subClassOf :Languages .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Warrior
-:Warrior rdf:type owl:Class ;
-         rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Charisma
+:Charisma rdf:type owl:Class ;
+          rdfs:subClassOf :Stats .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Wizard
-:Wizard rdf:type owl:Class ;
-        rdfs:subClassOf :Class .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Common
+:Common rdf:type owl:Class ;
+        rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Conjuration
+:Conjuration rdf:type owl:Class ;
+             rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Constitution
+:Constitution rdf:type owl:Class ;
+              rdfs:subClassOf :Stats .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Deception
+:Deception rdf:type owl:Class ;
+           rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Deep_Speech
+:Deep_Speech rdf:type owl:Class ;
+             rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Dexterity
+:Dexterity rdf:type owl:Class ;
+           rdfs:subClassOf :Stats .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Divination
+:Divination rdf:type owl:Class ;
+            rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Draconic
+:Draconic rdf:type owl:Class ;
+          rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Dragonborn
+:Dragonborn rdf:type owl:Class ;
+            rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Druidic
+:Druidic rdf:type owl:Class ;
+         rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Dunamancy
+:Dunamancy rdf:type owl:Class ;
+           rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Dwarf
+:Dwarf rdf:type owl:Class ;
+       rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Dwarvish
+:Dwarvish rdf:type owl:Class ;
+          rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Elf
+:Elf rdf:type owl:Class ;
+     rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Elvish
+:Elvish rdf:type owl:Class ;
+        rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Enchantment
+:Enchantment rdf:type owl:Class ;
+             rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Evocation
+:Evocation rdf:type owl:Class ;
+           rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Giant
+:Giant rdf:type owl:Class ;
+       rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gnoll
+:Gnoll rdf:type owl:Class ;
+       rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gnome
+:Gnome rdf:type owl:Class ;
+       rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gnomish
+:Gnomish rdf:type owl:Class ;
+         rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Goblin
+:Goblin rdf:type owl:Class ;
+        rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Half-Elf
+:Half-Elf rdf:type owl:Class ;
+          rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Half-Orc
+:Half-Orc rdf:type owl:Class ;
+          rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Halfling
+:Halfling rdf:type owl:Class ;
+          rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#History
+:History rdf:type owl:Class ;
+         rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Human
+:Human rdf:type owl:Class ;
+       rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Ignan
+:Ignan rdf:type owl:Class ;
+       rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Illusion
+:Illusion rdf:type owl:Class ;
+          rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Infernal
+:Infernal rdf:type owl:Class ;
+          rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Insight
+:Insight rdf:type owl:Class ;
+         rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Intelligence
+:Intelligence rdf:type owl:Class ;
+              rdfs:subClassOf :Stats .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Intimidation
+:Intimidation rdf:type owl:Class ;
+              rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Investigation
+:Investigation rdf:type owl:Class ;
+               rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Medicine
+:Medicine rdf:type owl:Class ;
+          rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Mundane_Items
+:Mundane_Items rdf:type owl:Class ;
+               rdfs:subClassOf :Equipment .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Nature
+:Nature rdf:type owl:Class ;
+        rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Necromancy
+:Necromancy rdf:type owl:Class ;
+            rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Perception
+:Perception rdf:type owl:Class ;
+            rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Persuasion
+:Persuasion rdf:type owl:Class ;
+            rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Primordial
+:Primordial rdf:type owl:Class ;
+            rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Religion
+:Religion rdf:type owl:Class ;
+          rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#SleightOfHand
+:SleightOfHand rdf:type owl:Class ;
+               rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Stealth
+:Stealth rdf:type owl:Class ;
+         rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Strength
+:Strength rdf:type owl:Class ;
+          rdfs:subClassOf :Stats .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Survival
+:Survival rdf:type owl:Class ;
+          rdfs:subClassOf :Skills .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Sylvan
+:Sylvan rdf:type owl:Class ;
+        rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Terran
+:Terran rdf:type owl:Class ;
+        rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Tiefling
+:Tiefling rdf:type owl:Class ;
+          rdfs:subClassOf :Race .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Tools
+:Tools rdf:type owl:Class ;
+       rdfs:subClassOf :Equipment .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Transmutation
+:Transmutation rdf:type owl:Class ;
+               rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Undercommon
+:Undercommon rdf:type owl:Class ;
+             rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Universal
+:Universal rdf:type owl:Class ;
+           rdfs:subClassOf :Spells .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Weapon
+:Weapon rdf:type owl:Class ;
+        rdfs:subClassOf :Equipment .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Wisdom
+:Wisdom rdf:type owl:Class ;
+        rdfs:subClassOf :Stats .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#halfling
+:halfling rdf:type owl:Class ;
+          rdfs:subClassOf :Languages .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Background
@@ -233,6 +505,16 @@
                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Feature
                             ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Barbarian
+:Barbarian rdf:type owl:Class ;
+           rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Bard
+:Bard rdf:type owl:Class ;
+      rdfs:subClassOf :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Class
@@ -249,12 +531,27 @@
                        ] .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Cleric
+:Cleric rdf:type owl:Class ;
+        rdfs:subClassOf :Class .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Desciption
 :Desciption rdf:type owl:Class .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Druid
+:Druid rdf:type owl:Class ;
+       rdfs:subClassOf :Class .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Equipment
 :Equipment rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Explorer
+:Explorer rdf:type owl:Class ;
+          rdfs:subClassOf :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Feature
@@ -265,18 +562,14 @@
 :Languages rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Proficiency
-:Proficiency rdf:type owl:Class ;
-             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty :inEquipment ;
-                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Equipment
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :inSkill ;
-                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Skills
-                             ] .
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Monk
+:Monk rdf:type owl:Class ;
+      rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Paladin
+:Paladin rdf:type owl:Class ;
+         rdfs:subClassOf :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Race
@@ -288,8 +581,18 @@
                       ] .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Rogue
+:Rogue rdf:type owl:Class ;
+       rdfs:subClassOf :Class .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Skills
 :Skills rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Sorcerer
+:Sorcerer rdf:type owl:Class ;
+          rdfs:subClassOf :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Spells
@@ -314,6 +617,21 @@
                           ] .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Warlock
+:Warlock rdf:type owl:Class ;
+         rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Warrior
+:Warrior rdf:type owl:Class ;
+         rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Wizard
+:Wizard rdf:type owl:Class ;
+        rdfs:subClassOf :Class .
+
+
 ###  http://xmlns.com/foaf/0.1/Person
 <http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class .
 
@@ -321,6 +639,103 @@
 #################################################################
 #    General axioms
 #################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Abjuration
+                :Conjuration
+                :Divination
+                :Dunamancy
+                :Enchantment
+                :Evocation
+                :Illusion
+                :Necromancy
+                :Transmutation
+                :Universal
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Abyssal
+                :Aquan
+                :Auran
+                :Celestial
+                :Common
+                :Deep_Speech
+                :Draconic
+                :Druidic
+                :Dwarvish
+                :Elvish
+                :Giant
+                :Gnoll
+                :Gnomish
+                :Goblin
+                :Ignan
+                :Infernal
+                :Primordial
+                :Sylvan
+                :Terran
+                :Undercommon
+                :halfling
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Acrobatics
+                :Animal_handling
+                :Arcana
+                :Athletics
+                :Deception
+                :History
+                :Insight
+                :Intimidation
+                :Investigation
+                :Medicine
+                :Nature
+                :Perception
+                :Persuasion
+                :Religion
+                :SleightOfHand
+                :Stealth
+                :Survival
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Armor
+                :Mundane_Items
+                :Tools
+                :Weapon
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Charisma
+                :Constitution
+                :Dexterity
+                :Intelligence
+                :Strength
+                :Wisdom
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Dragonborn
+                :Dwarf
+                :Elf
+                :Gnome
+                :Half-Elf
+                :Half-Orc
+                :Halfling
+                :Human
+                :Tiefling
+              )
+] .
+
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Barbarian
