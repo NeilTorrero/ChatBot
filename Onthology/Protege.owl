@@ -30,6 +30,10 @@
 :Class rdf:type owl:Class .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Desciption
+:Desciption rdf:type owl:Class .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Equipment
 :Equipment rdf:type owl:Class .
 
