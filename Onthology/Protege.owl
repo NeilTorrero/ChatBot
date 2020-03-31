@@ -59,7 +59,12 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasSpell
 :hasSpell rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty .
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasSpell ;
+                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Spells
+                      ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasStat
@@ -98,12 +103,67 @@
 
 ###  http://vocab.linkeddata.es/vgo/Character
 <http://vocab.linkeddata.es/vgo/Character> rdf:type owl:Class ;
-                                           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
+                                           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasBackground ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Background
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasDescription ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Desciption
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasEquipment ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Equipment
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasLevelsIn ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Class
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasProficiency ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Proficiency
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasSkill ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Skills
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasSpell ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Spells
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasStat ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Stats
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :isFromRace ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Race
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :speaksLang ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Languages
+                                                           ] .
 
 
 ###  http://vocab.linkeddata.es/vgo/Player
 <http://vocab.linkeddata.es/vgo/Player> rdf:type owl:Class ;
-                                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
+                                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasCharacter ;
+                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass <http://vocab.linkeddata.es/vgo/Character>
+                                                        ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Barbarian
@@ -167,11 +227,26 @@
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Background
-:Background rdf:type owl:Class .
+:Background rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :containsFeature ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Feature
+                            ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Class
-:Class rdf:type owl:Class .
+:Class rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :containsFeature ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Feature
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :containsSubclass ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Subclass
+                       ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Desciption
@@ -191,11 +266,26 @@
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Proficiency
-:Proficiency rdf:type owl:Class .
+:Proficiency rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :inEquipment ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Equipment
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :inSkill ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Skills
+                             ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Race
-:Race rdf:type owl:Class .
+:Race rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :containsFeature ;
+                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Feature
+                      ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Skills
@@ -203,7 +293,12 @@
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Spells
-:Spells rdf:type owl:Class .
+:Spells rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :isFromClass ;
+                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Class
+                        ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Stats
@@ -211,7 +306,12 @@
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Subclass
-:Subclass rdf:type owl:Class .
+:Subclass rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :containsFeature ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Feature
+                          ] .
 
 
 ###  http://xmlns.com/foaf/0.1/Person
