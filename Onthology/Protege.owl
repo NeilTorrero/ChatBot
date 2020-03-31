@@ -12,82 +12,82 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#containsFeature
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#containsFeature
 :containsFeature rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#containsSubclass
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#containsSubclass
 :containsSubclass rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasBackground
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasBackground
 :hasBackground rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasCharacter
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasCharacter
 :hasCharacter rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasDescription
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasDescription
 :hasDescription rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasEquipment
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasEquipment
 :hasEquipment rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasLevelsIn
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasLevelsIn
 :hasLevelsIn rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasProficiency
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasProficiency
 :hasProficiency rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasSkill
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasSkill
 :hasSkill rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasSpell
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasSpell
 :hasSpell rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#hasStat
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasStat
 :hasStat rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#inEquipment
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#inEquipment
 :inEquipment rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#inSkill
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#inSkill
 :inSkill rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#isFromClass
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromClass
 :isFromClass rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#isFromRace
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromRace
 :isFromRace rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#speaksLang
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#speaksLang
 :speaksLang rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty .
 
@@ -104,6 +104,66 @@
 ###  http://vocab.linkeddata.es/vgo/Player
 <http://vocab.linkeddata.es/vgo/Player> rdf:type owl:Class ;
                                         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Barbarian
+:Barbarian rdf:type owl:Class ;
+           rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Bard
+:Bard rdf:type owl:Class ;
+      rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Cleric
+:Cleric rdf:type owl:Class ;
+        rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Druid
+:Druid rdf:type owl:Class ;
+       rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Explorer
+:Explorer rdf:type owl:Class ;
+          rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Monk
+:Monk rdf:type owl:Class ;
+      rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Paladin
+:Paladin rdf:type owl:Class ;
+         rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Rogue
+:Rogue rdf:type owl:Class ;
+       rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Sorcerer
+:Sorcerer rdf:type owl:Class ;
+          rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Warlock
+:Warlock rdf:type owl:Class ;
+         rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Warrior
+:Warrior rdf:type owl:Class ;
+         rdfs:subClassOf :Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Wizard
+:Wizard rdf:type owl:Class ;
+        rdfs:subClassOf :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Background
@@ -156,6 +216,27 @@
 
 ###  http://xmlns.com/foaf/0.1/Person
 <http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Barbarian
+                :Bard
+                :Cleric
+                :Druid
+                :Explorer
+                :Monk
+                :Paladin
+                :Rogue
+                :Sorcerer
+                :Warlock
+                :Warrior
+                :Wizard
+              )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
