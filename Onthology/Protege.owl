@@ -20,6 +20,130 @@
 :HasProficiency rdf:type owl:ObjectProperty .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#SubclassOf
+:SubclassOf rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Champion
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Circle_of_Land
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :College_Of_Lore
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Draconic_Bloodline
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Hunter
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Life_Domain
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Oath_of_Devotion
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Path_Of_the_Berserker
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :School_of_Evocation
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :The_Fiend
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Thief
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :SubclassOf ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Way_of_the_Open_Hand
+                        ] ;
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Barbarian
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Bard
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Cleric
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Druid
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Explorer
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Monk
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Paladin
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Rogue
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Sorcerer
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Warlock
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Warrior
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :SubclassOf ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Wizard
+                       ] .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#containsFeature
 :containsFeature rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
@@ -221,12 +345,47 @@
 #    Data properties
 #################################################################
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#HasLevels
+:HasLevels rdf:type owl:DatatypeProperty ;
+           rdfs:domain [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasLevelsIn ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass <http://vocab.linkeddata.es/vgo/Character>
+                       ] ;
+           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#ProfeciencyBonus
+:ProfeciencyBonus rdf:type owl:DatatypeProperty ;
+                  rdfs:domain [ rdf:type owl:Restriction ;
+                                owl:onProperty :HasProficiency ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://vocab.linkeddata.es/vgo/Character>
+                              ] ;
+                  rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#StatNumber
+:StatNumber rdf:type owl:DatatypeProperty ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasStat ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass <http://vocab.linkeddata.es/vgo/Character>
+                        ] ;
+            rdfs:range xsd:int .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
 :HasProficiency rdf:type owl:DatatypeProperty ;
                 rdfs:domain [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasEquipment ;
+                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :hasSkill ;
-                              owl:someValuesFrom :Skills
-                            ] .
+                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
+                            ] ;
+                rdfs:range xsd:boolean .
 
 
 #################################################################
@@ -291,6 +450,66 @@
                                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                           owl:onClass <http://vocab.linkeddata.es/vgo/Character>
                                                         ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Champion
+:Champion rdf:type owl:Class ;
+          rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Circle_of_Land
+:Circle_of_Land rdf:type owl:Class ;
+                rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#College_Of_Lore
+:College_Of_Lore rdf:type owl:Class ;
+                 rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Draconic_Bloodline
+:Draconic_Bloodline rdf:type owl:Class ;
+                    rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Hunter
+:Hunter rdf:type owl:Class ;
+        rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Life_Domain
+:Life_Domain rdf:type owl:Class ;
+             rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Oath_of_Devotion
+:Oath_of_Devotion rdf:type owl:Class ;
+                  rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Path_Of_the_Berserker
+:Path_Of_the_Berserker rdf:type owl:Class ;
+                       rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#School_of_Evocation
+:School_of_Evocation rdf:type owl:Class ;
+                     rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#The_Fiend
+:The_Fiend rdf:type owl:Class ;
+           rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Thief
+:Thief rdf:type owl:Class ;
+       rdfs:subClassOf :Subclass .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Way_of_the_Open_Hand
+:Way_of_the_Open_Hand rdf:type owl:Class ;
+                      rdfs:subClassOf :Subclass .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Abjuration
@@ -770,6 +989,23 @@
 #################################################################
 #    General axioms
 #################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Champion
+                :Circle_of_Land
+                :College_Of_Lore
+                :Draconic_Bloodline
+                :Hunter
+                :Life_Domain
+                :Oath_of_Devotion
+                :Path_Of_the_Berserker
+                :School_of_Evocation
+                :The_Fiend
+                :Thief
+                :Way_of_the_Open_Hand
+              )
+] .
+
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Abjuration
