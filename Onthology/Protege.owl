@@ -12,136 +12,20 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#HasLevel
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasLevel
 :HasLevel rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#HasProficiency
-:HasProficiency rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#SubclassOf
-:SubclassOf rdf:type owl:ObjectProperty ;
-            rdfs:domain [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Champion
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Circle_of_Land
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :College_Of_Lore
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Draconic_Bloodline
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Hunter
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Life_Domain
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Oath_of_Devotion
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Path_Of_the_Berserker
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :School_of_Evocation
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :The_Fiend
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Thief
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :SubclassOf ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Way_of_the_Open_Hand
-                        ] ;
-            rdfs:range [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Barbarian
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Bard
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Cleric
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Druid
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Explorer
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Monk
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Paladin
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Rogue
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Sorcerer
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Warlock
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Warrior
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :SubclassOf ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Wizard
-                       ] .
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
+:HasProficiency rdf:type owl:ObjectProperty ;
+                rdfs:domain [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasEquipment ;
+                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSkill ;
+                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
+                            ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#containsFeature
@@ -161,11 +45,6 @@
                                owl:onProperty :containsFeature ;
                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                owl:onClass :Race
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :containsFeature ;
-                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Subclass
                              ] ;
                  rdfs:range [ rdf:type owl:Restriction ;
                               owl:onProperty :containsFeature ;
@@ -180,11 +59,7 @@
                                 owl:onProperty :containsSubclass ;
                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :Class
-                              ] ;
-                  rdfs:range [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasLevelsIn ;
-                               owl:someValuesFrom :Subclass
-                             ] .
+                              ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasBackground
@@ -345,7 +220,7 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#HasLevels
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasLevels
 :HasLevels rdf:type owl:DatatypeProperty ;
            rdfs:domain [ rdf:type owl:Restriction ;
                          owl:onProperty :hasLevelsIn ;
@@ -355,7 +230,12 @@
            rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#ProfeciencyBonus
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
+:HasProficiency rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#ProfeciencyBonus
 :ProfeciencyBonus rdf:type owl:DatatypeProperty ;
                   rdfs:domain [ rdf:type owl:Restriction ;
                                 owl:onProperty :HasProficiency ;
@@ -365,7 +245,7 @@
                   rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#StatNumber
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#StatNumber
 :StatNumber rdf:type owl:DatatypeProperty ;
             rdfs:domain [ rdf:type owl:Restriction ;
                           owl:onProperty :hasStat ;
@@ -373,19 +253,6 @@
                           owl:onClass <http://vocab.linkeddata.es/vgo/Character>
                         ] ;
             rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
-:HasProficiency rdf:type owl:DatatypeProperty ;
-                rdfs:domain [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasEquipment ;
-                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasSkill ;
-                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
-                            ] ;
-                rdfs:range xsd:boolean .
 
 
 #################################################################
@@ -452,64 +319,14 @@
                                                         ] .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Champion
-:Champion rdf:type owl:Class ;
-          rdfs:subClassOf :Subclass .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Combatant
+:Combatant rdf:type owl:Class ;
+           rdfs:subClassOf :Class .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Circle_of_Land
-:Circle_of_Land rdf:type owl:Class ;
-                rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#College_Of_Lore
-:College_Of_Lore rdf:type owl:Class ;
-                 rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Draconic_Bloodline
-:Draconic_Bloodline rdf:type owl:Class ;
-                    rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Hunter
-:Hunter rdf:type owl:Class ;
-        rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Life_Domain
-:Life_Domain rdf:type owl:Class ;
-             rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Oath_of_Devotion
-:Oath_of_Devotion rdf:type owl:Class ;
-                  rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Path_Of_the_Berserker
-:Path_Of_the_Berserker rdf:type owl:Class ;
-                       rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#School_of_Evocation
-:School_of_Evocation rdf:type owl:Class ;
-                     rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#The_Fiend
-:The_Fiend rdf:type owl:Class ;
-           rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Thief
-:Thief rdf:type owl:Class ;
-       rdfs:subClassOf :Subclass .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Way_of_the_Open_Hand
-:Way_of_the_Open_Hand rdf:type owl:Class ;
-                      rdfs:subClassOf :Subclass .
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Spellcaster
+:Spellcaster rdf:type owl:Class ;
+             rdfs:subClassOf :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Abjuration
@@ -568,12 +385,12 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Barbarian
 :Barbarian rdf:type owl:Class ;
-           rdfs:subClassOf :Class .
+           rdfs:subClassOf :Combatant .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Bard
 :Bard rdf:type owl:Class ;
-      rdfs:subClassOf :Class .
+      rdfs:subClassOf :Spellcaster .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Celestial
@@ -581,9 +398,19 @@
            rdfs:subClassOf :Languages .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Champion
+:Champion rdf:type owl:Class ;
+          rdfs:subClassOf :Warrior .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Charisma
 :Charisma rdf:type owl:Class ;
           rdfs:subClassOf :Stats .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Circle_of_Land
+:Circle_of_Land rdf:type owl:Class ;
+                rdfs:subClassOf :Druid .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Class
@@ -592,17 +419,17 @@
                          owl:onProperty :containsFeature ;
                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onClass :Feature
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :containsSubclass ;
-                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Subclass
                        ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Cleric
 :Cleric rdf:type owl:Class ;
-        rdfs:subClassOf :Class .
+        rdfs:subClassOf :Spellcaster .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#College_Of_Lore
+:College_Of_Lore rdf:type owl:Class ;
+                 rdfs:subClassOf :Bard .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Common
@@ -649,6 +476,11 @@
           rdfs:subClassOf :Languages .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Draconic_Bloodline
+:Draconic_Bloodline rdf:type owl:Class ;
+                    rdfs:subClassOf :Sorcerer .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Dragonborn
 :Dragonborn rdf:type owl:Class ;
             rdfs:subClassOf :Race .
@@ -656,7 +488,7 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Druid
 :Druid rdf:type owl:Class ;
-       rdfs:subClassOf :Class .
+       rdfs:subClassOf :Spellcaster .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Druidic
@@ -705,7 +537,7 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Explorer
 :Explorer rdf:type owl:Class ;
-          rdfs:subClassOf :Class .
+          rdfs:subClassOf :Spellcaster .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Feature
@@ -762,6 +594,11 @@
        rdfs:subClassOf :Race .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Hunter
+:Hunter rdf:type owl:Class ;
+        rdfs:subClassOf :Explorer .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Ignan
 :Ignan rdf:type owl:Class ;
        rdfs:subClassOf :Languages .
@@ -801,6 +638,11 @@
 :Languages rdf:type owl:Class .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Life_Domain
+:Life_Domain rdf:type owl:Class ;
+             rdfs:subClassOf :Cleric .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Medicine
 :Medicine rdf:type owl:Class ;
           rdfs:subClassOf :Skills .
@@ -808,7 +650,7 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Monk
 :Monk rdf:type owl:Class ;
-      rdfs:subClassOf :Class .
+      rdfs:subClassOf :Combatant .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Mundane_Items
@@ -826,9 +668,19 @@
             rdfs:subClassOf :Spells .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Oath_of_Devotion
+:Oath_of_Devotion rdf:type owl:Class ;
+                  rdfs:subClassOf :Paladin .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Paladin
 :Paladin rdf:type owl:Class ;
-         rdfs:subClassOf :Class .
+         rdfs:subClassOf :Spellcaster .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Path_Of_the_Berserker
+:Path_Of_the_Berserker rdf:type owl:Class ;
+                       rdfs:subClassOf :Barbarian .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Perception
@@ -862,7 +714,12 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Rogue
 :Rogue rdf:type owl:Class ;
-       rdfs:subClassOf :Class .
+       rdfs:subClassOf :Combatant .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#School_of_Evocation
+:School_of_Evocation rdf:type owl:Class ;
+                     rdfs:subClassOf :Wizard .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Skills
@@ -876,7 +733,7 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Sorcerer
 :Sorcerer rdf:type owl:Class ;
-          rdfs:subClassOf :Class .
+          rdfs:subClassOf :Spellcaster .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Spells
@@ -902,15 +759,6 @@
           rdfs:subClassOf :Stats .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Subclass
-:Subclass rdf:type owl:Class ;
-          rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :containsFeature ;
-                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass :Feature
-                          ] .
-
-
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Survival
 :Survival rdf:type owl:Class ;
           rdfs:subClassOf :Skills .
@@ -924,6 +772,16 @@
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Terran
 :Terran rdf:type owl:Class ;
         rdfs:subClassOf :Languages .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#The_Fiend
+:The_Fiend rdf:type owl:Class ;
+           rdfs:subClassOf :Warlock .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Thief
+:Thief rdf:type owl:Class ;
+       rdfs:subClassOf :Rogue .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Tiefling
@@ -953,12 +811,17 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Warlock
 :Warlock rdf:type owl:Class ;
-         rdfs:subClassOf :Class .
+         rdfs:subClassOf :Spellcaster .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Warrior
 :Warrior rdf:type owl:Class ;
-         rdfs:subClassOf :Class .
+         rdfs:subClassOf :Combatant .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Way_of_the_Open_Hand
+:Way_of_the_Open_Hand rdf:type owl:Class ;
+                      rdfs:subClassOf :Monk .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Weapon
@@ -973,7 +836,7 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Wizard
 :Wizard rdf:type owl:Class ;
-        rdfs:subClassOf :Class .
+        rdfs:subClassOf :Spellcaster .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#halfling
@@ -989,23 +852,6 @@
 #################################################################
 #    General axioms
 #################################################################
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Champion
-                :Circle_of_Land
-                :College_Of_Lore
-                :Draconic_Bloodline
-                :Hunter
-                :Life_Domain
-                :Oath_of_Devotion
-                :Path_Of_the_Berserker
-                :School_of_Evocation
-                :The_Fiend
-                :Thief
-                :Way_of_the_Open_Hand
-              )
-] .
-
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Abjuration
@@ -1092,6 +938,23 @@
                 :Warlock
                 :Warrior
                 :Wizard
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Champion
+                :Circle_of_Land
+                :College_Of_Lore
+                :Draconic_Bloodline
+                :Hunter
+                :Life_Domain
+                :Oath_of_Devotion
+                :Path_Of_the_Berserker
+                :School_of_Evocation
+                :The_Fiend
+                :Thief
+                :Way_of_the_Open_Hand
               )
 ] .
 
