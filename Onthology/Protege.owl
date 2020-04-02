@@ -51,12 +51,16 @@ Neil Torrero Salas""" ;
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
 :HasProficiency rdf:type owl:ObjectProperty ;
                 rdfs:domain [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasEquipment ;
+                              owl:onProperty :HasProficiency ;
                               owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasSkill ;
-                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
+                              owl:onProperty :HasProficiency ;
+                              owl:someValuesFrom :Equipment
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :HasProficiency ;
+                              owl:someValuesFrom :Skills
                             ] .
 
 
@@ -117,12 +121,12 @@ Neil Torrero Salas""" ;
 :hasDescription rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
                 rdfs:domain [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasCharacter ;
+                              owl:onProperty :hasDescription ;
                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass <http://vocab.linkeddata.es/vgo/Character>
                             ] ;
                 rdfs:range [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasCharacter ;
+                             owl:onProperty :hasDescription ;
                              owl:someValuesFrom :Description
                            ] .
 
@@ -131,12 +135,12 @@ Neil Torrero Salas""" ;
 :hasEquipment rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
               rdfs:domain [ rdf:type owl:Restriction ;
-                            owl:onProperty :containsFeature ;
+                            owl:onProperty :hasEquipment ;
                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass <http://vocab.linkeddata.es/vgo/Character>
                           ] ;
               rdfs:range [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasSkill ;
+                           owl:onProperty :hasEquipment ;
                            owl:someValuesFrom :Equipment
                          ] .
 
@@ -159,7 +163,7 @@ Neil Torrero Salas""" ;
 :hasSkill rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
           rdfs:domain [ rdf:type owl:Restriction ;
-                        owl:onProperty :containsFeature ;
+                        owl:onProperty :hasSkill ;
                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                         owl:onClass <http://vocab.linkeddata.es/vgo/Character>
                       ] ;
@@ -198,14 +202,18 @@ Neil Torrero Salas""" ;
                     ] .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#inEquipment
-:inEquipment rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty .
-
-
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromClass
 :isFromClass rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty .
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain [ rdf:type owl:Restriction ;
+                           owl:onProperty :isFromClass ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Spells
+                         ] ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty :isFromClass ;
+                          owl:someValuesFrom :Class
+                        ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromRace
@@ -242,13 +250,8 @@ Neil Torrero Salas""" ;
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Descripiton
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Descripiton
 :Descripiton rdf:type owl:DatatypeProperty .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Languages
-:Languages rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasLevels
@@ -263,15 +266,12 @@ Neil Torrero Salas""" ;
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
 :HasProficiency rdf:type owl:DatatypeProperty ;
-                rdfs:domain [ rdf:type owl:Restriction ;
-                              owl:onProperty :HasProficiency ;
-                              owl:someValuesFrom :Equipment
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :HasProficiency ;
-                              owl:someValuesFrom :Skills
-                            ] ;
                 rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Languages
+:Languages rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#ProfeciencyBonus
@@ -305,72 +305,12 @@ Neil Torrero Salas""" ;
 
 ###  http://vocab.linkeddata.es/vgo/Character
 <http://vocab.linkeddata.es/vgo/Character> rdf:type owl:Class ;
-                                           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasBackground ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Background
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasDescription ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Description
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasEquipment ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Equipment
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasLevelsIn ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Class
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasSkill ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Skills
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasSpell ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Spells
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasStat ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Stats
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :isFromRace ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Race
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :speaksLang ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Languages
-                                                           ] .
+                                           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
 
 
 ###  http://vocab.linkeddata.es/vgo/Player
 <http://vocab.linkeddata.es/vgo/Player> rdf:type owl:Class ;
-                                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasCharacter ;
-                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                          owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                                                        ] .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Combatant
-:Combatant rdf:type owl:Class ;
-           rdfs:subClassOf :Class .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Spellcaster
-:Spellcaster rdf:type owl:Class ;
-             rdfs:subClassOf :Class .
+                                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Abjuration
@@ -419,12 +359,7 @@ Neil Torrero Salas""" ;
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Background
-:Background rdf:type owl:Class ;
-            rdfs:subClassOf [ rdf:type owl:Restriction ;
-                              owl:onProperty :containsFeature ;
-                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass :Feature
-                            ] .
+:Background rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Barbarian
@@ -458,12 +393,7 @@ Neil Torrero Salas""" ;
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Class
-:Class rdf:type owl:Class ;
-       rdfs:subClassOf [ rdf:type owl:Restriction ;
-                         owl:onProperty :containsFeature ;
-                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Feature
-                       ] .
+:Class rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Cleric
@@ -474,6 +404,11 @@ Neil Torrero Salas""" ;
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#College_Of_Lore
 :College_Of_Lore rdf:type owl:Class ;
                  rdfs:subClassOf :Bard .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Combatant
+:Combatant rdf:type owl:Class ;
+           rdfs:subClassOf :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Common
@@ -743,12 +678,7 @@ Neil Torrero Salas""" ;
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Race
-:Race rdf:type owl:Class ;
-      rdfs:subClassOf [ rdf:type owl:Restriction ;
-                        owl:onProperty :containsFeature ;
-                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :Feature
-                      ] .
+:Race rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Religion
@@ -780,13 +710,13 @@ Neil Torrero Salas""" ;
           rdfs:subClassOf :Spellcaster .
 
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Spellcaster
+:Spellcaster rdf:type owl:Class ;
+             rdfs:subClassOf :Class .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Spells
-:Spells rdf:type owl:Class ;
-        rdfs:subClassOf [ rdf:type owl:Restriction ;
-                          owl:onProperty :isFromClass ;
-                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Class
-                        ] .
+:Spells rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Stats
@@ -896,46 +826,46 @@ Neil Torrero Salas""" ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Action_Surge
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Action_Surge
 :Action_Surge rdf:type owl:NamedIndividual ,
                        :Feature .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Chainmail
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Chainmail
 :Chainmail rdf:type owl:NamedIndividual ,
                     :Armor .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Draconic_Ancestry
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Draconic_Ancestry
 :Draconic_Ancestry rdf:type owl:NamedIndividual ,
                             :Feature .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gilga
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Gilga
 :Gilga rdf:type owl:NamedIndividual ,
                 <http://vocab.linkeddata.es/vgo/Player> ;
        :hasCharacter :Vandel ;
        <http://xmlns.com/foaf/0.1/name> "Gilgamesh"^^xsd:string .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gold
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Gold
 :Gold rdf:type owl:NamedIndividual ,
                :Dragonborn ;
       :containsFeature :Draconic_Ancestry .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Mercenary_Veteran
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Mercenary_Veteran
 :Mercenary_Veteran rdf:type owl:NamedIndividual ,
                             :Background ;
                    :containsFeature :Military_Rank .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Military_Rank
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Military_Rank
 :Military_Rank rdf:type owl:NamedIndividual ,
                         :Feature .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Vandel
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Vandel
 :Vandel rdf:type owl:NamedIndividual ,
                  <http://vocab.linkeddata.es/vgo/Character> ;
         :hasBackground :Mercenary_Veteran ;
@@ -957,67 +887,67 @@ Neil Torrero Salas""" ;
         <http://xmlns.com/foaf/0.1/name> "Vandel Fuegosagaz"^^xsd:string .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelChar
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelChar
 :VandelChar rdf:type owl:NamedIndividual ,
                      :Charisma ;
             :StatNumber "14"^^xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelClass
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelClass
 :VandelClass rdf:type owl:NamedIndividual ,
                       :Champion ;
              :containsFeature :Action_Surge .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelCon
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelCon
 :VandelCon rdf:type owl:NamedIndividual ,
                     :Constitution ;
            :StatNumber "15"^^xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelDesc
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelDesc
 :VandelDesc rdf:type owl:NamedIndividual ,
                      :Description ;
             :Descripiton "Un buen dracónido guerrero y bonachón"^^xsd:string .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelDex
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelDex
 :VandelDex rdf:type owl:NamedIndividual ,
                     :Dexterity ;
            :StatNumber "14"^^xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelInt
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelInt
 :VandelInt rdf:type owl:NamedIndividual ,
                     :Intelligence ;
            :hasStat :VandelStr ;
            :StatNumber "11"^^xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelLang
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelLang
 :VandelLang rdf:type owl:NamedIndividual ,
                      :Draconic .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelSkills
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelSkills
 :VandelSkills rdf:type owl:NamedIndividual ,
                        :Skills ;
               :HasProficiency "true"^^xsd:boolean .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelStr
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelStr
 :VandelStr rdf:type owl:NamedIndividual ,
                     :Strength ;
            :StatNumber "17"^^xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelWis
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#VandelWis
 :VandelWis rdf:type owl:NamedIndividual ,
                     :Wisdom ;
            :StatNumber "12"^^xsd:int .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Warhammer
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Warhammer
 :Warhammer rdf:type owl:NamedIndividual ,
                     :Weapon .
 
