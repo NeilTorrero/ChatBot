@@ -50,200 +50,95 @@ Neil Torrero Salas""" ;
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
 :HasProficiency rdf:type owl:ObjectProperty ;
-                rdfs:domain [ rdf:type owl:Restriction ;
-                              owl:onProperty :HasProficiency ;
-                              owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :HasProficiency ;
-                              owl:someValuesFrom :Equipment
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :HasProficiency ;
-                              owl:someValuesFrom :Skills
-                            ] .
+                rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ,
+                            :Equipment ,
+                            :Skills .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#containsFeature
 :containsFeature rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdfs:domain [ rdf:type owl:Restriction ;
-                               owl:onProperty :containsFeature ;
-                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Background
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :containsFeature ;
-                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Class
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :containsFeature ;
-                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Race
-                             ] ;
-                 rdfs:range [ rdf:type owl:Restriction ;
-                              owl:onProperty :containsFeature ;
-                              owl:someValuesFrom :Feature
-                            ] .
+                 rdfs:domain :Background ,
+                             :Class ,
+                             :Race ;
+                 rdfs:range :Feature .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasBackground
 :hasBackground rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf owl:topObjectProperty ;
-               rdfs:domain [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasBackground ;
-                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                           ] ;
-               rdfs:range [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasBackground ;
-                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass :Background
-                          ] .
+               rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+               rdfs:range :Background .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasCharacter
 :hasCharacter rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
-              rdfs:domain [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasCharacter ;
-                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass <http://vocab.linkeddata.es/vgo/Player>
-                          ] ;
-              rdfs:range [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasCharacter ;
-                           owl:someValuesFrom <http://vocab.linkeddata.es/vgo/Character>
-                         ] .
+              rdfs:domain <http://vocab.linkeddata.es/vgo/Player> ;
+              rdfs:range <http://vocab.linkeddata.es/vgo/Character> .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasDescription
 :hasDescription rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                rdfs:domain [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasDescription ;
-                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                            ] ;
-                rdfs:range [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasDescription ;
-                             owl:someValuesFrom :Description
-                           ] .
+                rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+                rdfs:range :Description .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasEquipment
 :hasEquipment rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
-              rdfs:domain [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasEquipment ;
-                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                          ] ;
-              rdfs:range [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasEquipment ;
-                           owl:someValuesFrom :Equipment
-                         ] .
+              rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+              rdfs:range :Equipment .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasLevelsIn
 :hasLevelsIn rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasLevelsIn ;
-                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                         ] ;
-             rdfs:range [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasLevelsIn ;
-                          owl:someValuesFrom :Class
-                        ] .
+             rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+             rdfs:range :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasSkill
 :hasSkill rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
-          rdfs:domain [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasSkill ;
-                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                      ] ;
-          rdfs:range [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasSkill ;
-                       owl:someValuesFrom :Skills
-                     ] .
+          rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+          rdfs:range :Skills .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasSpell
 :hasSpell rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
-          rdfs:domain [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasSpell ;
-                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                      ] ;
-          rdfs:range [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasSpell ;
-                       owl:someValuesFrom :Spells
-                     ] .
+          rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+          rdfs:range :Spells .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasStat
 :hasStat rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
-         rdfs:domain [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasStat ;
-                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                       owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                     ] ;
-         rdfs:range [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasStat ;
-                      owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                      owl:onClass :Stats
-                    ] .
+         rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+         rdfs:range :Stats .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromClass
 :isFromClass rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain [ rdf:type owl:Restriction ;
-                           owl:onProperty :isFromClass ;
-                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :Spells
-                         ] ;
-             rdfs:range [ rdf:type owl:Restriction ;
-                          owl:onProperty :isFromClass ;
-                          owl:someValuesFrom :Class
-                        ] .
+             rdfs:domain :Spells ;
+             rdfs:range :Class .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromRace
 :isFromRace rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain [ rdf:type owl:Restriction ;
-                          owl:onProperty :isFromRace ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                        ] ;
-            rdfs:range [ rdf:type owl:Restriction ;
-                         owl:onProperty :isFromRace ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Race
-                       ] .
+            rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+            rdfs:range :Race .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#speaksLang
 :speaksLang rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain [ rdf:type owl:Restriction ;
-                          owl:onProperty :speaksLang ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                        ] ;
-            rdfs:range [ rdf:type owl:Restriction ;
-                         owl:onProperty :speaksLang ;
-                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Languages
-                       ] .
+            rdfs:domain <http://vocab.linkeddata.es/vgo/Character> ;
+            rdfs:range :Languages .
 
 
 #################################################################
@@ -305,12 +200,62 @@ Neil Torrero Salas""" ;
 
 ###  http://vocab.linkeddata.es/vgo/Character
 <http://vocab.linkeddata.es/vgo/Character> rdf:type owl:Class ;
-                                           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
+                                           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasEquipment ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Equipment
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasLevelsIn ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Class
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasSkill ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Skills
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasSpell ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Spells
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :isFromRace ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Race
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :speaksLang ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Languages
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasBackground ;
+                                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Background
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasDescription ;
+                                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Description
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasStat ;
+                                                             owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Stats
+                                                           ] .
 
 
 ###  http://vocab.linkeddata.es/vgo/Player
 <http://vocab.linkeddata.es/vgo/Player> rdf:type owl:Class ;
-                                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
+                                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasCharacter ;
+                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass <http://vocab.linkeddata.es/vgo/Character>
+                                                        ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Abjuration
@@ -359,7 +304,12 @@ Neil Torrero Salas""" ;
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Background
-:Background rdf:type owl:Class .
+:Background rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :containsFeature ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Feature
+                            ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Barbarian
@@ -393,7 +343,12 @@ Neil Torrero Salas""" ;
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Class
-:Class rdf:type owl:Class .
+:Class rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :containsFeature ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Feature
+                       ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Cleric
@@ -678,7 +633,12 @@ Neil Torrero Salas""" ;
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Race
-:Race rdf:type owl:Class .
+:Race rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :containsFeature ;
+                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Feature
+                      ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Religion
@@ -716,7 +676,12 @@ Neil Torrero Salas""" ;
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Spells
-:Spells rdf:type owl:Class .
+:Spells rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :isFromClass ;
+                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Class
+                        ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Stats
@@ -865,11 +830,11 @@ Neil Torrero Salas""" ;
                         :Feature .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#SpellcasterClasses
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#SpellcasterClasses
 :SpellcasterClasses rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Vandel
+###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Vandel
 :Vandel rdf:type owl:NamedIndividual ,
                  <http://vocab.linkeddata.es/vgo/Character> ;
         :hasBackground :Mercenary_Veteran ;
