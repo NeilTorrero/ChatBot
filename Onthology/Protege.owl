@@ -6,7 +6,27 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <http://www.semanticweb.org/user/ontologies/2020/2/DnD5e> .
 
-<http://www.semanticweb.org/user/ontologies/2020/2/DnD5e> rdf:type owl:Ontology .
+<http://www.semanticweb.org/user/ontologies/2020/2/DnD5e> rdf:type owl:Ontology ;
+                                                           <http://purl.org/dc/elements/1.1/creator> """Alejandro Moñux Bernal,
+Marc Aynés i Rulló,
+Neil Torrero Salas""" ;
+                                                           <http://purl.org/dc/elements/1.1/title> "Dungeons And Dragon 5e Onthology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Datatypes
@@ -16,13 +36,17 @@
 <http://vocab.linkeddata.es/vgo/Character> rdf:type rdfs:Datatype .
 
 
+###  http://vocab.linkeddata.es/vgo/Player
+<http://vocab.linkeddata.es/vgo/Player> rdf:type rdfs:Datatype .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> rdf:type rdfs:Datatype .
+
+
 #################################################################
 #    Object Properties
 #################################################################
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasLevel
-:HasLevel rdf:type owl:ObjectProperty .
-
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
 :HasProficiency rdf:type owl:ObjectProperty ;
@@ -58,16 +82,6 @@
                               owl:onProperty :containsFeature ;
                               owl:someValuesFrom :Feature
                             ] .
-
-
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#containsSubclass
-:containsSubclass rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf owl:topObjectProperty ;
-                  rdfs:domain [ rdf:type owl:Restriction ;
-                                owl:onProperty :containsSubclass ;
-                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :Class
-                              ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasBackground
@@ -228,6 +242,15 @@
 #    Data properties
 #################################################################
 
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Descripiton
+:Descripiton rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Languages
+:Languages rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:string .
+
+
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasLevels
 :HasLevels rdf:type owl:DatatypeProperty ;
            rdfs:domain [ rdf:type owl:Restriction ;
@@ -240,6 +263,14 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#HasProficiency
 :HasProficiency rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Restriction ;
+                              owl:onProperty :HasProficiency ;
+                              owl:someValuesFrom :Equipment
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :HasProficiency ;
+                              owl:someValuesFrom :Skills
+                            ] ;
                 rdfs:range xsd:boolean .
 
 
@@ -255,6 +286,7 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#StatNumber
 :StatNumber rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
             rdfs:domain [ rdf:type owl:Restriction ;
                           owl:onProperty :hasStat ;
                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -423,8 +455,7 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Class
 :Class rdf:type owl:Class ;
-       rdfs:subClassOf :Description ,
-                       [ rdf:type owl:Restriction ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
                          owl:onProperty :containsFeature ;
                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onClass :Feature
@@ -854,8 +885,135 @@
 
 
 ###  http://xmlns.com/foaf/0.1/Person
-<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class ;
-                                   rdfs:subClassOf <http://vocab.linkeddata.es/vgo/Character> .
+<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Action_Surge
+:Action_Surge rdf:type owl:NamedIndividual ,
+                       :Feature .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Chainmail
+:Chainmail rdf:type owl:NamedIndividual ,
+                    :Armor .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Draconic_Ancestry
+:Draconic_Ancestry rdf:type owl:NamedIndividual ,
+                            :Feature .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gilga
+:Gilga rdf:type owl:NamedIndividual ,
+                <http://vocab.linkeddata.es/vgo/Player> ;
+       :hasCharacter :Vandel .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gold
+:Gold rdf:type owl:NamedIndividual ,
+               :Dragonborn ;
+      :containsFeature :Draconic_Ancestry .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Mercenary_Veteran
+:Mercenary_Veteran rdf:type owl:NamedIndividual ,
+                            :Background ;
+                   :containsFeature :Military_Rank .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Military_Rank
+:Military_Rank rdf:type owl:NamedIndividual ,
+                        :Feature .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Vandel
+:Vandel rdf:type owl:NamedIndividual ,
+                 <http://vocab.linkeddata.es/vgo/Character> ;
+        :hasBackground :Mercenary_Veteran ;
+        :hasDescription :VandelDesc ;
+        :hasEquipment :Chainmail ,
+                      :Warhammer ;
+        :hasLevelsIn :VandelClass ;
+        :hasSkill :VandelSkills ;
+        :hasStat :VandelChar ,
+                 :VandelCon ,
+                 :VandelDex ,
+                 :VandelInt ,
+                 :VandelStr ,
+                 :VandelWis ;
+        :isFromRace :Gold ;
+        :speaksLang :VandelLang ;
+        :HasLevels "3"^^xsd:int ;
+        :ProfeciencyBonus "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelChar
+:VandelChar rdf:type owl:NamedIndividual ,
+                     :Charisma ;
+            :StatNumber "14"^^xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelClass
+:VandelClass rdf:type owl:NamedIndividual ,
+                      :Champion ;
+             :containsFeature :Action_Surge .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelCon
+:VandelCon rdf:type owl:NamedIndividual ,
+                    :Constitution ;
+           :StatNumber "15"^^xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelDesc
+:VandelDesc rdf:type owl:NamedIndividual ,
+                     :Description ;
+            :Descripiton "Un buen dracónido guerrero y bonachón"^^xsd:string .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelDex
+:VandelDex rdf:type owl:NamedIndividual ,
+                    :Dexterity ;
+           :StatNumber "14"^^xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelInt
+:VandelInt rdf:type owl:NamedIndividual ,
+                    :Intelligence ;
+           :hasStat :VandelStr ;
+           :StatNumber "11"^^xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelLang
+:VandelLang rdf:type owl:NamedIndividual ,
+                     :Draconic .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelSkills
+:VandelSkills rdf:type owl:NamedIndividual ,
+                       :Skills ;
+              :HasProficiency "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelStr
+:VandelStr rdf:type owl:NamedIndividual ,
+                    :Strength ;
+           :StatNumber "17"^^xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelWis
+:VandelWis rdf:type owl:NamedIndividual ,
+                    :Wisdom ;
+           :StatNumber "12"^^xsd:int .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Warhammer
+:Warhammer rdf:type owl:NamedIndividual ,
+                    :Weapon .
 
 
 #################################################################
