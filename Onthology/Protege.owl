@@ -865,7 +865,11 @@ Neil Torrero Salas""" ;
                         :Feature .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Vandel
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#SpellcasterClasses
+:SpellcasterClasses rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Vandel
 :Vandel rdf:type owl:NamedIndividual ,
                  <http://vocab.linkeddata.es/vgo/Character> ;
         :hasBackground :Mercenary_Veteran ;
