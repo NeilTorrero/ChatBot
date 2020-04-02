@@ -91,12 +91,12 @@ Neil Torrero Salas""" ;
                              owl:onProperty :hasBackground ;
                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                              owl:onClass <http://vocab.linkeddata.es/vgo/Character>
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasBackground ;
-                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :Background
-                           ] .
+                           ] ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasBackground ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Background
+                          ] .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#hasCharacter
@@ -293,6 +293,10 @@ Neil Torrero Salas""" ;
                           owl:onClass <http://vocab.linkeddata.es/vgo/Character>
                         ] ;
             rdfs:range xsd:int .
+
+
+###  http://xmlns.com/foaf/0.1/name
+<http://xmlns.com/foaf/0.1/name> rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -910,7 +914,8 @@ Neil Torrero Salas""" ;
 ###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gilga
 :Gilga rdf:type owl:NamedIndividual ,
                 <http://vocab.linkeddata.es/vgo/Player> ;
-       :hasCharacter :Vandel .
+       :hasCharacter :Vandel ;
+       <http://xmlns.com/foaf/0.1/name> "Gilgamesh"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Gold
@@ -948,7 +953,8 @@ Neil Torrero Salas""" ;
         :isFromRace :Gold ;
         :speaksLang :VandelLang ;
         :HasLevels "3"^^xsd:int ;
-        :ProfeciencyBonus "2"^^xsd:int .
+        :ProfeciencyBonus "2"^^xsd:int ;
+        <http://xmlns.com/foaf/0.1/name> "Vandel Fuegosagaz"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#VandelChar
