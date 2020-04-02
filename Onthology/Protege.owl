@@ -9,6 +9,14 @@
 <http://www.semanticweb.org/user/ontologies/2020/2/DnD5e> rdf:type owl:Ontology .
 
 #################################################################
+#    Datatypes
+#################################################################
+
+###  http://vocab.linkeddata.es/vgo/Character
+<http://vocab.linkeddata.es/vgo/Character> rdf:type rdfs:Datatype .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
@@ -415,7 +423,8 @@
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#Class
 :Class rdf:type owl:Class ;
-       rdfs:subClassOf [ rdf:type owl:Restriction ;
+       rdfs:subClassOf :Description ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :containsFeature ;
                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onClass :Feature
