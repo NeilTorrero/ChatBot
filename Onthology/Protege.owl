@@ -198,11 +198,6 @@ Neil Torrero Salas""" ;
                     ] .
 
 
-###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#inEquipment
-:inEquipment rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty .
-
-
 ###  http://www.semanticweb.org/user/ontologies/2020/2/untitled-ontology-3#isFromClass
 :isFromClass rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty .
@@ -933,6 +928,10 @@ Neil Torrero Salas""" ;
 ###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Military_Rank
 :Military_Rank rdf:type owl:NamedIndividual ,
                         :Feature .
+
+
+###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#SpellcasterClasses
+:SpellcasterClasses rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/user/ontologies/2020/2/DnD5e#Vandel
