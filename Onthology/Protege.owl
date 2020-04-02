@@ -203,23 +203,16 @@ Neil Torrero Salas""" ;
                                            rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :hasEquipment ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Equipment
+                                                             owl:someValuesFrom :Equipment
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasSpell ;
+                                                             owl:someValuesFrom :Spells
                                                            ] ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :hasLevelsIn ;
                                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                              owl:onClass :Class
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasSkill ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Skills
-                                                           ] ,
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasSpell ;
-                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                             owl:onClass :Spells
                                                            ] ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :isFromRace ;
@@ -240,6 +233,11 @@ Neil Torrero Salas""" ;
                                                              owl:onProperty :hasDescription ;
                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                              owl:onClass :Description
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasSkill ;
+                                                             owl:qualifiedCardinality "17"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Skills
                                                            ] ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :hasStat ;
