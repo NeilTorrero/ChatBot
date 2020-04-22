@@ -5,7 +5,7 @@ import time
 
 import Json
 import webbrowser
-from Creation.creationMode import create_char
+from Logic.Creation.creationMode import create_char
 from Json import characters_from_dict
 
 

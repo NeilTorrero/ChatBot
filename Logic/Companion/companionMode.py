@@ -4,7 +4,7 @@ import re
 import time
 
 import Json
-from Creation.creationMode import create_char, Dict
+from Logic.Creation.creationMode import create_char
 from Json import characters_from_dict
 
 
