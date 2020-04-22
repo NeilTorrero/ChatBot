@@ -28,3 +28,5 @@ class characterElement(Frame):
         nameAndPic.grid(column=0, row=0)
         labelRace.grid(column=0, row=1)
         labelClass.grid(column=0, row=2)
+
+        container.pack()

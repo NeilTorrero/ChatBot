@@ -1,16 +1,17 @@
 from tkinter import *
 from tkinter.ttk import *
 
+from Visuals.components.characterElement import characterElement
 from Visuals.components.scrollableFrame import scrollableFrame
 
-path = "C:\\Users\\User\\Documents\\GitHub\\web\\ChatBot"
+path = "C:\\Users\\User\\Documents\\GitHub\\web\\ChatBot\\resources\\"
 def initVis():
 
     window = Tk()
 
     window.title("Mattbott - WoTC")
     window.geometry("1400x900+200-100")
-    filename = PhotoImage(file=path+"\\resources\\bg_IMG.png")
+    filename = PhotoImage(file=path+"bg_IMG.png")
     background_label = Label(window, image=filename)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -35,6 +36,8 @@ def initVis():
     restart = Button(window, text="Restart", width=49)
     send.place(x=1086,y=796)
     restart.place(x=1086,y=839)
+
+    chara = characterElement(charasList.scrollable_frame,"place", "Humano", "Paladin", "6", path+"placeholder.png")
 
     window.resizable(False, False)
     window.mainloop()
