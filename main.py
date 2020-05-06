@@ -1,18 +1,23 @@
 import re
 
-from Companion.companionMode import companion_mode
-from Creation.creationMode import create_char
-from Gestion.gestionMode import gestion_mode
+from Logic.Companion.companionMode import companion_mode
+from Logic.Creation.creationMode import create_char
+from Logic.Gestion.gestionMode import gestion_mode
+from Visuals.MainView import  *
 
 print("Hello, I'm MattBot.")
 
 
 active = True
+
 while active:
+    m = MainView()
     print("What do you need for today's game?")
     print(" - Character creation")
     print(" - Character gestion")
     print(" - Companion mode")
+    m.addMessage(0, "me gustan los bichos rosas")
+    m.startGUI()
     mode = input()
 
     string = re.compile("(create|creation|gestion|edit|companion|goodbye|bye|exit|quit)", re.IGNORECASE)
