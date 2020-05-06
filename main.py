@@ -3,9 +3,11 @@ import re
 from Companion.companionMode import companion_mode
 from Creation.creationMode import create_char
 from Gestion.gestionMode import gestion_mode
+from API import getInfoAPI
 
 print("Hello, I'm MattBot.")
 
+#getInfoAPI("spells", "acid-arrow")
 
 active = True
 while active:
