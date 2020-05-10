@@ -22,7 +22,7 @@ def getInfoAPI(type, name):
     return data
 
 
-def dialogflow():
+def dialogflow(input_text):
     import dialogflow_v2 as dialogflow
     session_client = dialogflow.SessionsClient()
 
@@ -30,7 +30,7 @@ def dialogflow():
     print('Session path: {}\n'.format(session))
 
     text_input = dialogflow.types.TextInput(
-        text="I want to create a character", language_code="en-US")
+        text=input_text, language_code="en-US")
 
     query_input = dialogflow.types.QueryInput(text=text_input)
 
