@@ -1,5 +1,5 @@
 import requests
-
+from parse import *
 BASE_URL = 'http://www.dnd5eapi.co'
 """
 DIALOGFLOW_PROJECT_ID = 'd-d-otyuot'
@@ -21,6 +21,8 @@ def getInfoAPI(type, name):
     print(data['desc'])
     return data
 
+def diceParse(text):
+    return(search("{:d}d{:d}",text))
 
 def dialogflow(input_text):
     import dialogflow_v2 as dialogflow
