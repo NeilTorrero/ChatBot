@@ -2,6 +2,13 @@ import requests
 from parse import *
 BASE_URL = 'http://www.dnd5eapi.co'
 """
+install google-cloud-sdk
+cd google-cloud-sdk
+./google-cloud-sdk/install.sh
+./google-cloud-sdk/bin/gcloud init
+gcloud config set accessibility/screen_reader true
+export GOOGLE_APPLICATION_CREDENTIALS = 'd-d-otyuot-b3f7caf37164.json'
+------------
 DIALOGFLOW_PROJECT_ID = 'd-d-otyuot'
 DIALOGFLOW_LANGUAGE_CODE = 'en-US'
 GOOGLE_APPLICATION_CREDENTIALS = 'd-d-otyuot-b3f7caf37164.json'
