@@ -54,3 +54,4 @@ def dialogflow(input_text):
     print('Fulfillment text: {}\n'.format(
         response.query_result.fulfillment_text))
     print(response)
+    return response
