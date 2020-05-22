@@ -61,4 +61,4 @@ class MainView():
                          self.path + "placeholder.png")
 
     def getMessage(self):
-        self.send.get("1.0",'end-1c')
+        return self.send.get("1.0",'end-1c')
