@@ -4,9 +4,6 @@ from Logic.Companion.companionMode import companion_mode
 from Logic.Creation.creationMode import create_char
 from Logic.Gestion.gestionMode import gestion_mode
 from Visuals.MainView import  *
-from Companion.companionMode import companion_mode
-from Creation.creationMode import create_char
-from Gestion.gestionMode import gestion_mode
 from API import getInfoAPI
 
 print("Hello, I'm MattBot.")
