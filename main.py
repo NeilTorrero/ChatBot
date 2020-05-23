@@ -1,14 +1,12 @@
-import re
-
 from Companion.companionMode import companion_mode
 from Creation.creationMode import create_char
 from Gestion.gestionMode import gestion_mode
-from API import getInfoAPI
+from API import getInfoAPI, dialogflow
 
 print("Hello, I'm MattBot.")
 
 #getInfoAPI("spells", "acid-arrow")
-
+dialogflow("Hello")
 active = True
 while active:
     print("What do you need for today's game?")
