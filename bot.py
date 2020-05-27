@@ -20,6 +20,7 @@ def infoTreatment(response, username):
         print(todo)
         if todo == "create":
             print("create")
+            createCharacter(response, username)
         if todo == "edit":
             print("edit")
         if todo == "info":
