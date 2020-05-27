@@ -2,7 +2,9 @@
     "name": "",
     "level": 1,
     "class": "",
+    "subclass": "",
     "race": "",
+    "subrace": "",
     "stats": {
         "strength": 10,
         "dexterity": 10,
@@ -39,8 +41,13 @@
         "Survival": 0
     },
     "Proficiency Bonus": 0,
-    "Proficiencies": [""],
+    "Proficiencies": [
+        ""
+    ],
     "Background": "",
+    "Languages": [
+        ""
+    ],
     "Inventory": [
         ""
     ],

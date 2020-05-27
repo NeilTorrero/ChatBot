@@ -1,18 +1,31 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-
+import logging
 from API import dialogflow
+from characterGestion import createCharacter
 
 updater = Updater(token='1228506430:AAHhakTQS0moSjszpVzXC8yyXXHMqJ195OY', use_context=True)  # Telegram API Token
 dispatcher = updater.dispatcher
 
-import logging
-
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
 def infoTreatment(response, username):
     print(response)
+    if response.query_result.intent.display_name == "Master-Mode":
+        print("master")
+    #elif response.query_result.intent.display_name == "create":
+    #    print("creating")
+    else:
+        todo = response.query_result.parameters['cosesafer']
+        print(todo)
+        if todo == "create":
+            print("create")
+        if todo == "edit":
+            print("edit")
+        if todo == "info":
+            print("info")
+        if todo == "combat":
+            print("combat")
 
 
 def start(update, context):

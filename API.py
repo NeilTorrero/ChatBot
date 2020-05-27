@@ -51,7 +51,6 @@ def dialogflow(input_text, chat_id):
     #print('Detected intent: {} (confidence: {})\n'.format(
     #    response.query_result.intent.display_name,
     #    response.query_result.intent_detection_confidence))
-    print('Fulfillment text: {}\n'.format(
-        response.query_result.fulfillment_text))
+    print('Fulfillment text: {}\n'.format(response.query_result.fulfillment_text))
     #print(response)
     return response
