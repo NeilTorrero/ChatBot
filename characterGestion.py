@@ -9,19 +9,22 @@ def createCharacter(response, username):
             data = json.load(f)
             chara = None
             param = response.query_result.parameters
-            for chars in data:
-                if chars['name'] == param['name']:
-                    chara = chars
-            chara['name'] = param['name']
-            chara['level'] = param['level']
-            chara['race'] = param['Races']
-            chara['subrace'] = param['Subraces']
-            chara['class'] = param['Classes']
-            chara['subclass'] = param['Subclasses']
-            langs = []
-            for lang in param['Languages'].values:
-                langs.append(lang.string_value)
-            chara['languages'] = langs
+            try:
+                for chars in data:
+                    if chars['name'] == param['name']:
+                        chara = chars
+                chara['name'] = param['name']
+                chara['level'] = param['level']
+                chara['race'] = param['Races']
+                chara['subrace'] = param['Subraces']
+                chara['class'] = param['Classes']
+                chara['subclass'] = param['Subclasses']
+                langs = []
+                for lang in param['Languages'].values:
+                    langs.append(lang.string_value)
+                chara['languages'] = langs
+            except:
+                pass
         with open("{}.json".format(username), 'w+') as f:
             json.dump(data, f, indent=4)
     else:
@@ -44,8 +47,28 @@ def createCharacter(response, username):
             json.dump(data, f, indent=4)
 
 
-
-
+def addCharacterStats(response, username):
+    with open("{}.json".format(username), 'r') as f:
+        data = json.load(f)
+        chara = None
+        context = response.query_result.output_contexts[0].parameters
+        param = response.query_result.parameters
+        for chars in data:
+            if chars['name'] == context['name']:
+                chara = chars
+        try:
+            for stat in param['stats'].values:
+                chara['stats'][stat.string_value.lower()] = param['value']
+            nextStat = ""
+            for stat in list(chara['stats'].keys()):
+                if chara['stats'][stat] == 0 and nextStat == "":
+                    print(nextStat)
+                    nextStat = stat
+            response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,nextStat)
+        except:
+            response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
+    with open("{}.json".format(username), 'w+') as f:
+        json.dump(data, f, indent=4)
 
 """
 if os.path.exists('test.json'):
