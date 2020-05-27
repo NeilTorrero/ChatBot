@@ -12,7 +12,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 def textMessage(update, context):
-    response = dialogflow(update.message.text)
+    response = dialogflow(update.message.text, update.message.chat_id)
     context.bot.send_message(chat_id=update.message.chat_id, text=response.query_result.fulfillment_text)
     #context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 

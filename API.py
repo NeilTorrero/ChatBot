@@ -31,11 +31,11 @@ def getInfoAPI(type, name):
 def diceParse(text):
     return(search("{:d}d{:d}",text))
 
-def dialogflow(input_text):
+def dialogflow(input_text, chat_id):
     import dialogflow_v2 as dialogflow
     session_client = dialogflow.SessionsClient()
 
-    session = session_client.session_path("d-d-otyuot", "123456789")
+    session = session_client.session_path("d-d-otyuot", chat_id)
     print('Session path: {}\n'.format(session))
 
     text_input = dialogflow.types.TextInput(
