@@ -13,20 +13,23 @@ def infoTreatment(response, username):
     print(response)
     if response.query_result.intent.display_name == "Master-Mode":
         print("master")
-    #elif response.query_result.intent.display_name == "create":
+    # elif response.query_result.intent.display_name == "create":
     #    print("creating")
     else:
-        todo = response.query_result.parameters['cosesafer']
-        print(todo)
-        if todo == "create":
-            print("create")
-            createCharacter(response, username)
-        if todo == "edit":
-            print("edit")
-        if todo == "info":
-            print("info")
-        if todo == "combat":
-            print("combat")
+        try:
+            todo = response.query_result.parameters['cosesafer']
+            print(todo)
+            if todo == "create":
+                print("create")
+                createCharacter(response, username)
+            if todo == "edit":
+                print("edit")
+            if todo == "info":
+                print("info")
+            if todo == "combat":
+                print("combat")
+        except ValueError:
+            pass
 
 
 def start(update, context):
