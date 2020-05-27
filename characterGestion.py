@@ -1,5 +1,6 @@
 import json
 import os
+import random
 
 
 def createCharacter(response, username):
@@ -65,13 +66,31 @@ def addCharacterStats(response, username):
                     print(nextStat)
                     nextStat = stat
             if nextStat != "":
-                response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,nextStat)
+                response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,
+                                                                        nextStat)
             else:
                 response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
             response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
     with open("{}.json".format(username), 'w+') as f:
         json.dump(data, f, indent=4)
+
+
+def rollCharacterStats(response, username):
+    with open("{}.json".format(username), 'r') as f:
+        data = json.load(f)
+        context = response.query_result.output_contexts[0].parameters
+        response.query_result.fulfillment_text = "Here are your character stats:"
+        for chars in data:
+            if chars['name'] == context['name']:
+                chara = chars
+        for stat in list(chara['stats'].keys()):
+            chara['stats'][stat] = random.randrange(3, 18)
+            response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
+
+    with open("{}.json".format(username), 'w+') as f:
+        json.dump(data, f, indent=4)
+
 
 """
 if os.path.exists('test.json'):

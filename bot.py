@@ -1,7 +1,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 from API import dialogflow
-from characterGestion import createCharacter, addCharacterStats
+from characterGestion import createCharacter, addCharacterStats, rollCharacterStats
 
 updater = Updater(token='1228506430:AAHhakTQS0moSjszpVzXC8yyXXHMqJ195OY', use_context=True)  # Telegram API Token
 dispatcher = updater.dispatcher
@@ -18,7 +18,11 @@ def infoTreatment(response, username):
     #    print("creating")
     elif intent == "create - stats":
         print("Adding stats")
-        addCharacterStats(response, username)
+        todo = response.query_result.parameters['cosesafer']
+        if todo == "combat":
+            rollCharacterStats(response, username)
+        else:
+            addCharacterStats(response, username)
     else:
         try:
             todo = response.query_result.parameters['cosesafer']
