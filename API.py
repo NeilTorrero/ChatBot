@@ -15,6 +15,9 @@ GOOGLE_APPLICATION_CREDENTIALS = 'd-d-otyuot-b3f7caf37164.json'
 SESSION_ID = '123456789'
 
 add to enviroment variables the ggogle_application_credentials
+pip install dialogflow
+pip install google-api-core 
+pip python-telegram-bot
 """
 
 def getInfoAPI(type, name):
