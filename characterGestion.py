@@ -4,16 +4,44 @@ import random
 
 
 def createCharacter(response, username):
-    if os.path.exists("{}.json".format(username)):
-        print("User already has a data.")
-        with open("{}.json".format(username), 'r') as f:
-            data = json.load(f)
-            chara = None
-            param = response.query_result.parameters
-            try:
-                for chars in data:
-                    if chars['name'] == param['name']:
-                        chara = chars
+    param = response.query_result.parameters
+    if param['name'] != "":
+        if os.path.exists("{}.json".format(username)):
+            print("User already has a data.")
+            with open("{}.json".format(username), 'r') as f:
+                data = json.load(f)
+                chara = None
+                try:
+                    for chars in data:
+                        if chars['name'] == param['name']:
+                            chara = chars
+                            newChar = 0
+                    if chara is None:
+                        newChar = 1
+                        with open('characterTemplate.json', 'r') as temp:
+                            template = json.load(temp)
+                            chara = template[0]
+                    chara['name'] = param['name']
+                    chara['level'] = param['level']
+                    chara['race'] = param['Races']
+                    chara['subrace'] = param['Subraces']
+                    chara['class'] = param['Classes']
+                    chara['subclass'] = param['Subclasses']
+                    langs = []
+                    for lang in param['Languages'].values:
+                        langs.append(lang.string_value)
+                    chara['languages'] = langs
+                    if newChar == 1:
+                        data.insert(1, chara)
+                except:
+                    pass
+            with open("{}.json".format(username), 'w+') as f:
+                json.dump(data, f, indent=4)
+        else:
+            print("User doesn't have a data, creating a new one")
+            with open('characterTemplate.json', 'r') as f:
+                data = json.load(f)
+                chara = data[0]
                 chara['name'] = param['name']
                 chara['level'] = param['level']
                 chara['race'] = param['Races']
@@ -24,28 +52,8 @@ def createCharacter(response, username):
                 for lang in param['Languages'].values:
                     langs.append(lang.string_value)
                 chara['languages'] = langs
-            except:
-                pass
-        with open("{}.json".format(username), 'w+') as f:
-            json.dump(data, f, indent=4)
-    else:
-        print("User doesn't have a data, creating a new one")
-        with open('characterTemplate.json', 'r') as f:
-            data = json.load(f)
-            chara = data[0]
-            param = response.query_result.parameters
-            chara['name'] = param['name']
-            chara['level'] = param['level']
-            chara['race'] = param['Races']
-            chara['subrace'] = param['Subraces']
-            chara['class'] = param['Classes']
-            chara['subclass'] = param['Subclasses']
-            langs = []
-            for lang in param['Languages'].values:
-                langs.append(lang.string_value)
-            chara['languages'] = langs
-        with open("{}.json".format(username), 'w+') as f:
-            json.dump(data, f, indent=4)
+            with open("{}.json".format(username), 'w+') as f:
+                json.dump(data, f, indent=4)
 
 
 def addCharacterStats(response, username):
