@@ -64,7 +64,10 @@ def addCharacterStats(response, username):
                 if chara['stats'][stat] == 0 and nextStat == "":
                     print(nextStat)
                     nextStat = stat
-            response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,nextStat)
+            if nextStat != "":
+                response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,nextStat)
+            else:
+                response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
             response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
     with open("{}.json".format(username), 'w+') as f:
