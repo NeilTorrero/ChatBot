@@ -13,7 +13,7 @@ def createCharacter(response, username):
                 chara = None
                 try:
                     for chars in data:
-                        if chars['name'] == param['name']:
+                        if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                             chara = chars
                             newChar = 0
                     if chara is None:
@@ -63,7 +63,7 @@ def addCharacterStats(response, username):
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         for chars in data:
-            if chars['name'] == context['name']:
+            if chars['name'] == context['name'] or chars['name'] == param['name'].capitalize():
                 chara = chars
         try:
             for stat in param['stats'].values:
@@ -90,7 +90,7 @@ def rollCharacterStats(response, username):
         context = response.query_result.output_contexts[0].parameters
         response.query_result.fulfillment_text = "Here are your character stats:"
         for chars in data:
-            if chars['name'] == context['name']:
+            if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
                 chara = chars
         for stat in list(chara['stats'].keys()):
             chara['stats'][stat] = random.randrange(3, 18)
