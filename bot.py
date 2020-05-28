@@ -1,9 +1,9 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
-from API import dialogflow, getInfoAPI
-from characterGestion import *
+from tools.API import dialogflow, getInfoAPI
+from tools.characterGestion import *
 from tools.infoTreatment import *
-from characterGestion import createCharacter, addCharacterStats, rollCharacterStats
+from tools.characterGestion import createCharacter, addCharacterStats, rollCharacterStats
 
 updater = Updater(token='1228506430:AAHhakTQS0moSjszpVzXC8yyXXHMqJ195OY', use_context=True)  # Telegram API Token
 dispatcher = updater.dispatcher

@@ -18,7 +18,7 @@ def createCharacter(response, username):
                             newChar = 0
                     if chara is None:
                         newChar = 1
-                        with open('characterTemplate.json', 'r') as temp:
+                        with open('../characterTemplate.json', 'r') as temp:
                             template = json.load(temp)
                             chara = template[0]
                     chara['name'] = param['name']
@@ -39,7 +39,7 @@ def createCharacter(response, username):
                 json.dump(data, f, indent=4)
         else:
             print("User doesn't have a data, creating a new one")
-            with open('characterTemplate.json', 'r') as f:
+            with open('../characterTemplate.json', 'r') as f:
                 data = json.load(f)
                 chara = data[0]
                 chara['name'] = param['name']
