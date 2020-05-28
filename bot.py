@@ -6,7 +6,7 @@ from tools.infoTreatment import *
 from API import dialogflow
 from characterGestion import createCharacter, addCharacterStats, rollCharacterStats
 
-updater = Updater(token='1228506430:AAHhakTQS0moSjszpVzXC8yyXXHMqJ195OY', use_context=True)  # Telegram API Token
+updater = Updater(token='1234703345:AAFW4KFaSiaeLw1suMR27c-N1YTEnFERVUk', use_context=True)  # Telegram API Token
 dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -15,7 +15,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 def infoTreatment(response, username):
     print(response)
     intent = response.query_result.intent.display_name
-    if intent == "Master-Mode":
+    if intent == "Master-Mode - Monsters":
         # TODO: Buscar info en la API con lo que nos pida el usuario
         # Monster, race, spell, equipment, class
         #Properties: skill, stat
@@ -25,13 +25,10 @@ def infoTreatment(response, username):
             monster = param["Monsters"]
             data = getInfoAPI("monsters", monster)
             out = "this monster's "
-            if param["Monster-Properties"].lower == "immunities":
-                write_immunities(data, out)
+            if param["Monster-Properties"].lower() == "immunities":
+                response.query_result.fulfillment_text += "\n" + write_immunities(data, out)
             else:
-                info = data[param["Monster-Properties"].lower]
-                for a in param["Monster-Properties"].split("_"):
-                    out += " " + a.lower
-                out += "is:"
+                response.query_result.fulfillment_text += "\n" + write_monster_properties(data, out, param)
 
         #getInfoAPI()
         print("master")
