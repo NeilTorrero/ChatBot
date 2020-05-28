@@ -102,12 +102,16 @@ def rollCharacterStats(response, username):
 
 def infoCharacter(response, username):
     # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
-    # TODO(only gets info if user inout the name of the character he wants, context doesnt seem to save the name)
+    # TODO(only gets info if user input the name of the character he wants, context doesnt seem to save the name)
     with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         chara = None
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
+        if param['userInfo'] == "character":
+            response.query_result.fulfillment_text = "Here you have your characters:"
+            for chars in data:
+                response.query_result.fulfillment_text += "\n\t\t{}".format(chars['name'])
         if param['name'] != "":
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
