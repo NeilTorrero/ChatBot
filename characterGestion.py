@@ -99,6 +99,19 @@ def rollCharacterStats(response, username):
     with open("{}.json".format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
+def infoCharacter(response, username):
+    with open("{}.json".format(username), 'r') as f:
+        data = json.load(f)
+        context = response.query_result.output_contexts[0].parameters
+        param = response.query_result.parameters
+        if param['name'] != "":
+            for chars in data:
+                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                    chara = chars
+            response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chars['name'], param['propieties'], chara[param['propieties'].lower()])
+
+
+
 
 """
 if os.path.exists('test.json'):

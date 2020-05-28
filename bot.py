@@ -1,9 +1,8 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 from API import dialogflow, getInfoAPI
-from characterGestion import createCharacter, addCharacterStats
+from characterGestion import *
 from tools.infoTreatment import *
-from API import dialogflow
 from characterGestion import createCharacter, addCharacterStats, rollCharacterStats
 
 updater = Updater(token='1228506430:AAHhakTQS0moSjszpVzXC8yyXXHMqJ195OY', use_context=True)  # Telegram API Token
@@ -55,6 +54,11 @@ def infoTreatment(response, username):
                 print("edit")
             if todo == "info":
                 print("info")  # diferenciar por intent la info de character con info en general
+                if intent == "Info":
+                    print("info of d&d")
+                elif intent == "InfoCharacter":
+                    print("info of users characters")
+                    infoCharacter(response, username)
             if todo == "combat":
                 print("combat")
         except ValueError:
