@@ -15,10 +15,9 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 def infoTreatment(response, username):
     print(response)
     intent = response.query_result.intent.display_name
+    # TODO: Buscar info en la API con lo que nos pida el usuario
     if intent == "Master-Mode - Monsters":
-        # TODO: Buscar info en la API con lo que nos pida el usuario
-        # Monster, race, spell, equipment, class
-        #Properties: skill, stat
+        #La informació dels monstres està reservada al master
         if response.query_result.action == "Master-Mode.Master-Mode-Monsters":
             param = response.query_result.parameters
             #Si no existe el índice, petará. Ge de comprovar qué índices hay
@@ -32,6 +31,24 @@ def infoTreatment(response, username):
 
         #getInfoAPI()
         print("master")
+    elif response.query_result.action.split("-")[0] == "Info.Info":
+        if(response.query_result.action.split("-")[1] == "Class"):
+            param = response.query_result.parameters
+            pass
+        elif(response.query_result.action.split("-")[1] == "Race"):
+            param = response.query_result.parameters
+            race = param["races"]
+            data = getInfoAPI("races", race)
+            out = "This race's "
+            response.query_result.fulfillment_text += "\n" + write_race_properties(data, out, param)
+        elif(response.query_result.action.split("-")[1] == "Equipment"):
+            param = response.query_result.parameters
+            equipment = param["equipment"]
+            data = getInfoAPI("equipment", equipment)
+            out = "This equipment's "
+            response.query_result.fulfillment_text += "\n" + write_equipment_properties(data, out, param)
+        elif(response.query_result.action.split("-")[1] == "Spells"):
+            pass
     # elif response.query_result.intent.display_name == "create":
     #    print("creating")
     elif intent == "create - stats":
