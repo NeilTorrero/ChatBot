@@ -32,7 +32,7 @@ def createCharacter(response, username):
                         langs.append(lang.string_value)
                     chara['languages'] = langs
                     if newChar == 1:
-                        data.insert(1, chara)
+                        data.insert(0, chara)
                 except:
                     pass
             with open("users_data/{}.json".format(username), 'w+') as f:
@@ -102,7 +102,7 @@ def rollCharacterStats(response, username):
 
 def infoCharacter(response, username):
     # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
-    # TODO(only gets info if user input the name of the character he wants, context doesnt seem to save the name)
+    # to get the most recent added character gets the first one in the json list
     with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         chara = None
@@ -112,16 +112,18 @@ def infoCharacter(response, username):
             response.query_result.fulfillment_text = "Here you have your characters:"
             for chars in data:
                 response.query_result.fulfillment_text += "\n\t\t{}".format(chars['name'])
-        if param['name'] != "":
+        if param['name'] == "":
+            chara = data[0]
+        else:
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
-            if chara is not None:
-                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chars['name'], param['properties'],
-                                                                                   chara[param['properties'].lower()])
-            else:
-                response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
-                    param['name'])
+        if chara is not None:
+            response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'],
+                                                                               chara[param['properties'].lower()])
+        else:
+            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+                param['name'])
 
 
 """
