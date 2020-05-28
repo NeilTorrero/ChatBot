@@ -1,0 +1,227 @@
+[
+    {
+        "name": "Robert",
+        "level": 5.0,
+        "class": "bard",
+        "subclass": "",
+        "race": "elf",
+        "subrace": "",
+        "stats": {
+            "strength": 13,
+            "dexterity": 8,
+            "constitution": 5,
+            "intelligence": 10,
+            "wisdom": 14,
+            "charisma": 12
+        },
+        "saving_throws": {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 0
+        },
+        "skills": {
+            "Acrobatics": 0,
+            "Animal Handling": 0,
+            "Arcana": 0,
+            "Athletics": 0,
+            "Deception": 0,
+            "History": 0,
+            "Insight": 0,
+            "Intimidation": 0,
+            "Medicine": 0,
+            "Nature": 0,
+            "Perception": 0,
+            "Performance": 0,
+            "Persuasion": 0,
+            "Religion": 0,
+            "Sleight of Hand": 0,
+            "Stealth": 0,
+            "Survival": 0
+        },
+        "Proficiency Bonus": 0,
+        "Proficiencies": [
+            ""
+        ],
+        "Background": "",
+        "Languages": [
+            ""
+        ],
+        "Inventory": [
+            ""
+        ],
+        "Equipment": [
+            {
+                "name": "",
+                "Damage": ""
+            }
+        ],
+        "Description": "",
+        "Spells": [
+            {
+                "name": "",
+                "damage": "",
+                "spell-range": 0,
+                "casting-time": 0,
+                "level": 0,
+                "components": "",
+                "Duration": ""
+            }
+        ],
+        "languages": [
+            "common"
+        ]
+    },
+    {
+        "name": "Mark",
+        "level": 20.0,
+        "class": "rogue",
+        "subclass": "",
+        "race": "human",
+        "subrace": "",
+        "stats": {
+            "strength": 8,
+            "dexterity": 13,
+            "constitution": 17,
+            "intelligence": 16,
+            "wisdom": 12,
+            "charisma": 5
+        },
+        "saving_throws": {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 0
+        },
+        "skills": {
+            "Acrobatics": 0,
+            "Animal Handling": 0,
+            "Arcana": 0,
+            "Athletics": 0,
+            "Deception": 0,
+            "History": 0,
+            "Insight": 0,
+            "Intimidation": 0,
+            "Medicine": 0,
+            "Nature": 0,
+            "Perception": 0,
+            "Performance": 0,
+            "Persuasion": 0,
+            "Religion": 0,
+            "Sleight of Hand": 0,
+            "Stealth": 0,
+            "Survival": 0
+        },
+        "Proficiency Bonus": 0,
+        "Proficiencies": [
+            ""
+        ],
+        "Background": "",
+        "Languages": [
+            ""
+        ],
+        "Inventory": [
+            ""
+        ],
+        "Equipment": [
+            {
+                "name": "",
+                "Damage": ""
+            }
+        ],
+        "Description": "",
+        "Spells": [
+            {
+                "name": "",
+                "damage": "",
+                "spell-range": 0,
+                "casting-time": 0,
+                "level": 0,
+                "components": "",
+                "Duration": ""
+            }
+        ],
+        "languages": [
+            "common"
+        ]
+    },
+    {
+        "name": "Juan",
+        "level": 10.0,
+        "class": "wizard",
+        "subclass": "",
+        "race": "elf",
+        "subrace": "",
+        "stats": {
+            "strength": 5,
+            "dexterity": 10,
+            "constitution": 15,
+            "intelligence": 15,
+            "wisdom": 10,
+            "charisma": 17
+        },
+        "saving_throws": {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 0
+        },
+        "skills": {
+            "Acrobatics": 0,
+            "Animal Handling": 0,
+            "Arcana": 0,
+            "Athletics": 0,
+            "Deception": 0,
+            "History": 0,
+            "Insight": 0,
+            "Intimidation": 0,
+            "Medicine": 0,
+            "Nature": 0,
+            "Perception": 0,
+            "Performance": 0,
+            "Persuasion": 0,
+            "Religion": 0,
+            "Sleight of Hand": 0,
+            "Stealth": 0,
+            "Survival": 0
+        },
+        "Proficiency Bonus": 0,
+        "Proficiencies": [
+            ""
+        ],
+        "Background": "",
+        "Languages": [
+            ""
+        ],
+        "Inventory": [
+            ""
+        ],
+        "Equipment": [
+            {
+                "name": "",
+                "Damage": ""
+            }
+        ],
+        "Description": "",
+        "Spells": [
+            {
+                "name": "",
+                "damage": "",
+                "spell-range": 0,
+                "casting-time": 0,
+                "level": 0,
+                "components": "",
+                "Duration": ""
+            }
+        ],
+        "languages": [
+            "common"
+        ]
+    }
+]

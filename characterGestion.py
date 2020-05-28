@@ -6,9 +6,9 @@ import random
 def createCharacter(response, username):
     param = response.query_result.parameters
     if param['name'] != "":
-        if os.path.exists("{}.json".format(username)):
+        if os.path.exists("users_data/{}.json".format(username)):
             print("User already has a data.")
-            with open("{}.json".format(username), 'r') as f:
+            with open("users_data/{}.json".format(username), 'r') as f:
                 data = json.load(f)
                 chara = None
                 try:
@@ -35,7 +35,7 @@ def createCharacter(response, username):
                         data.insert(1, chara)
                 except:
                     pass
-            with open("{}.json".format(username), 'w+') as f:
+            with open("users_data/{}.json".format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
         else:
             print("User doesn't have a data, creating a new one")
@@ -52,12 +52,12 @@ def createCharacter(response, username):
                 for lang in param['Languages'].values:
                     langs.append(lang.string_value)
                 chara['languages'] = langs
-            with open("{}.json".format(username), 'w+') as f:
+            with open("users_data/{}.json".format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
 
 
 def addCharacterStats(response, username):
-    with open("{}.json".format(username), 'r') as f:
+    with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         chara = None
         context = response.query_result.output_contexts[0].parameters
@@ -80,12 +80,12 @@ def addCharacterStats(response, username):
                 response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
             response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
-    with open("{}.json".format(username), 'w+') as f:
+    with open("users_data/{}.json".format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
 
 def rollCharacterStats(response, username):
-    with open("{}.json".format(username), 'r') as f:
+    with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         context = response.query_result.output_contexts[0].parameters
         response.query_result.fulfillment_text = "Here are your character stats:"
@@ -96,11 +96,11 @@ def rollCharacterStats(response, username):
             chara['stats'][stat] = random.randrange(3, 18)
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
 
-    with open("{}.json".format(username), 'w+') as f:
+    with open("users_data/{}.json".format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
 def infoCharacter(response, username):
-    with open("{}.json".format(username), 'r') as f:
+    with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
