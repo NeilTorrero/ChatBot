@@ -23,12 +23,12 @@ def createCharacter(response, username):
                             chara = template[0]
                     chara['name'] = param['name']
                     chara['level'] = param['level']
-                    chara['race'] = param['Races']
-                    chara['subrace'] = param['Subraces']
-                    chara['class'] = param['Classes']
-                    chara['subclass'] = param['Subclasses']
+                    chara['race'] = param['races']
+                    chara['subrace'] = param['subraces']
+                    chara['class'] = param['classes']
+                    chara['subclass'] = param['subclasses']
                     langs = []
-                    for lang in param['Languages'].values:
+                    for lang in param['languages'].values:
                         langs.append(lang.string_value)
                     chara['languages'] = langs
                     if newChar == 1:
@@ -45,11 +45,11 @@ def createCharacter(response, username):
                 chara['name'] = param['name']
                 chara['level'] = param['level']
                 chara['race'] = param['Races']
-                chara['subrace'] = param['Subraces']
-                chara['class'] = param['Classes']
-                chara['subclass'] = param['Subclasses']
+                chara['subrace'] = param['subraces']
+                chara['class'] = param['classes']
+                chara['subclass'] = param['subclasses']
                 langs = []
-                for lang in param['Languages'].values:
+                for lang in param['languages'].values:
                     langs.append(lang.string_value)
                 chara['languages'] = langs
             with open("users_data/{}.json".format(username), 'w+') as f:
@@ -117,8 +117,8 @@ def infoCharacter(response, username):
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
             if chara is not None:
-                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chars['name'], param['propieties'],
-                                                                                   chara[param['propieties'].lower()])
+                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chars['name'], param['properties'],
+                                                                                   chara[param['properties'].lower()])
             else:
                 response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                     param['name'])
