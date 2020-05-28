@@ -1,7 +1,8 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
-from API import dialogflow
+from API import dialogflow, getInfoAPI
 from characterGestion import createCharacter, addCharacterStats
+from tools.infoTreatment import *
 
 updater = Updater(token='1228506430:AAHhakTQS0moSjszpVzXC8yyXXHMqJ195OY', use_context=True)  # Telegram API Token
 dispatcher = updater.dispatcher
@@ -13,6 +14,24 @@ def infoTreatment(response, username):
     print(response)
     intent = response.query_result.intent.display_name
     if intent == "Master-Mode":
+        # TODO: Buscar info en la API con lo que nos pida el usuario
+        # Monster, race, spell, equipment, class
+        #Properties: skill, stat
+        if response.query_result.action == "Master-Mode.Master-Mode-Monsters":
+            param = response.query_result.parameters
+            #Si no existe el índice, petará. Ge de comprovar qué índices hay
+            monster = param["Monsters"]
+            data = getInfoAPI("monsters", monster)
+            out = "this monster's "
+            if param["Monster-Properties"].lower == "immunities":
+                write_immunities(data, out)
+            else:
+                info = data[param["Monster-Properties"].lower]
+                for a in param["Monster-Properties"].split("_"):
+                    out += " " + a.lower
+                out += "is:"
+
+        #getInfoAPI()
         print("master")
     # elif response.query_result.intent.display_name == "create":
     #    print("creating")
