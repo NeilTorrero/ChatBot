@@ -6,64 +6,64 @@ import random
 def createCharacter(response, username):
     param = response.query_result.parameters
     if param['name'] != "":
-        if os.path.exists("{}.json".format(username)):
+        if os.path.exists("users_data/{}.json".format(username)):
             print("User already has a data.")
-            with open("{}.json".format(username), 'r') as f:
+            with open("users_data/{}.json".format(username), 'r') as f:
                 data = json.load(f)
                 chara = None
                 try:
                     for chars in data:
-                        if chars['name'] == param['name']:
+                        if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                             chara = chars
                             newChar = 0
                     if chara is None:
                         newChar = 1
-                        with open('characterTemplate.json', 'r') as temp:
+                        with open('../characterTemplate.json', 'r') as temp:
                             template = json.load(temp)
                             chara = template[0]
                     chara['name'] = param['name']
                     chara['level'] = param['level']
-                    chara['race'] = param['Races']
-                    chara['subrace'] = param['Subraces']
-                    chara['class'] = param['Classes']
-                    chara['subclass'] = param['Subclasses']
+                    chara['race'] = param['races']
+                    chara['subrace'] = param['subraces']
+                    chara['class'] = param['classes']
+                    chara['subclass'] = param['subclasses']
                     langs = []
-                    for lang in param['Languages'].values:
+                    for lang in param['languages'].values:
                         langs.append(lang.string_value)
                     chara['languages'] = langs
                     if newChar == 1:
-                        data.insert(1, chara)
+                        data.insert(0, chara)
                 except:
                     pass
-            with open("{}.json".format(username), 'w+') as f:
+            with open("users_data/{}.json".format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
         else:
             print("User doesn't have a data, creating a new one")
-            with open('characterTemplate.json', 'r') as f:
+            with open('../characterTemplate.json', 'r') as f:
                 data = json.load(f)
                 chara = data[0]
                 chara['name'] = param['name']
                 chara['level'] = param['level']
                 chara['race'] = param['Races']
-                chara['subrace'] = param['Subraces']
-                chara['class'] = param['Classes']
-                chara['subclass'] = param['Subclasses']
+                chara['subrace'] = param['subraces']
+                chara['class'] = param['classes']
+                chara['subclass'] = param['subclasses']
                 langs = []
-                for lang in param['Languages'].values:
+                for lang in param['languages'].values:
                     langs.append(lang.string_value)
                 chara['languages'] = langs
-            with open("{}.json".format(username), 'w+') as f:
+            with open("users_data/{}.json".format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
 
 
 def addCharacterStats(response, username):
-    with open("{}.json".format(username), 'r') as f:
+    with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         chara = None
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         for chars in data:
-            if chars['name'] == context['name']:
+            if chars['name'] == context['name'] or chars['name'] == param['name'].capitalize():
                 chara = chars
         try:
             for stat in param['stats'].values:
@@ -80,24 +80,50 @@ def addCharacterStats(response, username):
                 response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
             response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
-    with open("{}.json".format(username), 'w+') as f:
+    with open("users_data/{}.json".format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
 
 def rollCharacterStats(response, username):
-    with open("{}.json".format(username), 'r') as f:
+    with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         context = response.query_result.output_contexts[0].parameters
         response.query_result.fulfillment_text = "Here are your character stats:"
         for chars in data:
-            if chars['name'] == context['name']:
+            if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
                 chara = chars
         for stat in list(chara['stats'].keys()):
             chara['stats'][stat] = random.randrange(3, 18)
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
 
-    with open("{}.json".format(username), 'w+') as f:
+    with open("users_data/{}.json".format(username), 'w+') as f:
         json.dump(data, f, indent=4)
+
+
+def infoCharacter(response, username):
+    # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
+    # to get the most recent added character gets the first one in the json list
+    with open("users_data/{}.json".format(username), 'r') as f:
+        data = json.load(f)
+        chara = None
+        context = response.query_result.output_contexts[0].parameters
+        param = response.query_result.parameters
+        if param['userInfo'] == "character":
+            response.query_result.fulfillment_text = "Here you have your characters:"
+            for chars in data:
+                response.query_result.fulfillment_text += "\n\t\t{}".format(chars['name'])
+        if param['name'] == "":
+            chara = data[0]
+        else:
+            for chars in data:
+                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                    chara = chars
+        if chara is not None:
+            response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'],
+                                                                               chara[param['properties'].lower()])
+        else:
+            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+                param['name'])
 
 
 """

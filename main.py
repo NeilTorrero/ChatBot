@@ -1,7 +1,7 @@
 from Companion.companionMode import companion_mode
 from Creation.creationMode import create_char
 from Gestion.gestionMode import gestion_mode
-from API import getInfoAPI, dialogflow
+from tools.API import dialogflow
 
 print("Hello, I'm MattBot.")
 
