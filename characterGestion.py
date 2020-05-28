@@ -99,18 +99,25 @@ def rollCharacterStats(response, username):
     with open("users_data/{}.json".format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
+
 def infoCharacter(response, username):
+    # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
+    # TODO(only gets info if user inout the name of the character he wants, context doesnt seem to save the name)
     with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
+        chara = None
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         if param['name'] != "":
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
-            response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chars['name'], param['propieties'], chara[param['propieties'].lower()])
-
-
+            if chara is not None:
+                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chars['name'], param['propieties'],
+                                                                                   chara[param['propieties'].lower()])
+            else:
+                response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+                    param['name'])
 
 
 """
