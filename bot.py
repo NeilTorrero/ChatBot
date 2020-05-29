@@ -47,6 +47,11 @@ def infoTreatment(response, username):
             out = "This equipment's "
             response.query_result.fulfillment_text += "\n" + write_equipment_properties(data, out, param)
         elif(response.query_result.action.split("-")[1] == "Spells"):
+            param = response.query_result.parameters
+            spells = param["spells"]
+            data = getInfoAPI("spells", spells)
+            out = "This Spells' "
+            response.query_result.fulfillment_text += "\n" + write_spell_properties(data, out, param)
             pass
     # elif response.query_result.intent.display_name == "create":
     #    print("creating")

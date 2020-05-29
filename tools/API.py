@@ -18,6 +18,7 @@ add to enviroment variables the ggogle_application_credentials
 pip install dialogflow
 pip install google-api-core 
 pip python-telegram-bot
+pip install parse
 """
 
 def getInfoAPI(type, name):
