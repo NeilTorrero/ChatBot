@@ -139,17 +139,18 @@ def editCharacter(response, username):
                     chara = chars
         if chara is not None:
             intent = response.query_result.intent.display_name
-            if intent.split("-")[0] == "Modify":
-                if intent.split("-")[1] == "properties":
-                    chara[param['properties']] = param[param['properties']]
-                elif intent.split("-")[1] == "equipment":
-                    print("edit equipment")
-                elif intent.split("-")[1] == "stats":
-                    chara[param['stats']] = param['number']
-                elif intent.split("-")[1] == "level":
-                    chara[param['properties']] = param['level']
-            else:
-                print("edit on dynamic info")
+            if intent != "Modify":
+                if intent.split("-")[0] == "Modify":
+                    if intent.split("-")[1] == "properties":
+                        chara[param['properties']] = param[param['properties']]
+                    elif intent.split("-")[1] == "equipment":
+                        print("edit equipment")
+                    elif intent.split("-")[1] == "stats":
+                        chara[param['stats']] = param['number']
+                    elif intent.split("-")[1] == "level":
+                        chara[param['properties']] = param['level']
+                else:
+                    print("edit on dynamic info")
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
