@@ -163,6 +163,7 @@ def editCharacter(response, username):
             intent = response.query_result.intent.display_name
             print(intent)
             if intent != "Modify":
+                # TODO(spells, skills, saving throws, inventory, languages, proficiencies not considered)
                 if intent.split(" - ")[0] == "Modify":
                     if intent.split(" - ")[1] == "properties":
                         print(param['properties'])
@@ -170,7 +171,7 @@ def editCharacter(response, username):
                         chara[param['properties'].lower()] = param[param['properties']]
                         response.query_result.fulfillment_text = "properties"
                     elif intent.split(" - ")[1] == "equipment":
-                        # TODO
+                        # TODO (add equipment)
                         print("edit equipment")
                         response.query_result.fulfillment_text = "equip"
                     elif intent.split(" - ")[1] == "stats":
@@ -181,7 +182,7 @@ def editCharacter(response, username):
                         chara[param['properties'].lower()] = param['level']
                         response.query_result.fulfillment_text = "level"
                     elif intent.split(" - ")[1] == "raw":
-                        # TODO
+                        # TODO (add info that does no have the properties parameter i only has the name of what to edit)
                         print("edit on dynamic info")
                         response.query_result.fulfillment_text = "raw"
                     with open('usersdata/{}.json'.format(username), 'w+') as fm:
@@ -207,6 +208,7 @@ def rollData(response, username):
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
         if chara is not None:
+            # TODO (only implemente throws of stats and saving throws)
             i = 0
             for pro in param['properties']:
                 if pro == "saving_throws":
