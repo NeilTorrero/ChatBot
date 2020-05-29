@@ -208,7 +208,7 @@ def rollData(response, username):
                     if dice == 1:
                         val = 2
                     response.query_result.fulfillment_text += "\nRolled -{} failed points".format(val)
-                else dice == 20:
+                else:
                     response.query_result.fulfillment_text += "\nRolled 20 and you are saved!"
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
