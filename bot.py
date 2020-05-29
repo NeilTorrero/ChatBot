@@ -97,8 +97,6 @@ def textMessage(update, context):
     infoTreatment(response, update.message.chat.username)
     # Telegram bot writes response of dialogflow
     context.bot.send_message(chat_id=update.message.chat_id, text=response.query_result.fulfillment_text)
-    # context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
-
 
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
