@@ -235,20 +235,3 @@ def rollData(response, username):
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
-
-
-"""
-if os.path.exists('test.json'):
-    print("yey")
-if not os.path.exists('fvrec.json'):
-    print("Doesn't exists path: {}\n".format('fvrec.json'))
-
-with open('characterTemplate.json', 'r') as f:
-    data = json.load(f)
-    chara = data[0]
-    chara['name'] = "Juan"
-    data.insert(1, chara)
-
-with open('test.json', 'w+') as f:
-    json.dump(data, f, indent=4)
-"""
