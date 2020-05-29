@@ -158,6 +158,8 @@ def editCharacter(response, username):
                     elif intent.split(" - ")[1] == "raw":
                         print("edit on dynamic info")
                         response.query_result.fulfillment_text = "raw"
+                    with open("users_data/{}.json".format(username), 'w+') as fm:
+                        json.dump(data, fm, indent=4)
                 else:
                     response.query_result.fulfillment_text = "pass"
                     pass
