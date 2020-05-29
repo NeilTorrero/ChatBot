@@ -60,7 +60,9 @@ def addCharacterStats(response, username):
     with open('usersdata/{}.json'.format(username), 'r') as f:
         data = json.load(f)
         chara = None
-        context = response.query_result.output_contexts[0].parameters
+        for cont in response.query_result.output_contexts:
+            if "create-followup" in cont.name:
+                context = cont.parameters
         param = response.query_result.parameters
         for chars in data:
             if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
@@ -89,7 +91,9 @@ def addCharacterStats(response, username):
 def rollCharacterStats(response, username):
     with open('usersdata/{}.json'.format(username), 'r') as f:
         data = json.load(f)
-        context = response.query_result.output_contexts[0].parameters
+        for cont in response.query_result.output_contexts:
+            if "create-followup" in cont.name:
+                context = cont.parameters
         response.query_result.fulfillment_text = "Here are your character stats:"
         for chars in data:
             if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():

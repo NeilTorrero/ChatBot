@@ -66,7 +66,11 @@ def infoTreatment(response, username):
     elif intent == "create - stats":
         print("Adding stats")
         todo = response.query_result.parameters['cosesafer']
-        if todo == "combat":
+        if "yes" in response.query_result.query_text:
+            rollCharacterStats(response, username)
+        elif "no" in response.query_result.query_text:
+            addCharacterStats(response, username)
+        elif todo == "combat":
             rollCharacterStats(response, username)
         else:
             addCharacterStats(response, username)
