@@ -209,7 +209,7 @@ def rollData(response, username):
         if chara is not None:
             i = 0
             for pro in param['properties']:
-                if pro == "saving-throw":
+                if pro == "saving_throws":
                     i = 1
                     break
 
