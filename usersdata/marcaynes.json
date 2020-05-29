@@ -1,90 +1,18 @@
 [
     {
-        "name": "robert",
-        "level": 5.0,
-        "classes": "bard",
+        "name": "pepe",
+        "level": 3.0,
+        "classes": "paladin",
         "subclasses": "",
         "races": "elf",
         "subraces": "",
         "stats": {
-            "strength": 13,
-            "dexterity": 8,
-            "constitution": 5,
-            "intelligence": 10,
-            "wisdom": 14,
-            "charisma": 12
-        },
-        "saving_throws": {
-            "strength": 0,
-            "dexterity": 0,
-            "constitution": 0,
-            "intelligence": 0,
-            "wisdom": 0,
-            "charisma": 0
-        },
-        "skills": {
-            "acrobatics": 0,
-            "animal-handling": 0,
-            "arcana": 0,
-            "athletics": 0,
-            "deception": 0,
-            "history": 0,
-            "insight": 0,
-            "intimidation": 0,
-            "medicine": 0,
-            "nature": 0,
-            "perception": 0,
-            "performance": 0,
-            "persuasion": 0,
-            "religion": 0,
-            "sleight-of-hand": 0,
-            "stealth": 0,
-            "survival": 0
-        },
-        "proficiency-bonus": 0,
-        "proficiencies": [
-            ""
-        ],
-        "background": "",
-        "languages": [
-            "common"
-        ],
-        "inventory": [
-            ""
-        ],
-        "equipment": [
-            {
-                "name": "",
-                "damage": ""
-            }
-        ],
-        "description": "",
-        "spells": [
-            {
-                "name": "",
-                "damage": "",
-                "spell-range": 0,
-                "casting-time": 0,
-                "level": 0,
-                "components": "",
-                "duration": ""
-            }
-        ]
-    },
-    {
-        "name": "mark",
-        "level": 20.0,
-        "classes": "rogue",
-        "subclasses": "",
-        "races": "human",
-        "subraces": "",
-        "stats": {
-            "strength": 8,
-            "dexterity": 13,
-            "constitution": 17,
-            "intelligence": 16,
+            "strength": 11,
+            "dexterity": 17,
+            "constitution": 13,
+            "intelligence": 17,
             "wisdom": 12,
-            "charisma": 5
+            "charisma": 3
         },
         "saving_throws": {
             "strength": 0,
@@ -144,19 +72,19 @@
         ]
     },
     {
-        "name": "Juan",
-        "level": 10.0,
-        "classes": "wizard",
+        "name": "pepeTheFrog",
+        "level": 69.0,
+        "classes": "paladin",
         "subclasses": "",
         "races": "elf",
         "subraces": "",
         "stats": {
-            "strength": 5,
-            "dexterity": 10,
-            "constitution": 15,
-            "intelligence": 15,
-            "wisdom": 10,
-            "charisma": 17
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 0
         },
         "saving_throws": {
             "strength": 0,

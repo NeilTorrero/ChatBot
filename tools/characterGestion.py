@@ -23,14 +23,14 @@ def createCharacter(response, username):
                             chara = template[0]
                     chara['name'] = param['name']
                     chara['level'] = param['level']
-                    chara['race'] = param['races']
-                    chara['subrace'] = param['subraces']
-                    chara['class'] = param['classes']
-                    chara['subclass'] = param['subclasses']
+                    chara['races'] = param['races']
+                    chara['subraces'] = param['subraces']
+                    chara['classes'] = param['classes']
+                    chara['subclasses'] = param['subclasses']
                     langs = []
                     for lang in param['languages'].values:
                         langs.append(lang.string_value)
-                    chara['Languages'] = langs
+                    chara['languages'] = langs
                     if newChar == 1:
                         data.insert(0, chara)
                 except:
@@ -44,14 +44,14 @@ def createCharacter(response, username):
                 chara = data[0]
                 chara['name'] = param['name']
                 chara['level'] = param['level']
-                chara['race'] = param['races']
-                chara['subrace'] = param['subraces']
-                chara['class'] = param['classes']
-                chara['subclass'] = param['subclasses']
+                chara['races'] = param['races']
+                chara['subraces'] = param['subraces']
+                chara['classes'] = param['classes']
+                chara['subclasses'] = param['subclasses']
                 langs = []
                 for lang in param['languages'].values:
                     langs.append(lang.string_value)
-                chara['Languages'] = langs
+                chara['languages'] = langs
             with open('usersdata/{}.json'.format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
 
@@ -123,11 +123,15 @@ def infoCharacter(response, username):
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
         if chara is not None:
-            if param['propeties'] != "":
+            if param['properties'] != "":
                 response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'], chara[param['properties'].lower()])
             else:
                 if param['stats'] != "":
-                    response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara[param['stats'].lower()])
+                    if param['stats'] == "stats":
+                        # TODO stats not show in a way is pretty
+                        response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara[param['stats'].lower()])
+                    else:
+                        response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara['stats'][param['stats'].lower()])
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
@@ -152,17 +156,17 @@ def editCharacter(response, username):
                     if intent.split(" - ")[1] == "properties":
                         print(param['properties'])
                         print(param[param['properties']])
-                        chara[param['properties']] = param[param['properties']]
+                        chara[param['properties'].lower()] = param[param['properties']]
                         response.query_result.fulfillment_text = "properties"
                     elif intent.split(" - ")[1] == "equipment":
                         # TODO
                         print("edit equipment")
                         response.query_result.fulfillment_text = "equip"
                     elif intent.split(" - ")[1] == "stats":
-                        chara[param['stats']] = param['number']
+                        chara[param['stats'].lower()] = param['number']
                         response.query_result.fulfillment_text = "stats"
                     elif intent.split(" - ")[1] == "level":
-                        chara[param['properties']] = param['level']
+                        chara[param['properties'].lower()] = param['level']
                         response.query_result.fulfillment_text = "level"
                     elif intent.split(" - ")[1] == "raw":
                         # TODO
@@ -199,7 +203,7 @@ def rollData(response, username):
 
             if i == 0:
                 dice = random.randrange(1, 20)
-                valor = int((chara['stats'][param['stats']]-10)/2)
+                valor = int((chara['stats'][param['stats'].lower()]-10)/2)
 
                 response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
             else:
