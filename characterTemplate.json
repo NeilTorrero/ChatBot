@@ -52,13 +52,10 @@
         ""
     ],
     "equipment": [
-        {"name": "", "damage":  ""}
+        ""
     ],
     "description": "",
     "spells": [
-        {"name": "", "damage":  "", "spell-range":  0,
-          "casting-time": 0, "level": 0, "components": "",
-            "duration": ""
-        }
+        ""
     ]
 }]
