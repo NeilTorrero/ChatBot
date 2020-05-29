@@ -76,8 +76,6 @@ def infoTreatment(response, username):
             addCharacterStats(response, username)
     else:
         try:
-            #todo = response.query_result.parameters['cosesafer']
-            #print(todo)
             if intent == "create":
                 print("create")
                 createCharacter(response, username)
