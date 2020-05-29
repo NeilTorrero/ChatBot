@@ -167,6 +167,29 @@ def editCharacter(response, username):
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
 
+def rollData(response, username):
+    # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
+    # to get the most recent added character gets the first one in the json list
+    with open("users_data/{}.json".format(username), 'r') as f:
+        data = json.load(f)
+        chara = None
+        param = response.query_result.parameters
+        if param['name'] == "":
+            chara = data[0]
+        else:
+            for chars in data:
+                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                    chara = chars
+        if chara is not None:
+
+            dice = random.randrange(1, 20)
+            valor = int((chara['stats'][param['stats']]-10)/2)
+
+            response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
+        else:
+            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+                param['name'])
+
 
 """
 if os.path.exists('test.json'):

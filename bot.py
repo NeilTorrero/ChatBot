@@ -81,6 +81,7 @@ def infoTreatment(response, username):
                     infoCharacter(response, username)
             if todo == "combat":
                 print("combat")
+                rollData(response, username)
         except ValueError:
             pass
 
