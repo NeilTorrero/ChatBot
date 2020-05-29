@@ -169,6 +169,7 @@ def editCharacter(response, username):
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
 
+
 def rollData(response, username):
     # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
     # to get the most recent added character gets the first one in the json list
@@ -185,7 +186,7 @@ def rollData(response, username):
         if chara is not None:
 
             dice = random.randrange(1, 20)
-            valor = int((chara['stats'][param['stats']]-10)/2)
+            valor = int((chara['stats'][param['stats']] - 10) / 2)
 
             response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
         else:
