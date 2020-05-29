@@ -106,7 +106,6 @@ def infoCharacter(response, username):
     with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         chara = None
-        context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         if param['userInfo'] == "character":
             response.query_result.fulfillment_text = "Here you have your characters:"
