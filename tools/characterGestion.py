@@ -142,9 +142,12 @@ def editCharacter(response, username):
             if intent != "Modify":
                 if intent.split(" - ")[0] == "Modify":
                     if intent.split(" - ")[1] == "properties":
+                        print(param['properties'])
+                        print(param[param['properties']])
                         chara[param['properties']] = param[param['properties']]
                         response.query_result.fulfillment_text = "properties"
                     elif intent.split(" - ")[1] == "equipment":
+                        # TODO
                         print("edit equipment")
                         response.query_result.fulfillment_text = "equip"
                     elif intent.split(" - ")[1] == "stats":
@@ -152,9 +155,9 @@ def editCharacter(response, username):
                         response.query_result.fulfillment_text = "stats"
                     elif intent.split(" - ")[1] == "level":
                         chara[param['properties']] = param['level']
-                        print("yey")
                         response.query_result.fulfillment_text = "level"
                     elif intent.split(" - ")[1] == "raw":
+                        # TODO
                         print("edit on dynamic info")
                         response.query_result.fulfillment_text = "raw"
                     with open("users_data/{}.json".format(username), 'w+') as fm:
