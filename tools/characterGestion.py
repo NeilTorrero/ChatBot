@@ -163,7 +163,6 @@ def editCharacter(response, username):
                         print("edit equipment")
                         response.query_result.fulfillment_text = "equip"
                     elif intent.split(" - ")[1] == "stats":
-                        chara[param['stats'].lower()] = param['number']
                         chara['stats'][param['stats'].lower()] = param['number']
                         response.query_result.fulfillment_text = "stats {} {}".format(param['stats'].lower(), param['number'])
                     elif intent.split(" - ")[1] == "level":
