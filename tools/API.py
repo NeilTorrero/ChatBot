@@ -1,5 +1,6 @@
 import requests
 from parse import *
+
 BASE_URL = 'http://www.dnd5eapi.co'
 """
 install google-cloud-sdk
@@ -21,6 +22,7 @@ pip python-telegram-bot
 pip install parse
 """
 
+
 def getInfoAPI(type, name):
     url = BASE_URL + '/api/' + type + '/' + name + '/'
     response = requests.get(url)
@@ -29,8 +31,10 @@ def getInfoAPI(type, name):
 
     return data
 
+
 def diceParse(text):
-    return(search("{:d}d{:d}",text))
+    return search("{:d}d{:d}", text)
+
 
 def dialogflow(input_text, chat_id):
     import dialogflow_v2 as dialogflow
@@ -47,11 +51,11 @@ def dialogflow(input_text, chat_id):
     response = session_client.detect_intent(
         session=session, query_input=query_input)
 
-    #print('=' * 20)
+    # print('=' * 20)
     print('Query text: {}'.format(response.query_result.query_text))
-    #print('Detected intent: {} (confidence: {})\n'.format(
+    # print('Detected intent: {} (confidence: {})\n'.format(
     #    response.query_result.intent.display_name,
     #    response.query_result.intent_detection_confidence))
     print('Fulfillment text: {}\n'.format(response.query_result.fulfillment_text))
-    #print(response)
+    # print(response)
     return response

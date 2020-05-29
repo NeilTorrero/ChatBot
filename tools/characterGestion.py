@@ -30,7 +30,7 @@ def createCharacter(response, username):
                     langs = []
                     for lang in param['languages'].values:
                         langs.append(lang.string_value)
-                    chara['languages'] = langs
+                    chara['Languages'] = langs
                     if newChar == 1:
                         data.insert(0, chara)
                 except:
@@ -39,7 +39,7 @@ def createCharacter(response, username):
                 json.dump(data, f, indent=4)
         else:
             print("User doesn't have a data, creating a new one")
-            with open('../characterTemplate.json', 'r') as f:
+            with open('characterTemplate.json', 'r') as f:
                 data = json.load(f)
                 chara = data[0]
                 chara['name'] = param['name']
@@ -51,7 +51,7 @@ def createCharacter(response, username):
                 langs = []
                 for lang in param['languages'].values:
                     langs.append(lang.string_value)
-                chara['languages'] = langs
+                chara['Languages'] = langs
             with open("users_data/{}.json".format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
 
@@ -63,9 +63,11 @@ def addCharacterStats(response, username):
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         for chars in data:
-            if chars['name'] == context['name'] or chars['name'] == param['name'].capitalize():
+            if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
                 chara = chars
         try:
+            # TODO(accepts multiple sts but only one value)
+            # If wants multiple value, change in dialoglow to values to list and control here the order of assigment
             for stat in param['stats'].values:
                 chara['stats'][stat.string_value.lower()] = param['value']
             nextStat = ""
@@ -118,8 +120,11 @@ def infoCharacter(response, username):
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
         if chara is not None:
-            response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'],
-                                                                               chara[param['properties'].lower()])
+            if param['propeties'] != "":
+                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'], chara[param['properties'].lower()])
+            else:
+                if param['stats'] != "":
+                    response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara[param['stats'].lower()])
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
@@ -142,9 +147,12 @@ def editCharacter(response, username):
             if intent != "Modify":
                 if intent.split(" - ")[0] == "Modify":
                     if intent.split(" - ")[1] == "properties":
+                        print(param['properties'])
+                        print(param[param['properties']])
                         chara[param['properties']] = param[param['properties']]
                         response.query_result.fulfillment_text = "properties"
                     elif intent.split(" - ")[1] == "equipment":
+                        # TODO
                         print("edit equipment")
                         response.query_result.fulfillment_text = "equip"
                     elif intent.split(" - ")[1] == "stats":
@@ -152,9 +160,9 @@ def editCharacter(response, username):
                         response.query_result.fulfillment_text = "stats"
                     elif intent.split(" - ")[1] == "level":
                         chara[param['properties']] = param['level']
-                        print("yey")
                         response.query_result.fulfillment_text = "level"
                     elif intent.split(" - ")[1] == "raw":
+                        # TODO
                         print("edit on dynamic info")
                         response.query_result.fulfillment_text = "raw"
                     with open("users_data/{}.json".format(username), 'w+') as fm:
@@ -165,6 +173,7 @@ def editCharacter(response, username):
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
+
 
 def rollData(response, username):
     # to get the most recent added character gets the first one in the json list
@@ -199,6 +208,8 @@ def rollData(response, username):
                     if dice == 1:
                         val = 2
                     response.query_result.fulfillment_text += "\nRolled -{} failed points".format(val)
+                else dice == 20:
+                    response.query_result.fulfillment_text += "\nRolled 20 and you are saved!"
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
