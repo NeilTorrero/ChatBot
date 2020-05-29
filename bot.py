@@ -61,8 +61,6 @@ def infoTreatment(response, username):
             out = "This Spells' "
             response.query_result.fulfillment_text += "\n" + write_spell_properties(data, out, param)
             pass
-    # elif response.query_result.intent.display_name == "create":
-    #    print("creating")
     elif intent == "create - stats":
         print("Adding stats")
         todo = response.query_result.parameters['cosesafer']
