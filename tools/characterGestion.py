@@ -128,8 +128,9 @@ def infoCharacter(response, username):
             else:
                 if param['stats'] != "":
                     if param['stats'] == "stats":
-                        # TODO stats not show in a way is pretty
-                        response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara[param['stats'].lower()])
+                        response.query_result.fulfillment_text += "\n{}\'s {}:".format(chara['name'], param['stats'])
+                        for stat in list(chara['stats'].keys()):
+                            response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
                     else:
                         response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara['stats'][param['stats'].lower()])
         else:
