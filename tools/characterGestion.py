@@ -63,7 +63,7 @@ def addCharacterStats(response, username):
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         for chars in data:
-            if chars['name'] == context['name'] or chars['name'] == param['name'].capitalize():
+            if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
                 chara = chars
         try:
             for stat in param['stats'].values:
