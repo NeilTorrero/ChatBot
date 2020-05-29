@@ -175,7 +175,6 @@ def editCharacter(response, username):
 
 
 def rollData(response, username):
-    # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
     # to get the most recent added character gets the first one in the json list
     with open('usersdata/{}.json'.format(username), 'r') as f:
         data = json.load(f)
@@ -188,11 +187,28 @@ def rollData(response, username):
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
         if chara is not None:
+            i = 0
+            for pro in param['properties']:
+                if pro == "saving-throw":
+                    i = 1
+                    break
 
-            dice = random.randrange(1, 20)
-            valor = int((chara['stats'][param['stats']] - 10) / 2)
+            if i == 0:
+                dice = random.randrange(1, 20)
+                valor = int((chara['stats'][param['stats']]-10)/2)
 
-            response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
+                response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
+            else:
+                dice = random.randrange(1, 20)
+                if dice >= 10 and dice != 20:
+                    response.query_result.fulfillment_text += "\nRolled +1 saved point"
+                elif dice < 10:
+                    val = 1
+                    if dice == 1:
+                        val = 2
+                    response.query_result.fulfillment_text += "\nRolled -{} failed points".format(val)
+                else:
+                    response.query_result.fulfillment_text += "\nRolled 20 and you are saved!"
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
