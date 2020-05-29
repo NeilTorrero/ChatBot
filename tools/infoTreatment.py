@@ -114,3 +114,57 @@ def write_equipment_properties(data, out, param):
     except:
         out = "Looks like this equipment doesn't have any of these!"
         return out
+
+def write_spell_properties(data, out, param):
+    try:
+        index = param["properties"].lower()
+        if index == "description" : index = "desc"
+        info = data[index]
+        for a in param["properties"].split("_"):
+            out += "" + a.lower()
+
+        if info:
+            if isinstance(info, dict):
+                out += "is: " + info["name"]
+            elif isinstance(info, list):
+                if len(info) > 1:
+                    out += " are: "
+                else:
+                    out += " is: "
+
+                if isinstance(info[0], dict):
+                    counter = 0
+                    for i in info:
+                        if counter == len(info) - 1:
+                            out += i["name"]
+                        else:
+                            out += i["name"] + ", "
+                        counter += 1
+                else:
+                    if index == "desc":
+                        counter = 0
+                        for i in info:
+                            out += i + "\n"
+                        try:
+                            if data["higher_level"]:
+                                out += "\n" + "And... "
+                                for i in data["higher_level"]:
+                                    out += i + " "
+                        except:
+                            pass
+                    else:
+                        counter = 0
+                        for i in info:
+                            if counter == len(info) - 1:
+                                out += i
+                            else:
+                                out += i + ", "
+
+            else:
+                out += " is: " + str(info)
+        else:
+            out = "Looks like this spell doesn't have any of these!"
+        return out
+    except:
+        out = "Looks like this spell doesn't have any of these!"
+        return out
