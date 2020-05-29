@@ -126,6 +126,36 @@ def infoCharacter(response, username):
                 param['name'])
 
 
+def editCharacter(response, username):
+    with open("users_data/{}.json".format(username), 'r') as f:
+        data = json.load(f)
+        chara = None
+        param = response.query_result.parameters
+        if param['name'] == "":
+            chara = data[0]
+        else:
+            for chars in data:
+                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                    chara = chars
+        if chara is not None:
+            intent = response.query_result.intent.display_name
+            if intent != "Modify":
+                if intent.split("-")[0] == "Modify":
+                    if intent.split("-")[1] == "properties":
+                        chara[param['properties']] = param[param['properties']]
+                    elif intent.split("-")[1] == "equipment":
+                        print("edit equipment")
+                    elif intent.split("-")[1] == "stats":
+                        chara[param['stats']] = param['number']
+                    elif intent.split("-")[1] == "level":
+                        chara[param['properties']] = param['level']
+                else:
+                    print("edit on dynamic info")
+        else:
+            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+                param['name'])
+
+
 """
 if os.path.exists('test.json'):
     print("yey")

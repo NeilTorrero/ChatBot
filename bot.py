@@ -71,6 +71,7 @@ def infoTreatment(response, username):
                 createCharacter(response, username)
             if todo == "edit":
                 print("edit")
+                editCharacter(response, username)
             if todo == "info":
                 print("info")  # diferenciar por intent la info de character con info en general
                 if intent == "Info":
