@@ -66,6 +66,8 @@ def addCharacterStats(response, username):
             if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
                 chara = chars
         try:
+            # TODO(accepts multiple sts but only one value)
+            # If wants multiple value, change in dialoglow to values to list and control here the order of assigment
             for stat in param['stats'].values:
                 chara['stats'][stat.string_value.lower()] = param['value']
             nextStat = ""
