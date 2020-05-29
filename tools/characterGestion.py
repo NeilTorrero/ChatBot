@@ -30,7 +30,7 @@ def createCharacter(response, username):
                     langs = []
                     for lang in param['languages'].values:
                         langs.append(lang.string_value)
-                    chara['languages'] = langs
+                    chara['Languages'] = langs
                     if newChar == 1:
                         data.insert(0, chara)
                 except:
@@ -51,7 +51,7 @@ def createCharacter(response, username):
                 langs = []
                 for lang in param['languages'].values:
                     langs.append(lang.string_value)
-                chara['languages'] = langs
+                chara['Languages'] = langs
             with open("users_data/{}.json".format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
 
