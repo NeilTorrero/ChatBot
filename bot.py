@@ -42,7 +42,7 @@ def infoTreatment(response, username):
             out = "This class' "
             response.query_result.fulfillment_text += "\n" + write_class_properties(data, out, param, level)
 
-        elif(response.query_result.action.split("-")[1] == "Race"):
+        elif response.query_result.action.split("-")[1] == "Race":
             param = response.query_result.parameters
             race = param["races"]
             data = getInfoAPI("races", race)
