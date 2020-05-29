@@ -118,8 +118,11 @@ def infoCharacter(response, username):
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
         if chara is not None:
-            response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'],
-                                                                               chara[param['properties'].lower()])
+            if param['propeties'] != "":
+                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'], chara[param['properties'].lower()])
+            else:
+                if param['stats'] != "":
+                    response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara[param['stats'].lower()])
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
