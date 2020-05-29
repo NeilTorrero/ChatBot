@@ -13,7 +13,7 @@ def createCharacter(response, username):
                 chara = None
                 try:
                     for chars in data:
-                        if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                        if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                             chara = chars
                             newChar = 0
                     if chara is None:
@@ -65,7 +65,7 @@ def addCharacterStats(response, username):
                 context = cont.parameters
         param = response.query_result.parameters
         for chars in data:
-            if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
+            if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
         try:
             # TODO(accepts multiple sts but only one value)
@@ -96,7 +96,7 @@ def rollCharacterStats(response, username):
                 context = cont.parameters
         response.query_result.fulfillment_text = "Here are your character stats:"
         for chars in data:
-            if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
+            if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
         for stat in list(chara['stats'].keys()):
             chara['stats'][stat] = random.randrange(3, 18)
@@ -120,7 +120,7 @@ def infoCharacter(response, username):
             chara = data[0]
         else:
             for chars in data:
-                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
         if chara is not None:
             if param['properties'] != "":
@@ -146,7 +146,7 @@ def editCharacter(response, username):
             chara = data[0]
         else:
             for chars in data:
-                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
         if chara is not None:
             intent = response.query_result.intent.display_name
@@ -193,7 +193,7 @@ def rollData(response, username):
             chara = data[0]
         else:
             for chars in data:
-                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
         if chara is not None:
             i = 0
