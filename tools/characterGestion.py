@@ -106,7 +106,6 @@ def rollCharacterStats(response, username):
 
 
 def infoCharacter(response, username):
-    # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
     # to get the most recent added character gets the first one in the json list
     with open('usersdata/{}.json'.format(username), 'r') as f:
         data = json.load(f)
@@ -124,8 +123,19 @@ def infoCharacter(response, username):
                     chara = chars
         if chara is not None:
             if param['properties'] != "":
-                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'], chara[param['properties'].lower()])
+                response.query_result.fulfillment_text += "\n{}\'s {}:".format(chara['name'], param['properties'])
+                if param['properties'] == "skills" or param['properties'] == "saving_throws":
+                    for sk in list(chara[param['properties'].lower()].keys()):
+                        response.query_result.fulfillment_text += "\n\t\t{} = {}".format(sk.capitalize(), chara[param['properties'].lower()][sk])
+                else:
+                    # get info from spells, equipment, inventory, languages and proficiencies as list
+                    if isinstance(chara[param['properties'].lower()], list):
+                        for x in chara[param['properties'].lower()]:
+                            response.query_result.fulfillment_text += "\n\t\t{}".format(x)
+                    else:
+                        response.query_result.fulfillment_text += "\t{}".format(chara[param['properties'].lower()])
             else:
+
                 if param['stats'] != "":
                     if param['stats'] == "stats":
                         response.query_result.fulfillment_text += "\n{}\'s {}:".format(chara['name'], param['stats'])
