@@ -30,7 +30,7 @@ def createCharacter(response, username):
                     langs = []
                     for lang in param['languages'].values:
                         langs.append(lang.string_value)
-                    chara['languages'] = langs
+                    chara['Languages'] = langs
                     if newChar == 1:
                         data.insert(0, chara)
                 except:
@@ -39,7 +39,7 @@ def createCharacter(response, username):
                 json.dump(data, f, indent=4)
         else:
             print("User doesn't have a data, creating a new one")
-            with open('../characterTemplate.json', 'r') as f:
+            with open('characterTemplate.json', 'r') as f:
                 data = json.load(f)
                 chara = data[0]
                 chara['name'] = param['name']
@@ -51,7 +51,7 @@ def createCharacter(response, username):
                 langs = []
                 for lang in param['languages'].values:
                     langs.append(lang.string_value)
-                chara['languages'] = langs
+                chara['Languages'] = langs
             with open("users_data/{}.json".format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
 
@@ -63,7 +63,7 @@ def addCharacterStats(response, username):
         context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         for chars in data:
-            if chars['name'] == context['name'] or chars['name'] == param['name'].capitalize():
+            if chars['name'] == context['name'] or chars['name'] == context['name'].capitalize():
                 chara = chars
         try:
             for stat in param['stats'].values:
@@ -106,7 +106,6 @@ def infoCharacter(response, username):
     with open("users_data/{}.json".format(username), 'r') as f:
         data = json.load(f)
         chara = None
-        context = response.query_result.output_contexts[0].parameters
         param = response.query_result.parameters
         if param['userInfo'] == "character":
             response.query_result.fulfillment_text = "Here you have your characters:"
@@ -119,8 +118,11 @@ def infoCharacter(response, username):
                 if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
                     chara = chars
         if chara is not None:
-            response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'],
-                                                                               chara[param['properties'].lower()])
+            if param['propeties'] != "":
+                response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['properties'], chara[param['properties'].lower()])
+            else:
+                if param['stats'] != "":
+                    response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara[param['stats'].lower()])
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
@@ -139,18 +141,57 @@ def editCharacter(response, username):
                     chara = chars
         if chara is not None:
             intent = response.query_result.intent.display_name
+            print(intent)
             if intent != "Modify":
-                if intent.split("-")[0] == "Modify":
-                    if intent.split("-")[1] == "properties":
+                if intent.split(" - ")[0] == "Modify":
+                    if intent.split(" - ")[1] == "properties":
+                        print(param['properties'])
+                        print(param[param['properties']])
                         chara[param['properties']] = param[param['properties']]
-                    elif intent.split("-")[1] == "equipment":
+                        response.query_result.fulfillment_text = "properties"
+                    elif intent.split(" - ")[1] == "equipment":
+                        # TODO
                         print("edit equipment")
-                    elif intent.split("-")[1] == "stats":
+                        response.query_result.fulfillment_text = "equip"
+                    elif intent.split(" - ")[1] == "stats":
                         chara[param['stats']] = param['number']
-                    elif intent.split("-")[1] == "level":
+                        response.query_result.fulfillment_text = "stats"
+                    elif intent.split(" - ")[1] == "level":
                         chara[param['properties']] = param['level']
+                        response.query_result.fulfillment_text = "level"
+                    elif intent.split(" - ")[1] == "raw":
+                        # TODO
+                        print("edit on dynamic info")
+                        response.query_result.fulfillment_text = "raw"
+                    with open("users_data/{}.json".format(username), 'w+') as fm:
+                        json.dump(data, fm, indent=4)
                 else:
-                    print("edit on dynamic info")
+                    response.query_result.fulfillment_text = "pass"
+                    pass
+        else:
+            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+                param['name'])
+
+
+def rollData(response, username):
+    # TODO(now only shows info of primary info like level, name , class, simple 1-1 properties)
+    # to get the most recent added character gets the first one in the json list
+    with open("users_data/{}.json".format(username), 'r') as f:
+        data = json.load(f)
+        chara = None
+        param = response.query_result.parameters
+        if param['name'] == "":
+            chara = data[0]
+        else:
+            for chars in data:
+                if chars['name'] == param['name'] or chars['name'] == param['name'].capitalize():
+                    chara = chars
+        if chara is not None:
+
+            dice = random.randrange(1, 20)
+            valor = int((chara['stats'][param['stats']] - 10) / 2)
+
+            response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])

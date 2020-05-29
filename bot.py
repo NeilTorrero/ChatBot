@@ -16,10 +16,10 @@ def infoTreatment(response, username):
     intent = response.query_result.intent.display_name
     # TODO: Buscar info en la API con lo que nos pida el usuario
     if intent == "Master-Mode - Monsters":
-        #La informació dels monstres està reservada al master
+        # La informació dels monstres està reservada al master
         if response.query_result.action == "Master-Mode.Master-Mode-Monsters":
             param = response.query_result.parameters
-            #Si no existe el índice, petará. Ge de comprovar qué índices hay
+            # Si no existe el índice, petará. Ge de comprovar qué índices hay
             monster = param["monsters"]
             data = getInfoAPI("monsters", monster)
             out = "this monster's "
@@ -28,10 +28,10 @@ def infoTreatment(response, username):
             else:
                 response.query_result.fulfillment_text += "\n" + write_monster_properties(data, out, param)
 
-        #getInfoAPI()
+        # getInfoAPI()
         print("master")
     elif response.query_result.action.split("-")[0] == "Info.Info":
-        if(response.query_result.action.split("-")[1] == "Class"):
+        if response.query_result.action.split("-")[1] == "Class":
             param = response.query_result.parameters
             _class = param["classes"]
             try:
@@ -48,13 +48,13 @@ def infoTreatment(response, username):
             data = getInfoAPI("races", race)
             out = "This race's "
             response.query_result.fulfillment_text += "\n" + write_race_properties(data, out, param)
-        elif(response.query_result.action.split("-")[1] == "Equipment"):
+        elif response.query_result.action.split("-")[1] == "Equipment":
             param = response.query_result.parameters
             equipment = param["equipment"]
             data = getInfoAPI("equipment", equipment)
             out = "This equipment's "
             response.query_result.fulfillment_text += "\n" + write_equipment_properties(data, out, param)
-        elif(response.query_result.action.split("-")[1] == "Spells"):
+        elif response.query_result.action.split("-")[1] == "Spells":
             param = response.query_result.parameters
             spells = param["spells"]
             data = getInfoAPI("spells", spells)
@@ -89,6 +89,7 @@ def infoTreatment(response, username):
                     infoCharacter(response, username)
             if todo == "combat":
                 print("combat")
+                rollData(response, username)
         except ValueError:
             pass
 
@@ -104,7 +105,6 @@ def textMessage(update, context):
     infoTreatment(response, update.message.chat.username)
     # Telegram bot writes response of dialogflow
     context.bot.send_message(chat_id=update.message.chat_id, text=response.query_result.fulfillment_text)
-    # context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
 
 start_handler = CommandHandler('start', start)
