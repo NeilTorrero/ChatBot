@@ -68,7 +68,7 @@ def addCharacterStats(response, username):
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
         try:
-            # TODO(accepts multiple sts but only one value)
+            # TODO(accepts multiple stats but only one value)
             # If wants multiple value, change in dialoglow to values to list and control here the order of assigment
             for stat in param['stats'].values:
                 chara['stats'][stat.string_value.lower()] = param['value']
@@ -175,12 +175,13 @@ def editCharacter(response, username):
                         print("edit equipment")
                         response.query_result.fulfillment_text = "equip"
                     elif intent.split(" - ")[1] == "stats":
-                        response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()],)
+                        response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()])
                         chara['stats'][param['stats'].lower()] = param['number']
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "level":
                         chara[param['properties'].lower()] = param['level']
-                        response.query_result.fulfillment_text = "level"
+                        response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
+                        response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "raw":
                         # TODO (add info that does no have the properties parameter i only has the name of what to edit)
                         print("edit on dynamic info")
