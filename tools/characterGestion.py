@@ -44,7 +44,7 @@ def createCharacter(response, username):
                 chara = data[0]
                 chara['name'] = param['name']
                 chara['level'] = param['level']
-                chara['race'] = param['Races']
+                chara['race'] = param['races']
                 chara['subrace'] = param['subraces']
                 chara['class'] = param['classes']
                 chara['subclass'] = param['subclasses']
