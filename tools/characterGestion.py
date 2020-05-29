@@ -39,7 +39,7 @@ def createCharacter(response, username):
                 json.dump(data, f, indent=4)
         else:
             print("User doesn't have a data, creating a new one")
-            with open('../characterTemplate.json', 'r') as f:
+            with open('characterTemplate.json', 'r') as f:
                 data = json.load(f)
                 chara = data[0]
                 chara['name'] = param['name']
