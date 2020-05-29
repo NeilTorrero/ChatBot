@@ -76,7 +76,7 @@ def infoTreatment(response, username):
             addCharacterStats(response, username)
     else:
         try:
-            todo = response.query_result.parameters['cosesafer']
+            #todo = response.query_result.parameters['cosesafer']
             print(todo)
             if intent == "create":
                 print("create")
@@ -84,11 +84,7 @@ def infoTreatment(response, username):
             if "Modify" in intent:
                 print("edit")
                 editCharacter(response, username)
-            #if todo == "info":
-            #print("info")  # diferenciar por intent la info de character con info en general
-            if "Info" in intent:
-                print("info of d&d")
-            elif intent == "InfoCharacter":
+            if intent == "InfoCharacter":
                 print("info of users characters")
                 infoCharacter(response, username)
             if intent == "Rolls":
