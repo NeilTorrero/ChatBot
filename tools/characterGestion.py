@@ -139,18 +139,28 @@ def editCharacter(response, username):
                     chara = chars
         if chara is not None:
             intent = response.query_result.intent.display_name
+            print(intent)
             if intent != "Modify":
-                if intent.split("-")[0] == "Modify":
-                    if intent.split("-")[1] == "properties":
+                if intent.split(" - ")[0] == "Modify":
+                    if intent.split(" - ")[1] == "properties":
                         chara[param['properties']] = param[param['properties']]
-                    elif intent.split("-")[1] == "equipment":
+                        response.query_result.fulfillment_text = "properties"
+                    elif intent.split(" - ")[1] == "equipment":
                         print("edit equipment")
-                    elif intent.split("-")[1] == "stats":
+                        response.query_result.fulfillment_text = "equip"
+                    elif intent.split(" - ")[1] == "stats":
                         chara[param['stats']] = param['number']
-                    elif intent.split("-")[1] == "level":
+                        response.query_result.fulfillment_text = "stats"
+                    elif intent.split(" - ")[1] == "level":
                         chara[param['properties']] = param['level']
+                        print("yey")
+                        response.query_result.fulfillment_text = "level"
+                    elif intent.split(" - ")[1] == "raw":
+                        print("edit on dynamic info")
+                        response.query_result.fulfillment_text = "raw"
                 else:
-                    print("edit on dynamic info")
+                    response.query_result.fulfillment_text = "pass"
+                    pass
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
