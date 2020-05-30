@@ -27,14 +27,14 @@ def skillsAndSTCreation(chara):
     className = chara['classes']
     level = chara['level']
     for skill in list(skill2Stat.keys()):
-        skills[skill] = (stats[skill2Stat[skill]] - 10) / 2
+        skills[skill] = int((stats[skill2Stat[skill]] - 10) / 2)
 
     data = getInfoAPI("classes", className)
-    dataLevel = getInfoAPI("classes/"+className+"/levels", level)
+    dataLevel = getInfoAPI("classes/"+className+"/levels", int(level))
     proficiencyBonus = dataLevel["prof_bonus"]
 
     for st in list(saving_throws.keys()):
         if data["saving_throws"][0]["name"][:3].lower() == st[:3].lower() \
                 or data["saving_throws"][1]["name"][:3].lower() == st[:3]:
-            saving_throws[st] = ((stats[st] - 10) / 2) + proficiencyBonus
-        saving_throws[st] = (stats[st] - 10) / 2
+            saving_throws[st] = int(((stats[st] - 10) / 2)) + proficiencyBonus
+        saving_throws[st] = int((stats[st] - 10) / 2)
