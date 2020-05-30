@@ -43,21 +43,17 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [
-            ""
         ],
         "background": "",
         "languages": [
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
         ],
         "description": "",
         "spells": [
-            ""
         ]
     },
     {
@@ -104,23 +100,18 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [
-            ""
         ],
         "background": "",
         "languages": [
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
         ],
         "description": "",
         "spells": [
-            ""
-        ],
-        "strength": 1.0
+        ]
     },
     {
         "name": "gustavo",
@@ -166,21 +157,17 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [
-            ""
         ],
         "background": "",
         "languages": [
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
         ],
         "description": "",
         "spells": [
-            ""
         ]
     },
     {
@@ -227,21 +214,17 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [
-            ""
         ],
         "background": "",
         "languages": [
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
         ],
         "description": "",
         "spells": [
-            ""
         ]
     },
     {
@@ -288,21 +271,17 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [
-            ""
         ],
         "background": "",
         "languages": [
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
         ],
         "description": "",
         "spells": [
-            ""
         ]
     }
 ]

@@ -43,21 +43,18 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [
-            ""
         ],
         "background": "",
         "languages": [
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
+            "arrow"
         ],
         "description": "",
         "spells": [
-            ""
         ]
     },
     {
@@ -104,21 +101,17 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [
-            ""
         ],
         "background": "",
         "languages": [
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
         ],
         "description": "",
         "spells": [
-            ""
         ]
     },
     {
@@ -172,14 +165,11 @@
             "common"
         ],
         "inventory": [
-            ""
         ],
         "equipment": [
-            ""
         ],
         "description": "",
         "spells": [
-            ""
         ]
     }
 ]
