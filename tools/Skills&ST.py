@@ -1,7 +1,7 @@
 from tools.API import getInfoAPI
 
 
-def skillsAndSTCreation(stats, saving_throws, skills, className, level):
+def skillsAndSTCreation(chara):
     skill2Stat = {
         "acrobatics": "dexterity",
         "animal-handling": "wisdom",
@@ -21,6 +21,11 @@ def skillsAndSTCreation(stats, saving_throws, skills, className, level):
         "survival": "wisdom"
     }
 
+    stats = chara['stats']
+    saving_throws = chara['saving_throws']
+    skills = chara['skills']
+    className = chara['classes']
+    level = chara['level']
     for skill in list(skill2Stat.keys()):
         skills[skill] = (stats[skill2Stat[skill]] - 10) / 2
 
