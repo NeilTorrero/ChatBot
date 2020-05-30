@@ -137,7 +137,6 @@ def infoCharacter(response, username):
                     else:
                         response.query_result.fulfillment_text += "\t{}".format(chara[param['properties'].lower()])
             else:
-
                 if param['stats'] != "":
                     if param['stats'] == "stats":
                         response.query_result.fulfillment_text += "\n{}\'s {}:".format(chara['name'], param['stats'])
@@ -226,7 +225,7 @@ def editCharacter(response, username):
                     with open('usersdata/{}.json'.format(username), 'w+') as fm:
                         json.dump(data, fm, indent=4)
                 else:
-                    response.query_result.fulfillment_text = "pass"
+                    response.query_result.fulfillment_text = "Sorry I can't do that."
                     pass
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(

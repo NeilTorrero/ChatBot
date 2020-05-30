@@ -1,6 +1,7 @@
 [{
     "name": "",
     "level": 0,
+    "life": 0,
     "classes": "",
     "subclasses": "",
     "races": "",
@@ -41,16 +42,12 @@
         "survival": 0
     },
     "proficiency-bonus": 0,
-    "proficiencies": [
-    ],
+    "proficiencies": [],
+    "traits": [],
     "background": "",
-    "languages": [
-    ],
-    "inventory": [
-    ],
-    "equipment": [
-    ],
+    "languages": [],
+    "inventory": [],
+    "equipment": [],
     "description": "",
-    "spells": [
-    ]
+    "spells": []
 }]
