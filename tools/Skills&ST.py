@@ -1,21 +1,21 @@
 def skillsAndSTCreation(stats, saving_throws, skills):
     skill2Stat = {
-        "Acrobatics": "dexterity",
-        "Animal Handling": "wisdom",
-        "Arcana": "intelligence",
-        "Athletics": "strength",
-        "Deception": "charisma",
-        "History": "intelligence",
-        "Insight": "wisdom",
-        "Intimidation": "charisma",
-        "Medicine": "wisdom",
-        "Nature": "intelligence",
-        "Perception": "wisdom",
-        "Performance": "charisma",
-        "Religion": "intelligence",
-        "Sleight of Hand": "dexterity",
-        "Stealth": "dexterity",
-        "Survival": "wisdom"
+        "acrobatics": "dexterity",
+        "animal-handling": "wisdom",
+        "arcana": "intelligence",
+        "athletics": "strength",
+        "deception": "charisma",
+        "history": "intelligence",
+        "insight": "wisdom",
+        "intimidation": "charisma",
+        "medicine": "wisdom",
+        "nature": "intelligence",
+        "perception": "wisdom",
+        "performance": "charisma",
+        "religion": "intelligence",
+        "sleight-of-hand": "dexterity",
+        "stealth": "dexterity",
+        "survival": "wisdom"
     }
 
     for skill in list(skill2Stat.keys()):
