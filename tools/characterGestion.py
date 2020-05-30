@@ -24,6 +24,9 @@ def createCharacter(response, username):
                             chara = template[0]
                     chara['name'] = param['name']
                     chara['level'] = int(param['level'])
+                    if chara['level'] > 20:
+                        chara['level'] = 20
+                        response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
                     chara['races'] = param['races']
                     chara['subraces'] = param['subraces']
                     chara['classes'] = param['classes']
@@ -45,6 +48,9 @@ def createCharacter(response, username):
                 chara = data[0]
                 chara['name'] = param['name']
                 chara['level'] = int(param['level'])
+                if chara['level'] > 20:
+                    chara['level'] = 20
+                    response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
                 chara['races'] = param['races']
                 chara['subraces'] = param['subraces']
                 chara['classes'] = param['classes']
@@ -200,6 +206,9 @@ def editCharacter(response, username):
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "level":
                         chara[param['properties'].lower()] = int(param['level'])
+                        if chara['level'] > 20:
+                            chara['level'] = 20
+                            response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
                         skillsAndSTCreation(chara)
                         lifeCalculator(chara)
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
