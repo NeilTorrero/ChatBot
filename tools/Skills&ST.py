@@ -1,7 +1,6 @@
-
 def skillsAndSTCreation(stats, saving_throws, skills):
     skill2Stat = {
-        "Acrobatics":"dexterity",
+        "Acrobatics": "dexterity",
         "Animal Handling": "wisdom",
         "Arcana": "intelligence",
         "Athletics": "strength",
@@ -19,11 +18,8 @@ def skillsAndSTCreation(stats, saving_throws, skills):
         "Survival": "wisdom"
     }
 
-
     for skill in list(skill2Stat.keys()):
-        skills[skill] = (stats[skill2Stat[skill]]-10)/2
-
+        skills[skill] = (stats[skill2Stat[skill]] - 10) / 2
 
     for st in list(saving_throws.keys()):
-        saving_throws[st] = (stats[st]-10)/2
-
+        saving_throws[st] = (stats[st] - 10) / 2
