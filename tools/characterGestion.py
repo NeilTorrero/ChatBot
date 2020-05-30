@@ -1,7 +1,7 @@
 import json
 import os
 import random
-
+from tools.autoProperties import *
 
 def createCharacter(response, username):
     param = response.query_result.parameters
@@ -16,13 +16,14 @@ def createCharacter(response, username):
                         if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                             chara = chars
                             newChar = 0
+                            break
                     if chara is None:
                         newChar = 1
                         with open('characterTemplate.json', 'r') as temp:
                             template = json.load(temp)
                             chara = template[0]
                     chara['name'] = param['name']
-                    chara['level'] = param['level']
+                    chara['level'] = int(param['level'])
                     chara['races'] = param['races']
                     chara['subraces'] = param['subraces']
                     chara['classes'] = param['classes']
@@ -43,7 +44,7 @@ def createCharacter(response, username):
                 data = json.load(f)
                 chara = data[0]
                 chara['name'] = param['name']
-                chara['level'] = param['level']
+                chara['level'] = int(param['level'])
                 chara['races'] = param['races']
                 chara['subraces'] = param['subraces']
                 chara['classes'] = param['classes']
@@ -63,15 +64,17 @@ def addCharacterStats(response, username):
         for cont in response.query_result.output_contexts:
             if "create-followup" in cont.name:
                 context = cont.parameters
+                break
         param = response.query_result.parameters
         for chars in data:
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
+                break
         try:
             # TODO(accepts multiple stats but only one value)
             # If wants multiple value, change in dialoglow to values to list and control here the order of assigment
             for stat in param['stats'].values:
-                chara['stats'][stat.string_value.lower()] = param['value']
+                chara['stats'][stat.string_value.lower()] = int(param['value'])
             nextStat = ""
             for stat in list(chara['stats'].keys()):
                 if chara['stats'][stat] == 0 and nextStat == "":
@@ -81,6 +84,8 @@ def addCharacterStats(response, username):
                 response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,
                                                                         nextStat)
             else:
+                skillsAndSTCreation(chara)
+                lifeCalculator(chara)
                 response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
             response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
@@ -98,9 +103,12 @@ def rollCharacterStats(response, username):
         for chars in data:
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
+                break
         for stat in list(chara['stats'].keys()):
-            chara['stats'][stat] = random.randrange(3, 18)
+            chara['stats'][stat] = int(random.randrange(3, 18))
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
+        skillsAndSTCreation(chara)
+        lifeCalculator(chara)
     with open('usersdata/{}.json'.format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
@@ -121,6 +129,7 @@ def infoCharacter(response, username):
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
+                    break
         if chara is not None:
             if param['properties'] != "":
                 response.query_result.fulfillment_text += "\n{}\'s {}:".format(chara['name'], param['properties'])
@@ -135,7 +144,6 @@ def infoCharacter(response, username):
                     else:
                         response.query_result.fulfillment_text += "\t{}".format(chara[param['properties'].lower()])
             else:
-
                 if param['stats'] != "":
                     if param['stats'] == "stats":
                         response.query_result.fulfillment_text += "\n{}\'s {}:".format(chara['name'], param['stats'])
@@ -159,6 +167,7 @@ def editCharacter(response, username):
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
+                    break
         if chara is not None:
             intent = response.query_result.intent.display_name
             print(intent)
@@ -167,20 +176,27 @@ def editCharacter(response, username):
                     if intent.split(" - ")[1] == "properties":
                         if isinstance(chara[param['properties'].lower()], list):
                             chara[param['properties'].lower()].append(param[param['properties']])
+                            skillsAndSTCreation(chara)
                             response.query_result.fulfillment_text = "Added {} to {}".format(param[param['properties']], param['properties'])
                         else:
                             response.query_result.fulfillment_text = "Previous {} {},".format(param['properties'], chara[param['properties'].lower()])
                             chara[param['properties'].lower()] = param[param['properties']]
+                            skillsAndSTCreation(chara)
+                            lifeCalculator(chara)
                             response.query_result.fulfillment_text += " changed to {}".format(param[param['properties']])
                     elif intent.split(" - ")[1] == "equipment":
                         chara['equipment'].append(param['equipment'])
                         response.query_result.fulfillment_text = "{} added to equipment.".format(param['equipment'])
                     elif intent.split(" - ")[1] == "stats":
                         response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()])
-                        chara['stats'][param['stats'].lower()] = param['number']
+                        chara['stats'][param['stats'].lower()] = int(param['number'])
+                        skillsAndSTCreation(chara)
+                        lifeCalculator(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "level":
-                        chara[param['properties'].lower()] = param['level']
+                        chara[param['properties'].lower()] = int(param['level'])
+                        skillsAndSTCreation(chara)
+                        lifeCalculator(chara)
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "races":
@@ -207,9 +223,12 @@ def editCharacter(response, username):
                     elif intent.split(" - ")[1] == "classes":
                         response.query_result.fulfillment_text = "Previous class {},".format(chara['classes'])
                         chara['classes'] = param['classes']
+                        skillsAndSTCreation(chara)
+                        lifeCalculator(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['classes'])
                     elif intent.split(" - ")[1] == "proficiencies":
                         chara['proficiencies'].append(param['proficiencies'])
+                        skillsAndSTCreation(chara)
                         response.query_result.fulfillment_text = "{} added to proficiencies.".format(param['proficiencies'])
                     elif intent.split(" - ")[1] == "name":
                         response.query_result.fulfillment_text = "Previous name {},".format(chara['name'])
@@ -218,7 +237,7 @@ def editCharacter(response, username):
                     with open('usersdata/{}.json'.format(username), 'w+') as fm:
                         json.dump(data, fm, indent=4)
                 else:
-                    response.query_result.fulfillment_text = "pass"
+                    response.query_result.fulfillment_text = "Sorry I can't do that."
                     pass
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
@@ -237,12 +256,21 @@ def rollData(response, username):
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
+                    break
         if chara is not None:
-            # TODO (only implemente throws of stats and saving throws)
             i = 0
             for pro in param['properties']:
                 if pro == "saving_throws":
                     i = 1
+                    break
+                elif pro == "skills":
+                    i = 2
+                    break
+                elif pro == "initiative":
+                    i = 3
+                    break
+                elif pro == "attack":
+                    i = 4
                     break
 
             if i == 0:
@@ -250,7 +278,7 @@ def rollData(response, username):
                 valor = int((chara['stats'][param['stats'].lower()]-10)/2)
 
                 response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
-            else:
+            elif i == 1:
                 dice = random.randrange(1, 20)
                 if dice >= 10 and dice != 20:
                     response.query_result.fulfillment_text += "\nRolled +1 saved point"
@@ -261,6 +289,31 @@ def rollData(response, username):
                     response.query_result.fulfillment_text += "\nRolled -{} failed points".format(val)
                 else:
                     response.query_result.fulfillment_text += "\nRolled 20 and you are saved!"
+            elif i == 2:
+                dice = random.randrange(1, 20)
+                valor = int((chara['skills'][param['skills'].lower()]-10)/2)
+                response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['skills'], dice + valor)
+            elif i == 3:
+                dice = random.randrange(1, 20)
+                valor = int((chara['stats']['dexterity']-10)/2)
+                response.query_result.fulfillment_text += "\nRolled: {}".format(dice + valor)
+            elif i == 4:
+                if param['equipment'] == "":
+                    dice = random.randrange(1, 20)
+                    valor = int((chara['stats']['strength']-10)/2)
+                    response.query_result.fulfillment_text += "\nRolled impact: {}".format(dice + valor)
+                    dice = 1
+                    valor = int((chara['stats']['strength']-10)/2)
+                    response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
+                else:
+                    dice = random.randrange(1, 20)
+                    valor = int((chara['stats']['strength']-10)/2)
+                    response.query_result.fulfillment_text += "\nRolled impact: {}".format(dice + valor)
+                    data = getInfoAPI("equipment", param['equipment'])
+                    dice = random.randrange(1, int(data['damage']['damage_dice'][2]))
+                    valor = int((chara['stats']['strength']-10)/2)
+                    response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
+
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])

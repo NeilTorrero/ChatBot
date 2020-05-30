@@ -2,6 +2,7 @@
     {
         "name": "robert",
         "level": 5.0,
+        "life": 0,
         "classes": "bard",
         "subclasses": "",
         "races": "elf",
@@ -43,6 +44,7 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [],
+        "traits": [],
         "background": "",
         "languages": [
             "common"
@@ -57,6 +59,7 @@
     {
         "name": "mark",
         "level": 20.0,
+        "life": 0,
         "classes": "rogue",
         "subclasses": "",
         "races": "human",
@@ -98,6 +101,7 @@
         },
         "proficiency-bonus": 0,
         "proficiencies": [],
+        "traits": [],
         "background": "",
         "languages": [
             "common"
@@ -110,12 +114,13 @@
     {
         "name": "Juan",
         "level": 10.0,
-        "classes": "wizard",
+        "life": 80,
+        "classes": "paladin",
         "subclasses": "",
         "races": "elf",
         "subraces": "",
         "stats": {
-            "strength": 5,
+            "strength": 8,
             "dexterity": 10,
             "constitution": 15,
             "intelligence": 15,
@@ -123,36 +128,35 @@
             "charisma": 17
         },
         "saving_throws": {
-            "strength": 0,
+            "strength": -1,
             "dexterity": 0,
-            "constitution": 0,
-            "intelligence": 0,
+            "constitution": 2,
+            "intelligence": 2,
             "wisdom": 0,
-            "charisma": 0
+            "charisma": 3
         },
         "skills": {
             "acrobatics": 0,
             "animal-handling": 0,
-            "arcana": 0,
-            "athletics": 0,
-            "deception": 0,
-            "history": 0,
+            "arcana": 2,
+            "athletics": -1,
+            "deception": 3,
+            "history": 2,
             "insight": 0,
-            "intimidation": 0,
+            "intimidation": 3,
             "medicine": 0,
-            "nature": 0,
+            "nature": 2,
             "perception": 0,
-            "performance": 0,
+            "performance": 3,
             "persuasion": 0,
-            "religion": 0,
+            "religion": 2,
             "sleight-of-hand": 0,
             "stealth": 0,
             "survival": 0
         },
         "proficiency-bonus": 0,
-        "proficiencies": [
-            ""
-        ],
+        "proficiencies": [],
+        "traits": [],
         "background": "",
         "languages": [
             "common"

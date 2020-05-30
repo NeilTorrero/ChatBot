@@ -24,10 +24,10 @@ pip install parse
 
 
 def getInfoAPI(type, name):
-    url = BASE_URL + '/api/' + type + '/' + name + '/'
+    url = "{}/api/{}/{}/".format(BASE_URL, type, name)
     response = requests.get(url)
     data = response.json()
-    print(data)
+    #print(data)
 
     return data
 

@@ -14,7 +14,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 def infoTreatment(response, username):
     print(response)
     intent = response.query_result.intent.display_name
-    # TODO: Buscar info en la API con lo que nos pida el usuario
     if intent == "Master-Mode - Monsters":
         # La informació dels monstres està reservada al master
         if response.query_result.action == "Master-Mode.Master-Mode-Monsters":

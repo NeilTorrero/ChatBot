@@ -2,6 +2,7 @@
     {
         "name": "antonio",
         "level": 2.0,
+        "life": 0,
         "classes": "paladin",
         "subclasses": "",
         "races": "human",
@@ -44,6 +45,7 @@
         "proficiency-bonus": 0,
         "proficiencies": [
         ],
+        "traits": [],
         "background": "",
         "languages": [
             "common"
@@ -59,6 +61,7 @@
     {
         "name": "alex",
         "level": 4.0,
+        "life": 0,
         "classes": "paladin",
         "subclasses": "",
         "races": "human",
@@ -101,6 +104,7 @@
         "proficiency-bonus": 0,
         "proficiencies": [
         ],
+        "traits": [],
         "background": "",
         "languages": [
             "common"
@@ -116,6 +120,7 @@
     {
         "name": "gustavo",
         "level": 69.0,
+        "life": 0,
         "classes": "paladin",
         "subclasses": "",
         "races": "elf",
@@ -158,6 +163,7 @@
         "proficiency-bonus": 0,
         "proficiencies": [
         ],
+        "traits": [],
         "background": "",
         "languages": [
             "common"
@@ -173,6 +179,7 @@
     {
         "name": "pepe",
         "level": 6.0,
+        "life": 0,
         "classes": "paladin",
         "subclasses": "",
         "races": "elf",
@@ -215,6 +222,7 @@
         "proficiency-bonus": 0,
         "proficiencies": [
         ],
+        "traits": [],
         "background": "",
         "languages": [
             "common"
@@ -230,6 +238,7 @@
     {
         "name": "pepeTheFrog",
         "level": 69.0,
+        "life": 0,
         "classes": "paladin",
         "subclasses": "",
         "races": "elf",
@@ -272,6 +281,7 @@
         "proficiency-bonus": 0,
         "proficiencies": [
         ],
+        "traits": [],
         "background": "",
         "languages": [
             "common"
