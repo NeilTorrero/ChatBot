@@ -1,7 +1,7 @@
 from tools.API import getInfoAPI
 
 
-def skillsAndSTCreation(stats, saving_throws, skills, className, proficiencyBonus):
+def skillsAndSTCreation(stats, saving_throws, skills, className, level):
     skill2Stat = {
         "acrobatics": "dexterity",
         "animal-handling": "wisdom",
@@ -21,16 +21,14 @@ def skillsAndSTCreation(stats, saving_throws, skills, className, proficiencyBonu
         "survival": "wisdom"
     }
 
-    ST2stat = {
-        "STR" : "strength",
-        "DEX" : "dexterity"
-    }
 
     for skill in list(skill2Stat.keys()):
         skills[skill] = (stats[skill2Stat[skill]] - 10) / 2
 
 
     data = getInfoAPI("classes", className)
+    dataLevel = getInfoAPI("classes/"+className+"/levels", level)
+    proficiencyBonus = dataLevel["prof_bonus"]
 
     for st in list(saving_throws.keys()):
         if data["saving_throws"][0]["name"][:3].lower() == st[:3].lower() \
