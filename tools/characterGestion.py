@@ -22,7 +22,7 @@ def createCharacter(response, username):
                             template = json.load(temp)
                             chara = template[0]
                     chara['name'] = param['name']
-                    chara['level'] = param['level']
+                    chara['level'] = int(param['level'])
                     chara['races'] = param['races']
                     chara['subraces'] = param['subraces']
                     chara['classes'] = param['classes']
@@ -43,7 +43,7 @@ def createCharacter(response, username):
                 data = json.load(f)
                 chara = data[0]
                 chara['name'] = param['name']
-                chara['level'] = param['level']
+                chara['level'] = int(param['level'])
                 chara['races'] = param['races']
                 chara['subraces'] = param['subraces']
                 chara['classes'] = param['classes']
@@ -71,7 +71,7 @@ def addCharacterStats(response, username):
             # TODO(accepts multiple stats but only one value)
             # If wants multiple value, change in dialoglow to values to list and control here the order of assigment
             for stat in param['stats'].values:
-                chara['stats'][stat.string_value.lower()] = param['value']
+                chara['stats'][stat.string_value.lower()] = int(param['value'])
             nextStat = ""
             for stat in list(chara['stats'].keys()):
                 if chara['stats'][stat] == 0 and nextStat == "":
@@ -100,7 +100,7 @@ def rollCharacterStats(response, username):
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
         for stat in list(chara['stats'].keys()):
-            chara['stats'][stat] = random.randrange(3, 18)
+            chara['stats'][stat] = int(random.randrange(3, 18))
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
         skillsAndSTCreation(chara)
     with open('usersdata/{}.json'.format(username), 'w+') as f:
@@ -181,11 +181,11 @@ def editCharacter(response, username):
                         response.query_result.fulfillment_text = "{} added to equipment.".format(param['equipment'])
                     elif intent.split(" - ")[1] == "stats":
                         response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()])
-                        chara['stats'][param['stats'].lower()] = param['number']
+                        chara['stats'][param['stats'].lower()] = int(param['number'])
                         skillsAndSTCreation(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "level":
-                        chara[param['properties'].lower()] = param['level']
+                        chara[param['properties'].lower()] = int(param['level'])
                         skillsAndSTCreation(chara)
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
