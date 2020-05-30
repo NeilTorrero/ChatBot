@@ -259,3 +259,64 @@ def write_class_properties(data, out, param, level):
     else:
         out = "Looks like this class doesn't have any of these!"
     return out
+
+def write_trait_properties(data, out, param):
+    try:
+        index = param["properties"].lower()
+        print(index)
+        info = data[index]
+        for a in param["properties"].split("_"):
+            out += " " + a.lower()
+    except:
+        out = "Looks like this trait doesn't have any of these!"
+        return out
+    if info:
+        if isinstance(info[0], dict):
+            if len(info) > 1:
+                out += " are: "
+            else:
+                out += " is: "
+            counter = 0
+            for i in info:
+                if counter == len(info) - 1:
+                    out += i["name"]
+                else:
+                    out += i["name"] + ", "
+                counter += 1
+        else:
+            out += " is: " + info
+    else:
+        out = "Looks like this trait doesn't have any of these!"
+    return out
+
+
+def write_features_properties(data, out, param):
+    try:
+        index = param["properties"].lower()
+        print(index)
+        info = data[index]
+        for a in param["properties"].split("_"):
+            out += " " + a.lower()
+    except:
+        out = "Looks like this feature doesn't have any of these!"
+        return out
+    if info:
+        if isinstance(info, dict):
+            out += " is: " + info["name"]
+        elif isinstance(info, list):
+            if len(info) > 1:
+                out += " are: "
+            else:
+                out += " is: "
+            counter = 0
+            for i in info:
+                if counter == len(info) - 1:
+                    out += i
+                else:
+                    out += i + ", "
+                counter += 1
+        else:
+            out += " is: " + info
+    else:
+        out = "Looks like this feature doesn't have any of these!"
+    return out
