@@ -301,7 +301,7 @@ def rollData(response, username):
                     valor = chara['stats']['strength']
                     response.query_result.fulfillment_text += "\nRolled impact: {}".format(dice + valor)
                     data = getInfoAPI("equipment", param['equipment'])
-                    dice = data['damage']['damage_dice']
+                    dice = data['damage']['damage_dice'][2]
                     valor = chara['stats']['strength']
                     response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
 
