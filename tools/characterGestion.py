@@ -71,10 +71,15 @@ def addCharacterStats(response, username):
                 chara = chars
                 break
         try:
-            # TODO(accepts multiple stats but only one value)
-            # If wants multiple value, change in dialoglow to values to list and control here the order of assigment
+            num = []
+            for val in param['value'].values:
+                num.append(val.number_value)
+            i = 0
             for stat in param['stats'].values:
-                chara['stats'][stat.string_value.lower()] = int(param['value'])
+                chara['stats'][stat.string_value.lower()] = num[i]
+                i += 1
+                if i >= len(num):
+                    i -= 1
             nextStat = ""
             for stat in list(chara['stats'].keys()):
                 if chara['stats'][stat] == 0 and nextStat == "":
@@ -88,7 +93,7 @@ def addCharacterStats(response, username):
                 lifeCalculator(chara)
                 response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
-            response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
+            pass
     with open('usersdata/{}.json'.format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 

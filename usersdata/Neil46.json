@@ -1,5 +1,60 @@
 [
     {
+        "name": "pepe",
+        "level": 4,
+        "life": 0,
+        "classes": "bard",
+        "subclasses": "",
+        "races": "elf",
+        "subraces": "",
+        "stats": {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 4.0,
+            "wisdom": 4.0,
+            "charisma": 0
+        },
+        "saving_throws": {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 0
+        },
+        "skills": {
+            "acrobatics": 0,
+            "animal-handling": 0,
+            "arcana": 0,
+            "athletics": 0,
+            "deception": 0,
+            "history": 0,
+            "insight": 0,
+            "intimidation": 0,
+            "medicine": 0,
+            "nature": 0,
+            "perception": 0,
+            "performance": 0,
+            "persuasion": 0,
+            "religion": 0,
+            "sleight-of-hand": 0,
+            "stealth": 0,
+            "survival": 0
+        },
+        "proficiency-bonus": 0,
+        "proficiencies": [],
+        "traits": [],
+        "background": "",
+        "languages": [
+            "common"
+        ],
+        "inventory": [],
+        "equipment": [],
+        "description": "",
+        "spells": []
+    },
+    {
         "name": "robert",
         "level": 5.0,
         "life": 0,

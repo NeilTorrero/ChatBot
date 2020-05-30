@@ -78,6 +78,7 @@ def infoTreatment(response, username):
         if "yes" in response.query_result.query_text:
             rollCharacterStats(response, username)
         elif "no" in response.query_result.query_text:
+            response.query_result.fulfillment_text = "Ok, then tell me the"
             addCharacterStats(response, username)
         elif todo == "combat":
             rollCharacterStats(response, username)
