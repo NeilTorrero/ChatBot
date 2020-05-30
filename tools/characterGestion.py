@@ -257,13 +257,15 @@ def rollData(response, username):
                 if pro == "saving_throws":
                     i = 1
                     break
+                elif pro == "skills":
+                    i = 2
 
             if i == 0:
                 dice = random.randrange(1, 20)
                 valor = int((chara['stats'][param['stats'].lower()]-10)/2)
 
                 response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['stats'], dice + valor)
-            else:
+            elif i == 1:
                 dice = random.randrange(1, 20)
                 if dice >= 10 and dice != 20:
                     response.query_result.fulfillment_text += "\nRolled +1 saved point"
@@ -274,6 +276,10 @@ def rollData(response, username):
                     response.query_result.fulfillment_text += "\nRolled -{} failed points".format(val)
                 else:
                     response.query_result.fulfillment_text += "\nRolled 20 and you are saved!"
+            elif i == 2:
+                dice = random.randrange(1, 20)
+                valor = chara['skills'][param['skills'].lower()]
+                response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['skills'], dice + valor)
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
