@@ -163,11 +163,8 @@ def editCharacter(response, username):
             intent = response.query_result.intent.display_name
             print(intent)
             if intent != "Modify":
-                # TODO(spells, inventory, languages, proficiencies not considered)
                 if intent.split(" - ")[0] == "Modify":
                     if intent.split(" - ")[1] == "properties":
-                        print(param['properties'])
-                        print(type(chara[param['properties']]))
                         if isinstance(chara[param['properties'].lower()], list):
                             chara[param['properties'].lower()].append(param[param['properties']])
                             response.query_result.fulfillment_text = "Added {} to {}".format(param[param['properties']], param['properties'])
@@ -176,7 +173,6 @@ def editCharacter(response, username):
                             chara[param['properties'].lower()] = param[param['properties']]
                             response.query_result.fulfillment_text += " changed to {}".format(param[param['properties']])
                     elif intent.split(" - ")[1] == "equipment":
-                        print("edit equipment")
                         chara['equipment'].append(param['equipment'])
                         response.query_result.fulfillment_text = "{} added to equipment.".format(param['equipment'])
                     elif intent.split(" - ")[1] == "stats":
@@ -188,8 +184,9 @@ def editCharacter(response, username):
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "races":
-                        print("edit on dynamic info")
-                        response.query_result.fulfillment_text = "races"
+                        response.query_result.fulfillment_text = "Previous race {},".format(chara['races'])
+                        chara['races'] = param['races']
+                        response.query_result.fulfillment_text += " changed to {}".format(param['races'])
                     elif intent.split(" - ")[1] == "spells":
                         chara['spells'].append(param['spells'])
                         response.query_result.fulfillment_text = "{} added to spells.".format(param['spells'])
