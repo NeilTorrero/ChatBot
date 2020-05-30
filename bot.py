@@ -61,15 +61,15 @@ def infoTreatment(response, username):
             response.query_result.fulfillment_text += "\n" + write_spell_properties(data, out, param)
         elif response.query_result.action.split("-")[1] == "Traits":
             param = response.query_result.parameters
-            features = param["features"]
-            data = getInfoAPI("features", features)
+            traits = param["traits"]
+            data = getInfoAPI("traits", traits)
             out = "This Trait's "
             response.query_result.fulfillment_text += write_trait_properties(data, out, param)
         elif response.query_result.action.split("-")[1] == "Features":
             param = response.query_result.parameters
-            traits = param["traits"]
-            data = getInfoAPI("traits", traits)
-            out = "This Trait's "
+            features = param["features"]
+            data = getInfoAPI("features", features)
+            out = "This Features's "
             response.query_result.fulfillment_text += write_features_properties(data, out, param)
 
     elif intent == "create - stats":
