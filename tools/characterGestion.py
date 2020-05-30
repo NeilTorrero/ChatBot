@@ -1,7 +1,7 @@
 import json
 import os
 import random
-from tools.skillsAndSt import *
+from tools.autoProperties import *
 
 def createCharacter(response, username):
     param = response.query_result.parameters
@@ -82,6 +82,7 @@ def addCharacterStats(response, username):
                                                                         nextStat)
             else:
                 skillsAndSTCreation(chara)
+                lifeCalculator(chara)
                 response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
             response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
@@ -103,6 +104,7 @@ def rollCharacterStats(response, username):
             chara['stats'][stat] = int(random.randrange(3, 18))
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
         skillsAndSTCreation(chara)
+        lifeCalculator(chara)
     with open('usersdata/{}.json'.format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
@@ -174,6 +176,7 @@ def editCharacter(response, username):
                             response.query_result.fulfillment_text = "Previous {} {},".format(param['properties'], chara[param['properties'].lower()])
                             chara[param['properties'].lower()] = param[param['properties']]
                             skillsAndSTCreation(chara)
+                            lifeCalculator(chara)
                             response.query_result.fulfillment_text += " changed to {}".format(param[param['properties']])
                     elif intent.split(" - ")[1] == "equipment":
                         chara['equipment'].append(param['equipment'])
@@ -182,10 +185,12 @@ def editCharacter(response, username):
                         response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()])
                         chara['stats'][param['stats'].lower()] = int(param['number'])
                         skillsAndSTCreation(chara)
+                        lifeCalculator(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "level":
                         chara[param['properties'].lower()] = int(param['level'])
                         skillsAndSTCreation(chara)
+                        lifeCalculator(chara)
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "races":
@@ -213,6 +218,7 @@ def editCharacter(response, username):
                         response.query_result.fulfillment_text = "Previous class {},".format(chara['classes'])
                         chara['classes'] = param['classes']
                         skillsAndSTCreation(chara)
+                        lifeCalculator(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['classes'])
                     elif intent.split(" - ")[1] == "proficiencies":
                         chara['proficiencies'].append(param['proficiencies'])

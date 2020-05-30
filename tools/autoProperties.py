@@ -1,3 +1,5 @@
+import random
+
 from tools.API import getInfoAPI
 
 
@@ -38,3 +40,14 @@ def skillsAndSTCreation(chara):
                 or data["saving_throws"][1]["name"][:3].lower() == st[:3]:
             saving_throws[st] = int(((stats[st] - 10) / 2)) + proficiencyBonus
         saving_throws[st] = int((stats[st] - 10) / 2)
+
+
+def lifeCalculator(chara):
+    con = chara['stats']['constitution']
+    className = chara['classes']
+    data = getInfoAPI("classes", className)
+    hit_dice = data['hit_die']
+    life = hit_dice + con
+    for i in range(1, chara['level']):
+        life += random.randrange(1, hit_dice) + con
+    chara['life'] = int(life)
