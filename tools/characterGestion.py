@@ -77,12 +77,16 @@ def addCharacterStats(response, username):
                 chara = chars
                 break
         try:
+            response.query_result.fulfillment_text = ""
             num = []
             for val in param['value'].values:
                 num.append(val.number_value)
             i = 0
             for stat in param['stats'].values:
                 chara['stats'][stat.string_value.lower()] = num[i]
+                if num[i] > 20:
+                    chara['stats'][stat.string_value.lower()] = 20
+                    response.query_result.fulfillment_text += "\nThe {} was assigned 20 being that the maximum.\n".format(stat.string_value)
                 i += 1
                 if i >= len(num):
                     i -= 1
@@ -92,12 +96,12 @@ def addCharacterStats(response, username):
                     print(nextStat)
                     nextStat = stat
             if nextStat != "":
-                response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,
+                response.query_result.fulfillment_text += "{} {}".format(response.query_result.fulfillment_text,
                                                                         nextStat)
             else:
                 skillsAndSTCreation(chara)
                 lifeCalculator(chara)
-                response.query_result.fulfillment_text = "That's all the stats introduced!"
+                response.query_result.fulfillment_text += "That's all the stats introduced!"
         except:
             pass
     with open('usersdata/{}.json'.format(username), 'w+') as f:
@@ -201,6 +205,8 @@ def editCharacter(response, username):
                     elif intent.split(" - ")[1] == "stats":
                         response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()])
                         chara['stats'][param['stats'].lower()] = int(param['number'])
+                        if chara['stats'][param['stats'].lower()] > 20:
+                            chara['stats'][param['stats'].lower()] = 20
                         skillsAndSTCreation(chara)
                         lifeCalculator(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
@@ -208,7 +214,6 @@ def editCharacter(response, username):
                         chara[param['properties'].lower()] = int(param['level'])
                         if chara['level'] > 20:
                             chara['level'] = 20
-                            response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
                         skillsAndSTCreation(chara)
                         lifeCalculator(chara)
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
