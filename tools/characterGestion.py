@@ -187,10 +187,37 @@ def editCharacter(response, username):
                         chara[param['properties'].lower()] = param['level']
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
-                    elif intent.split(" - ")[1] == "raw":
-                        # TODO (add info that does no have the properties parameter i only has the name of what to edit)
+                    elif intent.split(" - ")[1] == "races":
                         print("edit on dynamic info")
-                        response.query_result.fulfillment_text = "raw"
+                        response.query_result.fulfillment_text = "races"
+                    elif intent.split(" - ")[1] == "spells":
+                        chara['spells'].append(param['spells'])
+                        response.query_result.fulfillment_text = "{} added to spells.".format(param['spells'])
+                    elif intent.split(" - ")[1] == "subclasses":
+                        response.query_result.fulfillment_text = "Previous subclass {},".format(chara['subclasses'])
+                        chara['subclasses'] = param['subclasses']
+                        response.query_result.fulfillment_text += " changed to {}".format(param['subclasses'])
+                    elif intent.split(" - ")[1] == "subraces":
+                        response.query_result.fulfillment_text = "Previous subrace {},".format(chara['subraces'])
+                        chara['subraces'] = param['subraces']
+                        response.query_result.fulfillment_text += " changed to {}".format(param['subraces'])
+                    elif intent.split(" - ")[1] == "inventory":
+                        chara['inventory'].append(param['inventory'])
+                        response.query_result.fulfillment_text = "{} added to inventory.".format(param['inventory'])
+                    elif intent.split(" - ")[1] == "languages":
+                        chara['languages'].append(param['languages'])
+                        response.query_result.fulfillment_text = "{} added to languages.".format(param['languages'])
+                    elif intent.split(" - ")[1] == "classes":
+                        response.query_result.fulfillment_text = "Previous class {},".format(chara['classes'])
+                        chara['classes'] = param['classes']
+                        response.query_result.fulfillment_text += " changed to {}".format(param['classes'])
+                    elif intent.split(" - ")[1] == "proficiencies":
+                        chara['proficiencies'].append(param['proficiencies'])
+                        response.query_result.fulfillment_text = "{} added to proficiencies.".format(param['proficiencies'])
+                    elif intent.split(" - ")[1] == "name":
+                        response.query_result.fulfillment_text = "Previous name {},".format(chara['name'])
+                        chara['name'] = param['newname']
+                        response.query_result.fulfillment_text += " changed to {}".format(param['newname'])
                     with open('usersdata/{}.json'.format(username), 'w+') as fm:
                         json.dump(data, fm, indent=4)
                 else:
