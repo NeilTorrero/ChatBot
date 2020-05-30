@@ -261,6 +261,8 @@ def rollData(response, username):
                     i = 2
                 elif pro == "initiative":
                     i = 3
+                elif pro == "attack":
+                    i = 4
 
             if i == 0:
                 dice = random.randrange(1, 20)
@@ -286,6 +288,23 @@ def rollData(response, username):
                 dice = random.randrange(1, 20)
                 valor = chara['stats']['dexterity']
                 response.query_result.fulfillment_text += "\nRolled: {}".format(dice + valor)
+            elif i == 4:
+                if param['equipment'] == "":
+                    dice = random.randrange(1, 20)
+                    valor = chara['stats']['strength']
+                    response.query_result.fulfillment_text += "\nRolled impact: {}".format(dice + valor)
+                    dice = 1
+                    valor = chara['stats']['strength']
+                    response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
+                else:
+                    dice = random.randrange(1, 20)
+                    valor = chara['stats']['strength']
+                    response.query_result.fulfillment_text += "\nRolled impact: {}".format(dice + valor)
+                    data = getInfoAPI("equipment", param['equipment'])
+                    dice = data['damage']['damage_dice']
+                    valor = chara['stats']['strength']
+                    response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
+
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
