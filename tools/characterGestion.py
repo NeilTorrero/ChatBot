@@ -251,7 +251,6 @@ def rollData(response, username):
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
         if chara is not None:
-            # TODO (only implemente throws of stats and saving throws)
             i = 0
             for pro in param['properties']:
                 if pro == "saving_throws":
@@ -282,27 +281,27 @@ def rollData(response, username):
                     response.query_result.fulfillment_text += "\nRolled 20 and you are saved!"
             elif i == 2:
                 dice = random.randrange(1, 20)
-                valor = chara['skills'][param['skills'].lower()]
+                valor = int((chara['skills'][param['skills'].lower()]-10)/2)
                 response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['skills'], dice + valor)
             elif i == 3:
                 dice = random.randrange(1, 20)
-                valor = chara['stats']['dexterity']
+                valor = int((chara['stats']['dexterity']-10)/2)
                 response.query_result.fulfillment_text += "\nRolled: {}".format(dice + valor)
             elif i == 4:
                 if param['equipment'] == "":
                     dice = random.randrange(1, 20)
-                    valor = chara['stats']['strength']
+                    valor = int((chara['stats']['strength']-10)/2)
                     response.query_result.fulfillment_text += "\nRolled impact: {}".format(dice + valor)
                     dice = 1
-                    valor = chara['stats']['strength']
+                    valor = int((chara['stats']['strength']-10)/2)
                     response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
                 else:
                     dice = random.randrange(1, 20)
-                    valor = chara['stats']['strength']
+                    valor = int((chara['stats']['strength']-10)/2)
                     response.query_result.fulfillment_text += "\nRolled impact: {}".format(dice + valor)
                     data = getInfoAPI("equipment", param['equipment'])
-                    dice = data['damage']['damage_dice'][2]
-                    valor = chara['stats']['strength']
+                    dice = random.randrange(1, int(data['damage']['damage_dice'][2]))
+                    valor = int((chara['stats']['strength']-10)/2)
                     response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
 
         else:
