@@ -179,78 +179,83 @@ def write_spell_properties(data, out, param):
 def write_class_properties(data, out, param, level):
     try:
         index = param["properties"].lower()
+        print(index)
         info = data[index]
         for a in param["properties"].split("_"):
-            out += "" + a.lower()
-        if info:
-            if isinstance(info, dict):
-                if index == "starting_equipment":
-                    dataAux = getInfoAPI("equipment", info["url"])
-                    out += "\n You will surely get: "
-                    counter = 0
-                    for item in dataAux["starting_equipment"]:
-                        if counter == len(dataAux["starting_equipment"]) - 1:
-                            out += item["item"]["name"]
-                        else:
-                            out += item["item"]["name"] + ", "
-
-                    pass
-
-
-            elif isinstance(info, list):
-                if index == "proficiency":
-                    #proficiency_choices
-                    #skill
-                    skill_choices = data["proficiency_choices"][0]
-                    out += "\n" + "Among the skills to choose, you have to choose" \
-                           + skill_choices["choose"] + " from:"
-                    counter = 0
-                    for skill in skill_choices["from"]:
-                        if counter == len(skill_choices["from"])-1:
-                            out += skill["name"].split("Skill: ")[0]
-                        else:
-                            out += skill["name"].split("Skill: ")[0] + ", "
-                    #tool/instruments
-                    if data["proficiency_choices"][1]:
-                        other_choices = data["proficiency_choices"][1]
-                        out += "\n" + "Among other things to choose, you have to choose" \
-                               + other_choices["choose"] + " from:"
-                        counter = 0
-                        for other in other_choices["from"]:
-                            if counter == len(other_choices["from"])-1:
-                                out += other["name"]
-                            else:
-                                out += other["name"] + ", "
-                    #Armor and weapon
-                    out += "\n" + "In regard of item proficiencies, you have..."
-                    counter = 0
-                    for i in data["proficiencies"]:
-                        if counter == len(data["proficiencies"]) - 1:
-                            out += i["name"]
-                        else:
-                            out += i["name"]+ ", "
-                    #saving throws
-                    out += "\n" + "And you have this saving throws you're proficient in: "
-                    counter = 0
-                    for i in data["saving_throw"]:
-                        if counter == len(data["saving_throw"]) - 1:
-                            out += i["name"]
-                        else:
-                            out += i["name"]+ ", "
-                    pass
-                else:
-                    #Subclasses
-                    counter = 0
-                    for sub in info:
-                        if counter == len(info) - 1:
-                            out += sub["name"]
-                        else:
-                            out += sub["name"] + ", "
-            else:
-                out += " is: " + str(info)
-        else:
-            out = "Looks like this class doesn't have any of these!"
-        return out
+            out += " " + a.lower()
     except:
         out = "Looks like this class doesn't have any of these!"
         return out
+    if info:
+        if isinstance(info, dict):
+            if index == "starting_equipment":
+                dataAux = getInfoAPI("starting-equipment", info["url"].split("/api/starting-equipment/")[1])
+
+                out += "\n You will surely get: "
+                counter = 0
+                for item in dataAux["starting_equipment"]:
+                    if counter == len(dataAux["starting_equipment"]) - 1:
+                        out += item["item"]["name"]
+                    else:
+                        out += item["item"]["name"] + ", "
+
+        elif isinstance(info, list):
+            if index == "proficiency" or index == "proficiency_choices" or index == "proficiencies":
+                out += " are these:"
+                #proficiency_choices
+                #skill
+                skill_choices = data["proficiency_choices"][0]
+                out += "\n \n" + "Among the skills to choose, you have to choose " \
+                       + str(skill_choices["choose"]) + " from: "
+                counter = 0
+                for skill in skill_choices["from"]:
+                    if counter == len(skill_choices["from"])-1:
+                        out += skill["name"].split("Skill: ")[1]
+                    else:
+                        out += skill["name"].split("Skill: ")[1] + ", "
+                    counter += 1
+                #tool/instruments
+                if data["proficiency_choices"][1]:
+                    other_choices = data["proficiency_choices"][1]
+                    out += "\n \n" + "Among other things to choose, you have to choose" \
+                           + str(other_choices["choose"]) + " from: "
+                    counter = 0
+                    for other in other_choices["from"]:
+                        if counter == len(other_choices["from"])-1:
+                            out += other["name"]
+                        else:
+                            out += other["name"] + ", "
+                        counter += 1
+                #Armor and weapon
+                out += "\n \n" + "In regard of item proficiencies, you have... "
+                counter = 0
+                for i in data["proficiencies"]:
+                    if counter == len(data["proficiencies"]) - 1:
+                        out += i["name"]
+                    else:
+                        out += i["name"]+ ", "
+                    counter += 1
+                #saving throws
+                out += "\n \n" + "And you have this saving throws you're proficient in: "
+                counter = 0
+                for i in data["saving_throws"]:
+                    if counter == len(data["saving_throws"]) - 1:
+                        out += i["name"]
+                    else:
+                        out += i["name"]+ ", "
+                    counter += 1
+                pass
+            else:
+                #Subclasses
+                out += " are: "
+                counter = 0
+                for sub in info:
+                    if counter == len(info) - 1:
+                        out += sub["name"]
+                    else:
+                        out += sub["name"] + ", "
+        else:
+            out += " is: d" + str(info)
+    else:
+        out = "Looks like this class doesn't have any of these!"
+    return out
