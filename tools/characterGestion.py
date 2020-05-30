@@ -163,7 +163,7 @@ def editCharacter(response, username):
             intent = response.query_result.intent.display_name
             print(intent)
             if intent != "Modify":
-                # TODO(spells, skills, saving throws, inventory, languages, proficiencies not considered)
+                # TODO(spells, inventory, languages, proficiencies not considered)
                 if intent.split(" - ")[0] == "Modify":
                     if intent.split(" - ")[1] == "properties":
                         print(param['properties'])
@@ -171,9 +171,9 @@ def editCharacter(response, username):
                         chara[param['properties'].lower()] = param[param['properties']]
                         response.query_result.fulfillment_text = "properties"
                     elif intent.split(" - ")[1] == "equipment":
-                        # TODO (add equipment)
                         print("edit equipment")
-                        response.query_result.fulfillment_text = "equip"
+                        chara['equipment'].append(param['equipment'])
+                        response.query_result.fulfillment_text = "{} added to equipment.".format(param['equipment'])
                     elif intent.split(" - ")[1] == "stats":
                         response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()])
                         chara['stats'][param['stats'].lower()] = param['number']
