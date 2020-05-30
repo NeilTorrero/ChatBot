@@ -11,7 +11,8 @@ dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
-def infoTreatment(response, username):
+def infoTreatment(response, update):
+    username = update.message.chat.username
     print(response)
     intent = response.query_result.intent.display_name
     if intent == "Master-Mode - Monsters":
@@ -75,9 +76,12 @@ def infoTreatment(response, username):
     elif intent == "create - stats":
         print("Adding stats")
         todo = response.query_result.parameters['cosesafer']
-        if "yes" in response.query_result.query_text:
+        if "yes" in response.query_result.query_text.lower():
+            dialogflow("I want you to roll my stats", update.message.chat_id)
+            response.query_result.fulfillment_text = "Perfect I will roll them for you."
             rollCharacterStats(response, username)
-        elif "no" in response.query_result.query_text:
+        elif "no" in response.query_result.query_text.lower():
+            dialogflow("I want to introduce my stats manually", update.message.chat_id)
             response.query_result.fulfillment_text = "Ok, then tell me the"
             addCharacterStats(response, username)
         elif todo == "combat":
@@ -110,7 +114,7 @@ def textMessage(update, context):
     # Sends user input to dialogflow and recieves response
     response = dialogflow(update.message.text, update.message.chat_id)
     # Call to python database gestion
-    infoTreatment(response, update.message.chat.username)
+    infoTreatment(response, update)
     # Telegram bot writes response of dialogflow
     context.bot.send_message(chat_id=update.message.chat_id, text=response.query_result.fulfillment_text)
 
