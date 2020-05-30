@@ -38,38 +38,38 @@ def infoTreatment(response, username):
             except:
                 level = 0
             data = getInfoAPI("classes", _class)
-            out = "This class' "
+            out = "\nThis class' "
             response.query_result.fulfillment_text += "\n" + write_class_properties(data, out, param, level)
 
         elif response.query_result.action.split("-")[1] == "Race":
             param = response.query_result.parameters
             race = param["races"]
             data = getInfoAPI("races", race)
-            out = "This race's "
+            out = "\nThis race's "
             response.query_result.fulfillment_text += "\n" + write_race_properties(data, out, param)
         elif response.query_result.action.split("-")[1] == "Equipment":
             param = response.query_result.parameters
             equipment = param["equipment"]
             data = getInfoAPI("equipment", equipment)
-            out = "This equipment's "
+            out = "\nThis equipment's "
             response.query_result.fulfillment_text += "\n" + write_equipment_properties(data, out, param)
         elif response.query_result.action.split("-")[1] == "Spells":
             param = response.query_result.parameters
             spells = param["spells"]
             data = getInfoAPI("spells", spells)
-            out = "This Spells' "
+            out = "\nThis Spells' "
             response.query_result.fulfillment_text += "\n" + write_spell_properties(data, out, param)
         elif response.query_result.action.split("-")[1] == "Traits":
             param = response.query_result.parameters
             traits = param["traits"]
             data = getInfoAPI("traits", traits)
-            out = "This Trait's "
+            out = "\nThis Trait's "
             response.query_result.fulfillment_text += write_trait_properties(data, out, param)
         elif response.query_result.action.split("-")[1] == "Features":
             param = response.query_result.parameters
             features = param["features"]
             data = getInfoAPI("features", features)
-            out = "This Features's "
+            out = "\nThis Features's "
             response.query_result.fulfillment_text += write_features_properties(data, out, param)
 
     elif intent == "create - stats":
@@ -102,7 +102,7 @@ def infoTreatment(response, username):
 
 
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hello, I'm Mattbot, your DnD 5th edition helper! What will you need for today's game?")
 
 
 def textMessage(update, context):

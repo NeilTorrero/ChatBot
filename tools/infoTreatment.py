@@ -118,7 +118,7 @@ def write_equipment_properties(data, out, param):
             out = "Looks like this equipment doesn't have any of these!"
         return out
     except:
-        out = "Looks like this equipment doesn't have any of these!"
+        out = "\nLooks like this equipment doesn't have any of these!"
         return out
 
 
@@ -264,11 +264,12 @@ def write_trait_properties(data, out, param):
     try:
         index = param["properties"].lower()
         print(index)
+        if index == "description": index = "desc"
         info = data[index]
         for a in param["properties"].split("_"):
             out += " " + a.lower()
     except:
-        out = "Looks like this trait doesn't have any of these!"
+        out = "\nLooks like this trait doesn't have any of these!"
         return out
     if info:
         if isinstance(info[0], dict):
@@ -284,9 +285,16 @@ def write_trait_properties(data, out, param):
                     out += i["name"] + ", "
                 counter += 1
         else:
-            out += " is: " + info
+            out += " is: "
+            counter = 0
+            for i in info:
+                if counter == len(info) - 1:
+                    out += i
+                else:
+                    out += i + "\n "
+                counter += 1
     else:
-        out = "Looks like this trait doesn't have any of these!"
+        out = "\nLooks like this trait doesn't have any of these!"
     return out
 
 
@@ -294,11 +302,12 @@ def write_features_properties(data, out, param):
     try:
         index = param["properties"].lower()
         print(index)
+        if index == "description": index = "desc"
         info = data[index]
         for a in param["properties"].split("_"):
             out += " " + a.lower()
     except:
-        out = "Looks like this feature doesn't have any of these!"
+        out = "\n Looks like this feature doesn't have any of these!"
         return out
     if info:
         if isinstance(info, dict):
