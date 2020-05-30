@@ -42,7 +42,7 @@ def infoTreatment(response, username):
             out = "This class' "
             response.query_result.fulfillment_text += "\n" + write_class_properties(data, out, param, level)
 
-        elif(response.query_result.action.split("-")[1] == "Race"):
+        elif response.query_result.action.split("-")[1] == "Race":
             param = response.query_result.parameters
             race = param["races"]
             data = getInfoAPI("races", race)
@@ -61,33 +61,29 @@ def infoTreatment(response, username):
             out = "This Spells' "
             response.query_result.fulfillment_text += "\n" + write_spell_properties(data, out, param)
             pass
-    # elif response.query_result.intent.display_name == "create":
-    #    print("creating")
     elif intent == "create - stats":
         print("Adding stats")
         todo = response.query_result.parameters['cosesafer']
-        if todo == "combat":
+        if "yes" in response.query_result.query_text:
+            rollCharacterStats(response, username)
+        elif "no" in response.query_result.query_text:
+            addCharacterStats(response, username)
+        elif todo == "combat":
             rollCharacterStats(response, username)
         else:
             addCharacterStats(response, username)
     else:
         try:
-            todo = response.query_result.parameters['cosesafer']
-            print(todo)
-            if todo == "create":
+            if intent == "create":
                 print("create")
                 createCharacter(response, username)
-            if todo == "edit":
+            if "Modify" in intent:
                 print("edit")
                 editCharacter(response, username)
-            if todo == "info":
-                print("info")  # diferenciar por intent la info de character con info en general
-                if intent == "Info":
-                    print("info of d&d")
-                elif intent == "InfoCharacter":
-                    print("info of users characters")
-                    infoCharacter(response, username)
-            if todo == "combat":
+            if intent == "InfoCharacter":
+                print("info of users characters")
+                infoCharacter(response, username)
+            if intent == "Rolls":
                 print("combat")
                 rollData(response, username)
         except ValueError:

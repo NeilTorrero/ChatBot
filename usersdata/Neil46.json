@@ -1,11 +1,11 @@
 [
     {
-        "name": "Robert",
+        "name": "robert",
         "level": 5.0,
-        "class": "bard",
-        "subclass": "",
-        "race": "elf",
-        "subrace": "",
+        "classes": "bard",
+        "subclasses": "",
+        "races": "elf",
+        "subraces": "",
         "stats": {
             "strength": 13,
             "dexterity": 8,
@@ -23,61 +23,47 @@
             "charisma": 0
         },
         "skills": {
-            "Acrobatics": 0,
-            "Animal Handling": 0,
-            "Arcana": 0,
-            "Athletics": 0,
-            "Deception": 0,
-            "History": 0,
-            "Insight": 0,
-            "Intimidation": 0,
-            "Medicine": 0,
-            "Nature": 0,
-            "Perception": 0,
-            "Performance": 0,
-            "Persuasion": 0,
-            "Religion": 0,
-            "Sleight of Hand": 0,
-            "Stealth": 0,
-            "Survival": 0
+            "acrobatics": 0,
+            "animal-handling": 0,
+            "arcana": 0,
+            "athletics": 0,
+            "deception": 0,
+            "history": 0,
+            "insight": 0,
+            "intimidation": 0,
+            "medicine": 0,
+            "nature": 0,
+            "perception": 0,
+            "performance": 0,
+            "persuasion": 0,
+            "religion": 0,
+            "sleight-of-hand": 0,
+            "stealth": 0,
+            "survival": 0
         },
-        "Proficiency Bonus": 0,
-        "Proficiencies": [
-            ""
+        "proficiency-bonus": 0,
+        "proficiencies": [
         ],
-        "Background": "",
-        "Languages": [
+        "background": "",
+        "languages": [
             "common"
         ],
-        "Inventory": [
-            ""
+        "inventory": [
         ],
-        "Equipment": [
-            {
-                "name": "",
-                "Damage": ""
-            }
+        "equipment": [
+            "arrow"
         ],
-        "Description": "",
-        "Spells": [
-            {
-                "name": "",
-                "damage": "",
-                "spell-range": 0,
-                "casting-time": 0,
-                "level": 0,
-                "components": "",
-                "Duration": ""
-            }
+        "description": "",
+        "spells": [
         ]
     },
     {
-        "name": "Mark",
+        "name": "mark",
         "level": 20.0,
-        "class": "rogue",
-        "subclass": "",
-        "race": "human",
-        "subrace": "",
+        "classes": "rogue",
+        "subclasses": "",
+        "races": "human",
+        "subraces": "",
         "stats": {
             "strength": 8,
             "dexterity": 13,
@@ -95,61 +81,46 @@
             "charisma": 0
         },
         "skills": {
-            "Acrobatics": 0,
-            "Animal Handling": 0,
-            "Arcana": 0,
-            "Athletics": 0,
-            "Deception": 0,
-            "History": 0,
-            "Insight": 0,
-            "Intimidation": 0,
-            "Medicine": 0,
-            "Nature": 0,
-            "Perception": 0,
-            "Performance": 0,
-            "Persuasion": 0,
-            "Religion": 0,
-            "Sleight of Hand": 0,
-            "Stealth": 0,
-            "Survival": 0
+            "acrobatics": 0,
+            "animal-handling": 0,
+            "arcana": 0,
+            "athletics": 0,
+            "deception": 0,
+            "history": 0,
+            "insight": 0,
+            "intimidation": 0,
+            "medicine": 0,
+            "nature": 0,
+            "perception": 0,
+            "performance": 0,
+            "persuasion": 0,
+            "religion": 0,
+            "sleight-of-hand": 0,
+            "stealth": 0,
+            "survival": 0
         },
-        "Proficiency Bonus": 0,
-        "Proficiencies": [
-            ""
+        "proficiency-bonus": 0,
+        "proficiencies": [
         ],
-        "Background": "",
-        "Languages": [
+        "background": "",
+        "languages": [
             "common"
         ],
-        "Inventory": [
-            ""
+        "inventory": [
         ],
-        "Equipment": [
-            {
-                "name": "",
-                "Damage": ""
-            }
+        "equipment": [
         ],
-        "Description": "",
-        "Spells": [
-            {
-                "name": "",
-                "damage": "",
-                "spell-range": 0,
-                "casting-time": 0,
-                "level": 0,
-                "components": "",
-                "Duration": ""
-            }
+        "description": "",
+        "spells": [
         ]
     },
     {
         "name": "Juan",
         "level": 10.0,
-        "class": "wizard",
-        "subclass": "",
-        "race": "elf",
-        "subrace": "",
+        "classes": "wizard",
+        "subclasses": "",
+        "races": "elf",
+        "subraces": "",
         "stats": {
             "strength": 5,
             "dexterity": 10,
@@ -167,52 +138,38 @@
             "charisma": 0
         },
         "skills": {
-            "Acrobatics": 0,
-            "Animal Handling": 0,
-            "Arcana": 0,
-            "Athletics": 0,
-            "Deception": 0,
-            "History": 0,
-            "Insight": 0,
-            "Intimidation": 0,
-            "Medicine": 0,
-            "Nature": 0,
-            "Perception": 0,
-            "Performance": 0,
-            "Persuasion": 0,
-            "Religion": 0,
-            "Sleight of Hand": 0,
-            "Stealth": 0,
-            "Survival": 0
+            "acrobatics": 0,
+            "animal-handling": 0,
+            "arcana": 0,
+            "athletics": 0,
+            "deception": 0,
+            "history": 0,
+            "insight": 0,
+            "intimidation": 0,
+            "medicine": 0,
+            "nature": 0,
+            "perception": 0,
+            "performance": 0,
+            "persuasion": 0,
+            "religion": 0,
+            "sleight-of-hand": 0,
+            "stealth": 0,
+            "survival": 0
         },
-        "Proficiency Bonus": 0,
-        "Proficiencies": [
+        "proficiency-bonus": 0,
+        "proficiencies": [
             ""
         ],
-        "Background": "",
-        "Languages": [
+        "background": "",
+        "languages": [
             "common"
         ],
-        "Inventory": [
-            ""
+        "inventory": [
         ],
-        "Equipment": [
-            {
-                "name": "",
-                "Damage": ""
-            }
+        "equipment": [
         ],
-        "Description": "",
-        "Spells": [
-            {
-                "name": "",
-                "damage": "",
-                "spell-range": 0,
-                "casting-time": 0,
-                "level": 0,
-                "components": "",
-                "Duration": ""
-            }
+        "description": "",
+        "spells": [
         ]
     }
 ]
