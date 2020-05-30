@@ -16,6 +16,7 @@ def createCharacter(response, username):
                         if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                             chara = chars
                             newChar = 0
+                            break
                     if chara is None:
                         newChar = 1
                         with open('characterTemplate.json', 'r') as temp:
@@ -63,10 +64,12 @@ def addCharacterStats(response, username):
         for cont in response.query_result.output_contexts:
             if "create-followup" in cont.name:
                 context = cont.parameters
+                break
         param = response.query_result.parameters
         for chars in data:
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
+                break
         try:
             # TODO(accepts multiple stats but only one value)
             # If wants multiple value, change in dialoglow to values to list and control here the order of assigment
@@ -100,6 +103,7 @@ def rollCharacterStats(response, username):
         for chars in data:
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
+                break
         for stat in list(chara['stats'].keys()):
             chara['stats'][stat] = int(random.randrange(3, 18))
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
@@ -125,6 +129,7 @@ def infoCharacter(response, username):
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
+                    break
         if chara is not None:
             if param['properties'] != "":
                 response.query_result.fulfillment_text += "\n{}\'s {}:".format(chara['name'], param['properties'])
@@ -162,6 +167,7 @@ def editCharacter(response, username):
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
+                    break
         if chara is not None:
             intent = response.query_result.intent.display_name
             print(intent)
@@ -250,6 +256,7 @@ def rollData(response, username):
             for chars in data:
                 if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
                     chara = chars
+                    break
         if chara is not None:
             i = 0
             for pro in param['properties']:
@@ -258,10 +265,13 @@ def rollData(response, username):
                     break
                 elif pro == "skills":
                     i = 2
+                    break
                 elif pro == "initiative":
                     i = 3
+                    break
                 elif pro == "attack":
                     i = 4
+                    break
 
             if i == 0:
                 dice = random.randrange(1, 20)

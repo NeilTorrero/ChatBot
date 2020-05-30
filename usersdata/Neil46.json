@@ -114,12 +114,13 @@
     {
         "name": "Juan",
         "level": 10.0,
-        "classes": "wizard",
+        "life": 80,
+        "classes": "paladin",
         "subclasses": "",
         "races": "elf",
         "subraces": "",
         "stats": {
-            "strength": 8.0,
+            "strength": 8,
             "dexterity": 10,
             "constitution": 15,
             "intelligence": 15,
@@ -154,11 +155,8 @@
             "survival": 0
         },
         "proficiency-bonus": 0,
-        "proficiencies": [
-        ],
-        "traits": [
-
-        ],
+        "proficiencies": [],
+        "traits": [],
         "background": "",
         "languages": [
             "common"

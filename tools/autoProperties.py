@@ -43,11 +43,11 @@ def skillsAndSTCreation(chara):
 
 
 def lifeCalculator(chara):
-    con = chara['stats']['constitution']
+    con = int((chara['stats']['constitution'] - 10) / 2)
     className = chara['classes']
     data = getInfoAPI("classes", className)
     hit_dice = data['hit_die']
     life = hit_dice + con
-    for i in range(1, chara['level']):
-        life += random.randrange(1, hit_dice) + con
+    for i in range(1, int(chara['level'])):
+        life += random.randrange(1, int(hit_dice)) + con
     chara['life'] = int(life)
