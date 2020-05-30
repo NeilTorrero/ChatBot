@@ -259,6 +259,8 @@ def rollData(response, username):
                     break
                 elif pro == "skills":
                     i = 2
+                elif pro == "initiative":
+                    i = 3
 
             if i == 0:
                 dice = random.randrange(1, 20)
@@ -280,6 +282,10 @@ def rollData(response, username):
                 dice = random.randrange(1, 20)
                 valor = chara['skills'][param['skills'].lower()]
                 response.query_result.fulfillment_text += "\nRolled {}: {}".format(param['skills'], dice + valor)
+            elif i == 3:
+                dice = random.randrange(1, 20)
+                valor = chara['stats']['dexterity']
+                response.query_result.fulfillment_text += "\nRolled: {}".format(dice + valor)
         else:
             response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
                 param['name'])
