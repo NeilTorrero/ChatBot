@@ -1,7 +1,7 @@
 import json
 import os
 import random
-
+from tools.skillsAndSt import *
 
 def createCharacter(response, username):
     param = response.query_result.parameters
@@ -81,6 +81,7 @@ def addCharacterStats(response, username):
                 response.query_result.fulfillment_text = "{} {}".format(response.query_result.fulfillment_text,
                                                                         nextStat)
             else:
+                skillsAndSTCreation(chara)
                 response.query_result.fulfillment_text = "That's all the stats introduced!"
         except:
             response.query_result.fulfillment_text = "{} Strength".format(response.query_result.fulfillment_text)
@@ -101,6 +102,7 @@ def rollCharacterStats(response, username):
         for stat in list(chara['stats'].keys()):
             chara['stats'][stat] = random.randrange(3, 18)
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
+        skillsAndSTCreation(chara)
     with open('usersdata/{}.json'.format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
@@ -167,10 +169,12 @@ def editCharacter(response, username):
                     if intent.split(" - ")[1] == "properties":
                         if isinstance(chara[param['properties'].lower()], list):
                             chara[param['properties'].lower()].append(param[param['properties']])
+                            skillsAndSTCreation(chara)
                             response.query_result.fulfillment_text = "Added {} to {}".format(param[param['properties']], param['properties'])
                         else:
                             response.query_result.fulfillment_text = "Previous {} {},".format(param['properties'], chara[param['properties'].lower()])
                             chara[param['properties'].lower()] = param[param['properties']]
+                            skillsAndSTCreation(chara)
                             response.query_result.fulfillment_text += " changed to {}".format(param[param['properties']])
                     elif intent.split(" - ")[1] == "equipment":
                         chara['equipment'].append(param['equipment'])
@@ -178,9 +182,11 @@ def editCharacter(response, username):
                     elif intent.split(" - ")[1] == "stats":
                         response.query_result.fulfillment_text = "Previous {} value {},".format(param['stats'].lower(), chara['stats'][param['stats'].lower()])
                         chara['stats'][param['stats'].lower()] = param['number']
+                        skillsAndSTCreation(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "level":
                         chara[param['properties'].lower()] = param['level']
+                        skillsAndSTCreation(chara)
                         response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "races":
@@ -207,9 +213,11 @@ def editCharacter(response, username):
                     elif intent.split(" - ")[1] == "classes":
                         response.query_result.fulfillment_text = "Previous class {},".format(chara['classes'])
                         chara['classes'] = param['classes']
+                        skillsAndSTCreation(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['classes'])
                     elif intent.split(" - ")[1] == "proficiencies":
                         chara['proficiencies'].append(param['proficiencies'])
+                        skillsAndSTCreation(chara)
                         response.query_result.fulfillment_text = "{} added to proficiencies.".format(param['proficiencies'])
                     elif intent.split(" - ")[1] == "name":
                         response.query_result.fulfillment_text = "Previous name {},".format(chara['name'])
