@@ -200,7 +200,7 @@ def write_class_properties(data, out, param, level):
                         out += item["item"]["name"] + ", "
 
         elif isinstance(info, list):
-            if index == "proficiency" or index == "proficiency_choices" or index == "proficiencies":
+            if index == "proficiency" or index == "proficiency_choices" or index == "proficiencies" or index == "saving_throws":
                 out += " are these:"
                 #proficiency_choices
                 #skill
