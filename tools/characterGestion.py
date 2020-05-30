@@ -167,9 +167,14 @@ def editCharacter(response, username):
                 if intent.split(" - ")[0] == "Modify":
                     if intent.split(" - ")[1] == "properties":
                         print(param['properties'])
-                        print(param[param['properties']])
-                        chara[param['properties'].lower()] = param[param['properties']]
-                        response.query_result.fulfillment_text = "properties"
+                        print(type(chara[param['properties']]))
+                        if isinstance(chara[param['properties'].lower()], list):
+                            chara[param['properties'].lower()].append(param[param['properties']])
+                            response.query_result.fulfillment_text = "Added {} to {}".format(param[param['properties']], param['properties'])
+                        else:
+                            response.query_result.fulfillment_text = "Previous {} {},".format(param['properties'], chara[param['properties'].lower()])
+                            chara[param['properties'].lower()] = param[param['properties']]
+                            response.query_result.fulfillment_text += " changed to {}".format(param[param['properties']])
                     elif intent.split(" - ")[1] == "equipment":
                         print("edit equipment")
                         chara['equipment'].append(param['equipment'])
