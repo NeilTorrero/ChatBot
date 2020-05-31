@@ -46,7 +46,7 @@ def write_monster_properties(data, out, param):
                     out += i[a[0]] + ": " + i[a[1]] + ", "
                 counter += 1
         else:
-            out += " is: " + str(data[param["Monster-Properties"].lower()])
+            out += " is: " + str(data[param["monster-properties"].lower()])
     else:
         out = "Looks like this monster doesn't have any of these!"
     return out
