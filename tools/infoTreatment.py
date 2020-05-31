@@ -43,7 +43,7 @@ def write_monster_properties(data, out, param):
                 if counter == len(info) - 1:
                     out += i[a[0]] + ": " + i[a[1]]
                 else:
-                    out += i[a[0]] + ": " + i[a[1]] + ", "
+                    out += i[a[0]] + ": " + i[a[1]] + "\n\n"
                 counter += 1
         else:
             out += " is: " + str(data[param["Monster-Properties"].lower()])
