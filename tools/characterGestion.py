@@ -11,34 +11,34 @@ def createCharacter(response, username):
             with open('usersdata/{}.json'.format(username), 'r') as f:
                 data = json.load(f)
                 chara = None
-                try:
-                    for chars in data:
-                        if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
-                            chara = chars
-                            newChar = 0
-                            break
-                    if chara is None:
-                        newChar = 1
-                        with open('characterTemplate.json', 'r') as temp:
-                            template = json.load(temp)
-                            chara = template[0]
-                    chara['name'] = param['name']
-                    chara['level'] = int(param['level'])
-                    if chara['level'] > 20:
-                        chara['level'] = 20
-                        response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
-                    chara['races'] = param['races']
-                    chara['subraces'] = param['subraces']
-                    chara['classes'] = param['classes']
-                    chara['subclasses'] = param['subclasses']
-                    langs = []
-                    for lang in param['languages'].values:
-                        langs.append(lang.string_value)
-                    chara['languages'] = langs
-                    if newChar == 1:
-                        data.insert(0, chara)
-                except:
-                    pass
+                #try:
+                for chars in data:
+                    if chars['name'] == param['name'] or chars['name'].lower() == param['name'].lower():
+                        chara = chars
+                        newChar = 0
+                        break
+                if chara is None:
+                    newChar = 1
+                    with open('characterTemplate.json', 'r') as temp:
+                        template = json.load(temp)
+                        chara = template[0]
+                chara['name'] = param['name']
+                chara['level'] = int(param['level'])
+                if chara['level'] > 20:
+                    chara['level'] = 20
+                    response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
+                chara['races'] = param['races']
+                chara['subraces'] = param['subraces']
+                chara['classes'] = param['classes']
+                chara['subclasses'] = param['subclasses']
+                langs = []
+                for lang in param['languages'].values:
+                    langs.append(lang.string_value)
+                chara['languages'] = langs
+                if newChar == 1:
+                    data.insert(0, chara)
+                #except:
+                #    print("Some value was wrong")
             with open('usersdata/{}.json'.format(username), 'w+') as f:
                 json.dump(data, f, indent=4)
         else:
@@ -76,34 +76,34 @@ def addCharacterStats(response, username):
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
                 break
-        try:
-            response.query_result.fulfillment_text = ""
-            num = []
-            for val in param['value'].values:
-                num.append(val.number_value)
-            i = 0
-            for stat in param['stats'].values:
-                chara['stats'][stat.string_value.lower()] = num[i]
-                if num[i] > 20:
-                    chara['stats'][stat.string_value.lower()] = 20
-                    response.query_result.fulfillment_text += "\nThe {} was assigned 20 being that the maximum.\n".format(stat.string_value)
-                i += 1
-                if i >= len(num):
-                    i -= 1
-            nextStat = ""
-            for stat in list(chara['stats'].keys()):
-                if chara['stats'][stat] == 0 and nextStat == "":
-                    print(nextStat)
-                    nextStat = stat
-            if nextStat != "":
-                response.query_result.fulfillment_text += "{} {}".format(response.query_result.fulfillment_text,
-                                                                        nextStat)
-            else:
-                skillsAndSTCreation(chara)
-                lifeCalculator(chara)
-                response.query_result.fulfillment_text += "That's all the stats introduced!"
-        except:
-            pass
+        #try:
+        response.query_result.fulfillment_text = ""
+        num = []
+        for val in param['value'].values:
+            num.append(val.number_value)
+        i = 0
+        for stat in param['stats'].values:
+            chara['stats'][stat.string_value.lower()] = num[i]
+            if num[i] > 20:
+                chara['stats'][stat.string_value.lower()] = 20
+                response.query_result.fulfillment_text += "\nThe {} was assigned 20 being that the maximum.\n".format(stat.string_value)
+            i += 1
+            if i >= len(num):
+                i -= 1
+        nextStat = ""
+        for stat in list(chara['stats'].keys()):
+            if chara['stats'][stat] == 0 and nextStat == "":
+                print(nextStat)
+                nextStat = stat
+        if nextStat != "":
+            response.query_result.fulfillment_text += "{} {}".format(response.query_result.fulfillment_text,
+                                                                    nextStat)
+        else:
+            skillsAndSTCreation(chara)
+            lifeCalculator(chara)
+            response.query_result.fulfillment_text += "That's all the stats introduced!"
+        #except:
+        #    print("Some value was wrong")
     with open('usersdata/{}.json'.format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
@@ -167,7 +167,7 @@ def infoCharacter(response, username):
                     else:
                         response.query_result.fulfillment_text += "\n{}\'s {}:\t{}".format(chara['name'], param['stats'], chara['stats'][param['stats'].lower()])
         else:
-            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+            response.query_result.fulfillment_text = "Oops it seems you don't have the {} character added.".format(
                 param['name'])
 
 
@@ -259,7 +259,7 @@ def editCharacter(response, username):
                     response.query_result.fulfillment_text = "Sorry I can't do that."
                     pass
         else:
-            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+            response.query_result.fulfillment_text = "Oops it seems you don't have the {} character added.".format(
                 param['name'])
 
 
@@ -334,5 +334,5 @@ def rollData(response, username):
                     response.query_result.fulfillment_text += "\nRolled damage: {}".format(dice + valor)
 
         else:
-            response.query_result.fulfillment_text = "Ups it seems you don't have the {} character added.".format(
+            response.query_result.fulfillment_text = "Oops it seems you don't have the {} character added.".format(
                 param['name'])

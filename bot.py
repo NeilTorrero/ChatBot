@@ -116,6 +116,7 @@ def textMessage(update, context):
     # Call to python database gestion
     infoTreatment(response, update)
     # Telegram bot writes response of dialogflow
+    print(response.query_result.fulfillment_text)
     context.bot.send_message(chat_id=update.message.chat_id, text=response.query_result.fulfillment_text)
 
 
