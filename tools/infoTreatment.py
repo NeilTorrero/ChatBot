@@ -36,7 +36,7 @@ def write_monster_properties(data, out, param):
             for a in list(info.keys()):
                 out = + a + ": " + info[a] + ", "
         elif isinstance(info, list):
-            out += " are: "
+            out += " are: \n"
             counter = 0
             for i in info:
                 a = list(i.keys())
