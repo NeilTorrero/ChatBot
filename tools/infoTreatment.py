@@ -22,10 +22,14 @@ def write_immunities(data, out):
 
 
 def write_monster_properties(data, out, param):
-    index = param["Monster-Properties"].lower()
-    info = data[index]
-    for a in param["Monster-Properties"].split("_"):
-        out += "" + a.lower()
+    try:
+        index = param["monster-properties"].lower()
+        info = data[index]
+        for a in param["monster-properties"].split("_"):
+            out += "" + a.lower()
+    except:
+        out = "Looks like this race doesn't have any of these!"
+        return out
     if info:
         if isinstance(info, dict):
             out += " are: "
@@ -49,11 +53,14 @@ def write_monster_properties(data, out, param):
 
 
 def write_race_properties(data, out, param):
-    index = param["properties"].lower()
-    info = data[index]
-    for a in param["properties"].split("_"):
-        out += "" + a.lower()
-
+    try:
+        index = param["properties"].lower()
+        info = data[index]
+        for a in param["properties"].split("_"):
+            out += "" + a.lower()
+    except:
+        out = "Looks like this race doesn't have any of these!"
+        return out
     if info:
         if isinstance(info, dict):
             out += " are: choose " + info["choose"] + " from:"
