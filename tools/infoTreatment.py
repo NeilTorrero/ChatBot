@@ -28,7 +28,7 @@ def write_monster_properties(data, out, param):
         for a in param["monster-properties"].split("_"):
             out += "" + a.lower()
     except:
-        out = "Looks like this race doesn't have any of these!"
+        out = "Looks like this monster doesn't have any of these!"
         return out
     if info:
         if isinstance(info, dict):
