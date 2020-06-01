@@ -104,6 +104,7 @@ def addCharacterStats(response, username):
             skillsAndSTCreation(chara)
             lifeCalculator(chara)
             response.query_result.fulfillment_text += "That's it, all the stats have been introduced!"
+            response.query_result.fulfillment_text += "\n\nNow tell me what do you want?"
         #except:
         #    print("Some value was wrong")
     with open('usersdata/{}.json'.format(username), 'w+') as f:
@@ -129,6 +130,7 @@ def rollCharacterStats(response, username):
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
         skillsAndSTCreation(chara)
         lifeCalculator(chara)
+        response.query_result.fulfillment_text += "\n\nNow tell me what do you want?"
     with open('usersdata/{}.json'.format(username), 'w+') as f:
         json.dump(data, f, indent=4)
 
