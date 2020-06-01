@@ -241,8 +241,8 @@ def editCharacter(response, username):
                         chara['subraces'] = param['subraces']
                         response.query_result.fulfillment_text += " changed to {}".format(param['subraces'])
                     elif intent.split(" - ")[1] == "inventory":
-                        chara['inventory'].append(param['inventory'])
-                        response.query_result.fulfillment_text = "{} added to inventory.".format(param['inventory'])
+                        chara['inventory'].append(param['equipment'])
+                        response.query_result.fulfillment_text = "{} added to inventory.".format(param['equipment'])
                     elif intent.split(" - ")[1] == "languages":
                         chara['languages'].append(param['languages'])
                         response.query_result.fulfillment_text = "{} added to languages.".format(param['languages'])
@@ -263,10 +263,12 @@ def editCharacter(response, username):
                     with open('usersdata/{}.json'.format(username), 'w+') as fm:
                         json.dump(data, fm, indent=4)
                 else:
-                    response.query_result.fulfillment_text = "Sorry I can't do that."
-                    pass
+                    response.query_result.fulfillment_text = "Sorry, I can't do that."
+            else:
+                if response.query_result.fulfillment_text == "":
+                    response.query_result.fulfillment_text = "Sorry, I didn't get that."
         else:
-            response.query_result.fulfillment_text = "Oops it seems you don't have the {} character added.".format(
+            response.query_result.fulfillment_text = "Oops, it seems you don't have the {} character added.".format(
                 param['name'])
 
 
