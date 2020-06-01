@@ -26,7 +26,7 @@ def createCharacter(response, username):
                 chara['level'] = int(param['level'])
                 if chara['level'] > 20:
                     chara['level'] = 20
-                    response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
+                    response.query_result.fulfillment_text = "The level was assigned 20 being that the maximum.\n\n" + response.query_result.fulfillment_text
                 chara['races'] = param['races']
                 chara['subraces'] = param['subraces']
                 chara['classes'] = param['classes']
@@ -50,7 +50,7 @@ def createCharacter(response, username):
                 chara['level'] = int(param['level'])
                 if chara['level'] > 20:
                     chara['level'] = 20
-                    response.query_result.fulfillment_text += "\nThe level was assigned 20 being that the maximum.\n"
+                    response.query_result.fulfillment_text = "The level was assigned 20 being that the maximum.\n\n" + response.query_result.fulfillment_text
                 chara['races'] = param['races']
                 chara['subraces'] = param['subraces']
                 chara['classes'] = param['classes']
@@ -88,7 +88,7 @@ def addCharacterStats(response, username):
             chara['stats'][stat.string_value.lower()] = num[i]
             if num[i] > 20:
                 chara['stats'][stat.string_value.lower()] = 20
-                response.query_result.fulfillment_text += "\nThe {} was assigned 20 being that the maximum.\n".format(stat.string_value)
+                response.query_result.fulfillment_text = "The {} was assigned 20 being that the maximum.\n\n".format(stat.string_value) + response.query_result.fulfillment_text
             i += 1
             if i >= len(num):
                 i -= 1
