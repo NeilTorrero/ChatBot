@@ -101,7 +101,7 @@ def addCharacterStats(response, username):
         else:
             skillsAndSTCreation(chara)
             lifeCalculator(chara)
-            response.query_result.fulfillment_text += "That's all the stats introduced!"
+            response.query_result.fulfillment_text += "That's it, all the stats have been introduced!"
         #except:
         #    print("Some value was wrong")
     with open('usersdata/{}.json'.format(username), 'w+') as f:

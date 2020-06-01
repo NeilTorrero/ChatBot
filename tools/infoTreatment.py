@@ -109,7 +109,7 @@ def write_equipment_properties(data, out, param):
                         out += "is: " + str(info["normal"]) + "ft normally and " + str(
                             info["long"]) + "ft with disadvantage"
                     else:
-                        out += "is: " + str(info["normal"]) + "ft"
+                        out += " is: " + str(info["normal"]) + "ft"
             elif isinstance(info, list):
                 out += " are: "
                 counter = 0
