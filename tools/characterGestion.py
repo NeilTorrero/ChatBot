@@ -98,8 +98,11 @@ def addCharacterStats(response, username):
                 print(nextStat)
                 nextStat = stat
         if nextStat != "":
-            response.query_result.fulfillment_text += "{} {}".format(response.query_result.fulfillment_text,
-                                                                    nextStat)
+            if response.query_result.fulfillment_text == "":
+                response.query_result.fulfillment_text += "For starters, tell me about their {}".format(nextStat)
+            else:
+                response.query_result.fulfillment_text += "{} {}".format(response.query_result.fulfillment_text,
+                                                                     nextStat)
         else:
             skillsAndSTCreation(chara)
             lifeCalculator(chara)
