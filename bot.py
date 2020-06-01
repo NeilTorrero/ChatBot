@@ -118,7 +118,10 @@ def textMessage(update, context):
     # Sends user input to dialogflow and recieves response
     response = dialogflow(update.message.text, update.message.chat_id)
     # Call to python database gestion
-    infoTreatment(response, update)
+    try:
+        infoTreatment(response, update)
+    except:
+        response.query_result.fulfillment_text = "Sorry, but I didn't get that..."
     # Telegram bot writes response of dialogflow
     print(response.query_result.fulfillment_text)
     context.bot.send_message(chat_id=update.message.chat_id, text=response.query_result.fulfillment_text)
