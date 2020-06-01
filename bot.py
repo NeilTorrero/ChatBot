@@ -13,6 +13,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 def infoTreatment(response, update):
     username = update.message.chat.username
+    if username == "":
+        username = update.message.chat.first_name.lower() + update.message.chat_id
     print(response)
     intent = response.query_result.intent.display_name
     if intent == "Master-Mode - Monsters":
@@ -111,6 +113,7 @@ def start(update, context):
 
 
 def textMessage(update, context):
+    print(update)
     # Sends user input to dialogflow and recieves response
     response = dialogflow(update.message.text, update.message.chat_id)
     # Call to python database gestion
