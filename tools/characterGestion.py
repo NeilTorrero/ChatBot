@@ -71,6 +71,8 @@ def addCharacterStats(response, username):
             if "create-followup" in cont.name:
                 context = cont.parameters
                 break
+        if chara is None:
+            chara = data[0]
         param = response.query_result.parameters
         for chars in data:
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
@@ -111,6 +113,7 @@ def addCharacterStats(response, username):
 def rollCharacterStats(response, username):
     with open('usersdata/{}.json'.format(username), 'r') as f:
         data = json.load(f)
+        chara = None
         for cont in response.query_result.output_contexts:
             if "create-followup" in cont.name:
                 context = cont.parameters
@@ -119,6 +122,8 @@ def rollCharacterStats(response, username):
             if chars['name'] == context['name'] or chars['name'].lower() == context['name'].lower():
                 chara = chars
                 break
+        if chara is None:
+            chara = data[0]
         for stat in list(chara['stats'].keys()):
             chara['stats'][stat] = int(random.randrange(3, 18))
             response.query_result.fulfillment_text += "\n\t\t{} = {}".format(stat.capitalize(), chara['stats'][stat])
