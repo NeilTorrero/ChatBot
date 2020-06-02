@@ -83,9 +83,16 @@ def infoTreatment(response, update):
         elif response.query_result.action.split("-")[1] == "Features":
             param = response.query_result.parameters
             features = param["features"]
-            data = getInfoAPI("features", features)
-            out = "\nThis Features's "
-            response.query_result.fulfillment_text += write_features_properties(data, out, param)
+            if not features:
+                if param["properties"] == "races" or param["properties"] == "classes":
+                    data = getInfoAPI(param["properties"], "")
+                    out = "\nThere are: "
+                    response.query_result.fulfillment_text += "\n" + write_classes_and_races(data, out)
+
+            else:
+                data = getInfoAPI("features", features)
+                out = "\nThis Features's "
+                response.query_result.fulfillment_text += write_features_properties(data, out, param)
 
     elif intent == "create - stats":
         print("Adding stats")
