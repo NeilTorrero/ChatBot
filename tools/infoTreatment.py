@@ -100,10 +100,10 @@ def write_equipment_properties(data, out, param):
         if info:
             if isinstance(info, dict):
                 if "cost" == param["properties"].lower():
-                    out += "is: " + str(info["quantity"]) + info["unit"]
+                    out += " is: " + str(info["quantity"]) + info["unit"]
                 elif "damage" == param["properties"].lower():
                     damage_type = info["damage_type"]
-                    out += "is: " + info["damage_dice"] + " " + damage_type["name"]
+                    out += " is: " + info["damage_dice"] + " " + damage_type["name"]
                 elif "range" == param["properties"].lower():
                     if info["long"]:
                         out += "is: " + str(info["normal"]) + "ft normally and " + str(
