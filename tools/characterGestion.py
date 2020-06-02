@@ -222,13 +222,13 @@ def editCharacter(response, username):
                         lifeCalculator(chara)
                         response.query_result.fulfillment_text += " changed to {}".format(param['number'])
                     elif intent.split(" - ")[1] == "level":
+                        response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
                         chara[param['properties'].lower()] = int(param['level'])
                         if chara['level'] > 20:
                             chara['level'] = 20
                         skillsAndSTCreation(chara)
                         lifeCalculator(chara)
-                        response.query_result.fulfillment_text = "Previous level {},".format(chara['level'])
-                        response.query_result.fulfillment_text += " changed to {}".format(param['number'])
+                        response.query_result.fulfillment_text += " changed to {}".format(int(param['level']))
                     elif intent.split(" - ")[1] == "races":
                         response.query_result.fulfillment_text = "Previous race {},".format(chara['races'])
                         chara['races'] = param['races']
