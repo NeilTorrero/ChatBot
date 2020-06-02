@@ -38,20 +38,30 @@ def infoTreatment(response, update):
         if response.query_result.action.split("-")[1] == "Class":
             param = response.query_result.parameters
             _class = param["classes"]
-            try:
-                level = param["ordinal"]
-            except:
-                level = 0
-            data = getInfoAPI("classes", _class)
-            out = "\nThis class' "
-            response.query_result.fulfillment_text += "\n" + write_class_properties(data, out, param, level)
+            if "classes" == param["properties"]:
+                data = getInfoAPI("classes", "")
+                out = "\nThere are: "
+                response.query_result.fulfillment_text += "\n" + write_classes_and_races(data, out)
+            else:
+                try:
+                    level = param["level"]
+                except:
+                    level = 0
+                data = getInfoAPI("classes", _class)
+                out = "\nThis class' "
+                response.query_result.fulfillment_text += "\n" + write_class_properties(data, out, param, level)
 
         elif response.query_result.action.split("-")[1] == "Race":
             param = response.query_result.parameters
             race = param["races"]
-            data = getInfoAPI("races", race)
-            out = "\nThis race's "
-            response.query_result.fulfillment_text += "\n" + write_race_properties(data, out, param)
+            if "races" == param["properties"]:
+                data = getInfoAPI("races", "")
+                out = "\nThere are: "
+                response.query_result.fulfillment_text += "\n" + write_classes_and_races(data, out)
+            else:
+                data = getInfoAPI("races", race)
+                out = "\nThis race's "
+                response.query_result.fulfillment_text += "\n" + write_race_properties(data, out, param)
         elif response.query_result.action.split("-")[1] == "Equipment":
             param = response.query_result.parameters
             equipment = param["equipment"]

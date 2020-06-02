@@ -183,6 +183,17 @@ def write_spell_properties(data, out, param):
         out = "Looks like this spell doesn't have any of these!"
         return out
 
+def write_classes_and_races(data, out):
+    info = data
+    counter = 0
+    for i in info["results"]:
+        if counter == len(info["results"]) - 1:
+            out += i["name"]
+        else:
+            out += i["name"] + ", "
+        counter += 1
+    return out
+
 def write_class_properties(data, out, param, level):
     try:
         index = param["properties"].lower()
