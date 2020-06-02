@@ -32,8 +32,9 @@ def createCharacter(response, username):
                 chara['classes'] = param['classes']
                 chara['subclasses'] = param['subclasses']
                 langs = []
-                for lang in param['languages'].values:
-                    langs.append(lang.string_value)
+                if not param['languages']:
+                    for lang in param['languages'].values:
+                        langs.append(lang.string_value)
                 chara['languages'] = langs
                 if newChar == 1:
                     data.insert(0, chara)
